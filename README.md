@@ -55,8 +55,10 @@ These features are what make a **web-based** system powerful and flexible.
 * **Multi-Store Management:** For owners with multiple locations, a centralized system to view and manage inventory, sales, and purchasing across all stores from a single dashboard.
 * **Point of Sale (POS) Integration:** Seamlessly connects the inventory system to the cash register. When an OTC item is sold, inventory is automatically updated.
 
+* **EHR/EMR Integration:** Ability to connect with local clinics' or hospitals' Electronic Health Record (EHR) systems for better continuity of care.
+* **Scalability:** The system should be able to grow with your business, easily handling more users, more locations, or a larger volume of prescriptions without a drop in performance.
+
+
   **`Notice:`** Though these are our aims and objectives, we haven't quite achieved all that has been listed yet. Our goal for now is to deliver a **MVP** that is usable and acts as a good demonstration of our Commitment to the course.
 
   Obadiah Azimeh Nasara : `Rizon Labs` 03/11/2025
-* **EHR/EMR Integration:** Ability to connect with local clinics' or hospitals' Electronic Health Record (EHR) systems for better continuity of care.
-* **Scalability:** The system should be able to grow with your business, easily handling more users, more locations, or a larger volume of prescriptions without a drop in performance.
