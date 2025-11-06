@@ -7,7 +7,7 @@ function Topbar(){
                 <img src="/images/logo.png" alt="Logo" className="w-10 h-10"/>
                  <h1 className="text-2xl font-bold text-gray-800">Dispensar</h1>
              </div>
-             <h2 className="text-xl font-semibold text-gray-800">- Dashboard -</h2>
+             <h2 className="text-xl font-semibold text-gray-800"></h2>
              <div className="flex w-auto h-full justify-between items-center">
                 <p className="text-gray-800 text-md mx-2">User</p>
                 <div className="w-[30px] h-[30px] rounded-full overflow-hidden cursor-pointer">
