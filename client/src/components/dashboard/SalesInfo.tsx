@@ -1,13 +1,13 @@
-
+import SalesOverviewChart from "./SalesOverviewChart"
 
 function SalesInfo(){
     return(
     <>
 
-        <div className="w-[57%] h-full shadow border border-gray-200 rounded-2xl">
-
+        <div className="bg-white w-[57%] h-full shadow border border-gray-200 rounded-2xl overflow-hidden">
+            <SalesOverviewChart></SalesOverviewChart>
         </div>
-        <div className="w-[40%] h-full shadow border border-gray-200 rounded-2xl px-5 flex-col  overflow-scroll hide-scrollbar">
+        <div className="bg-white w-[40%] h-full shadow border border-gray-200 rounded-2xl px-5 flex-col  overflow-scroll hide-scrollbar">
         <div className="sticky top-0 h-10 flex justify-between items-center">
             <h1 className="text-xs"><i className="bx bx-bar-chart-alt-2"></i> Activity Overview</h1> 
             <select name="" id="" className="text-xs">

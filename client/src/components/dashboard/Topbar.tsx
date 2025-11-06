@@ -2,7 +2,7 @@
 
 function Topbar(){
     return(
-        <div className="flex w-full h-[60px] px-5 items-center justify-between bg-gray-50 fixed top-0 z-50 border-b border-gray-300">
+        <div className="flex w-full h-[60px] px-5 items-center justify-between bg-white fixed top-0 z-50 border-b border-gray-300">
              <div className="flex justify-center items-center">
                 <img src="/images/logo.png" alt="Logo" className="w-10 h-10"/>
                  <h1 className="text-2xl font-bold text-gray-800">Dispensar</h1>
