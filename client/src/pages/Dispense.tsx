@@ -52,7 +52,11 @@ function Dispense(){
                 {/*--------------Price & Quantity----------- */}
                 <div className="w-[80%] flex justify-between bg-white border border-gray-200 h-[15%] mt-[1%] rounded-2xl">
                     <input type="text" placeholder="Price (₦)" className="focus:outline-none focus:ring-0 border-r rounded-r-none border-gray-300 rounded-lg p-2 w-[50%] text-xl text-gray-900" />
-                    <input type="text" placeholder="Quantity" className="focus:outline-none focus:ring-0 border-gray-300 rounded-lg p-2 w-[50%] text-xl text-gray-900" />
+                    <span className="w-[50%] border-gray-300 rounded-lg h-full flex justify-between items-center px-2">
+                        <input type="number" placeholder="Quantity" className="focus:outline-none focus:ring-0 p-2 text-xl text-gray-900 w-[70%]" />
+                        <p className="text-gray-700 font-semibold">/ 100</p>
+                        <h1 className="text-gray-900 font-semibold cursor-pointer">MAX</h1>
+                    </span>
                 </div>
                 <button className="bg-[#5fdf85] text-gray-900 font-semibold py-2 px-5 rounded-lg mt-4 hover:bg-gray-900 hover:text-[#5fdf85] transition duration-500">Dispense <i className="bx bx-right-arrow-alt"></i></button>
             </div>

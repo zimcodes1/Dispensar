@@ -102,7 +102,7 @@ const SalesOverviewChart: React.FC = () => {
               display: true,
               text: 'Monthly Sales Overview',
               font: {
-                size: 20,
+                size: 18,
                 weight: 'bold',
                 family: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
               },

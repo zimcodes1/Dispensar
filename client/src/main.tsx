@@ -5,6 +5,9 @@ import './index.css'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import Dispense from './pages/Dispense'
+import Inventory from './pages/Inventory'
+import Settings from './pages/Settings'
+import Reports from './pages/Reports'
 
 
 
@@ -20,6 +23,18 @@ const router = createBrowserRouter([
   {
     path: '/dispense',
     element: <Dispense/>
+  },
+  {
+    path: '/inventory',
+    element: <Inventory/>
+  },
+  {
+    path: '/reports',
+    element: <Reports/>
+  },
+  {
+    path: '/settings',
+    element: <Settings/>
   },
 ])
 
