@@ -1,7 +1,54 @@
+import React, { useState } from "react"
 import Topbar from "../components/dashboard/Topbar"
 import SideNav from "../components/SideNav"
+import CreateReportModal from "../components/CreateReportModal"
+import ReportItem from "../components/reports/ReportItem"
 
 const Reports = ()=>{
+    const [showModal, setShowModal] = useState(false)
+
+    function handleOpen(){
+        setShowModal(true)
+    }
+
+    function handleClose(){
+        setShowModal(false)
+    }
+
+    function handleSubmit(data: any){
+        // placeholder: wire to API or store
+        console.log('Report submitted', data)
+        setShowModal(false)
+    }
+
+    function handleSaveDraft(data: any){
+        console.log('Draft saved', data)
+        setShowModal(false)
+    }
+
+    const dummyReports = [
+        {
+            id: 'r1',
+            title: 'Clinical intervention: dose adjustment',
+            type: 'Clinical Intervention',
+            patient: 'John Doe (P-001)',
+            prescriber: 'Dr. Ada',
+            date: '2025-11-08 09:12',
+            status: 'Submitted',
+            excerpt: 'Identified potential supratherapeutic dosing for patient with renal impairment. Adjusted dose and informed prescriber.'
+        },
+        {
+            id: 'r2',
+            title: 'Shift handover: pending lab results',
+            type: 'Shift Handover Note',
+            patient: '',
+            prescriber: '',
+            date: '2025-11-07 18:45',
+            status: 'Draft',
+            excerpt: 'Pending INR results for two patients; monitor and follow up with prescriber if INR > 4.0.'
+        }
+    ]
+
     return(
         <>
         {/*--------Topbar Component--------*/}
@@ -14,9 +61,27 @@ const Reports = ()=>{
             </div>
             {/*--------Main Contents-----------*/}
             <div className="flex w-[78%] h-full flex-col">
-               
+                <div className="flex items-center justify-between p-4">
+                    <h2 className="text-lg font-semibold text-gray-800">Reports</h2>
+                    <button onClick={handleOpen} className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition flex items-center gap-2">
+                        <i className="bx bx-plus"></i>
+                        <span>Create Report</span>
+                    </button>
+                </div>
+
+                {/* reports list */}
+                <div className="p-4">
+                    {dummyReports.map(r => (
+                        <ReportItem key={r.id} title={r.title} type={r.type} patient={r.patient} prescriber={r.prescriber} date={r.date} status={r.status as any} excerpt={r.excerpt} />
+                    ))}
+                </div>
             </div>
         </div>
+
+        {showModal && (
+            <CreateReportModal onClose={handleClose} onSubmit={handleSubmit} onSaveDraft={handleSaveDraft} />
+        )}
+
         </>
     )
 }

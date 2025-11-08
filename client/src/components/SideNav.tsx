@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 
 function SideNav(){
     return(
-        <div className="bg-[#5fdf85] flex w-full h-full flex-col px-2 justify-between pb-5 sticky top-[60px]">
+        <div className="bg-[#5fdf85] flex w-[20%] h-[90dvh] flex-col px-2 justify-between pb-5 fixed top-[60px]">
             <div>
                 <Link to="/dashboard">  
                     <div className="mt-2 flex items-center justify-start w-full rounded-lg hover:bg-[#1313132a] h-12 px-2 transition-all duration-300 cursor-pointer">
