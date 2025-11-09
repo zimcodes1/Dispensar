@@ -8,6 +8,7 @@ import Dispense from './pages/Dispense'
 import Inventory from './pages/Inventory'
 import Settings from './pages/Settings'
 import Reports from './pages/Reports'
+import AdminLogin from './pages/AdminLogin'
 
 
 
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
   {
     path: '/settings',
     element: <Settings/>
+  },
+  {
+    path: '/adminlogin',
+    element: <AdminLogin/>
   },
 ])
 

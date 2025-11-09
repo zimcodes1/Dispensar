@@ -1,5 +1,6 @@
 import Topbar from "../components/dashboard/Topbar"
 import SideNav from "../components/SideNav"
+import EmployeeSettings from "../components/settings/EmployeeSettings"
 
 const Settings = ()=>{
     return(
@@ -14,7 +15,7 @@ const Settings = ()=>{
             </div>
             {/*--------Main Contents-----------*/}
             <div className="flex w-[78%] h-full flex-col">
-               
+               <EmployeeSettings></EmployeeSettings>
             </div>
         </div>
         </>

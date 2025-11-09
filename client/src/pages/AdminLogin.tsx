@@ -1,7 +1,7 @@
 import '../index.css'
 import { Link } from 'react-router-dom'
 
-function Login() {
+function AdminLogin() {
     return(
         <div className="w-full min-h-dvh bg-[#5fdf85] flex justify-center items-center">
             <div className="flex w-[400px] h-[500px] bg-white rounded-3xl shadow-lg flex-col max-sm:w-full max-sm:h-[80dvh] max-sm:rounded-none max-sm:absolute max-sm:bottom-0 max-sm:rounded-t-3xl max-sm:shadow-2xl">
@@ -12,7 +12,7 @@ function Login() {
                 </div>
                 {/* Login Form */}
                 <form className="flex flex-col w-full px-5 mt-5">
-                    <input type="text" placeholder="Employee ID" className="p-2 border border-gray-300 rounded-md mb-4" />
+                    <input type="email" placeholder="Email Address..." className="p-2 border border-gray-300 rounded-md mb-4" />
                     <input type="password" placeholder="Password" className="p-2 border border-gray-300 rounded-md mb-4" />
                     <button type="submit" className="font-bold transition-all duration-300 bg-[#5fdf85] text-white p-2 rounded-md hover:bg-white hover:border-2 hover:border-green-500 hover:text-gray-900">Log In <i className="bx bx-right-arrow-alt"></i></button>
                 </form>
@@ -20,9 +20,9 @@ function Login() {
                 <div className="flex justify-center items-center w-full py-3">
                     <p className="text-gray-600">Forgot your password? <a href="#" className="text-green-400 hover:underline">Reset it here</a></p>
                 </div>
-                {/*Admin Login*/}
+                {/*Employee Login*/}
                 <div className="flex justify-center items-center w-full py-3">
-                    <p className="text-gray-600">Admin? <Link to="/adminlogin" className="text-green-400 hover:underline">Log in here</Link></p>
+                    <p className="text-gray-600">Employee? <Link to="/login" className="text-green-400 hover:underline">Log in here</Link></p>
                 </div>
             </div>
         </div>
@@ -31,4 +31,4 @@ function Login() {
 
 
 
-export default Login
+export default AdminLogin
