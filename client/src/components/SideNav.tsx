@@ -34,6 +34,11 @@ function SideNav(){
                         <p className="text-gray-800 font-semibold"><i className="bx bx-cabinet"></i> Stock Management</p>
                     </div>
                 </Link>
+                <Link to="/supplies">
+                    <div className="mt-2 flex items-center justify-start w-full rounded-lg hover:bg-[#1313132a] h-12 px-2 transition-all duration-300 cursor-pointer">
+                        <p className="text-gray-800 font-semibold"><i className="bx bx-first-aid"></i> Medical Supplies</p>
+                    </div>
+                </Link>
                 <Link to="/reports">
                     <div className="mt-2 flex items-center justify-start w-full rounded-lg hover:bg-[#1313132a] h-12 px-2 transition-all duration-300 cursor-pointer">
                         <p className="text-gray-800 font-semibold"><i className="bx bx-notepad"></i> Reports</p>

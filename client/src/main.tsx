@@ -12,6 +12,7 @@ import AdminLogin from './pages/AdminLogin'
 import AdminDashboard from './pages/AdminDashboard'
 import BillPayments from './pages/BillPayments'
 import StockManagement from './pages/StockManagement'
+import MedicalSupplies from './pages/MedicalSupplies'
 
 
 const router = createBrowserRouter([
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
   {
     path: '/stock',
     element: <StockManagement/>
+  },
+  {
+    path: '/supplies',
+    element: <MedicalSupplies/>
   },
 ])
 
