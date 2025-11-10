@@ -9,7 +9,9 @@ import Inventory from './pages/Inventory'
 import Settings from './pages/Settings'
 import Reports from './pages/Reports'
 import AdminLogin from './pages/AdminLogin'
-
+import AdminDashboard from './pages/AdminDashboard'
+import BillPayments from './pages/BillPayments'
+import StockManagement from './pages/StockManagement'
 
 
 const router = createBrowserRouter([
@@ -40,6 +42,18 @@ const router = createBrowserRouter([
   {
     path: '/adminlogin',
     element: <AdminLogin/>
+  },
+  {
+    path: '/admin',
+    element: <AdminDashboard/>
+  },
+  {
+    path: '/billpayments',
+    element: <BillPayments/>
+  },
+  {
+    path: '/stock',
+    element: <StockManagement/>
   },
 ])
 

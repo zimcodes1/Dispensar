@@ -1,10 +1,14 @@
+import { useState } from "react"
 import Topbar from "../components/dashboard/Topbar"
 import SideNav from "../components/SideNav"
 import DrugDetails from "../components/dispense/DrugDetails"
 import DrugSearch from "../components/DrugSearch"
+import DispenseQueueModal from "../components/dispense/DispenseQueueModal"
 
 function Dispense(){
-        return(
+    const [showQueue, setShowQueue] = useState(false)
+
+    return(
         <>
         {/*--------Topbar Component--------*/}
         <Topbar></Topbar>
@@ -26,6 +30,19 @@ function Dispense(){
             </div>
            
         </div>
+
+        {/* Fixed Queue Button */}
+        <button 
+            onClick={() => setShowQueue(true)}
+            className="fixed bottom-6 right-6 bg-gray-900 text-[#5fdf85] px-4 py-3 rounded-full shadow-lg hover:bg-[#5fdf85] hover:text-gray-900 transition duration-500 flex items-center gap-2"
+        >
+            <i className="bx bx-list-ul text-xl"></i>
+            <span>View Queue</span>
+        </button>
+
+        {/* Queue Modal */}
+        {showQueue && <DispenseQueueModal onClose={() => setShowQueue(false)} />}
+        
         </>
     )
 }

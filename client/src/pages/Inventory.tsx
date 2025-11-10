@@ -20,7 +20,7 @@ const Inventory = ()=>{
                <DrugSearch></DrugSearch>
 
                 {/**--------------Drugs List------------------ */}
-                <div className="flex flex-col justify-start items-start bg-white h-[800px] rounded-b-lg border border-gray-200 px-2 relative">
+                <div className="flex flex-col justify-start items-start bg-white h-[800px] rounded-b-lg border border-gray-200 px-2 relative mt-2">
                 <div className="text-xs text-gray-900 font-semibold w-full h-10 border-b border-gray-200 sticky top-0 bg-white flex items-center py-2 px-2">
                     <div className="w-[5%] text-center">{/* checkbox header */}</div>
                     <div className="w-[30%] pl-2">Name</div>
