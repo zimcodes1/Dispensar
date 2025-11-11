@@ -100,18 +100,19 @@ export default function StockManagement() {
         <>
             <Topbar />
             <div className="flex w-full min-h-dvh bg-gray-50 pt-[60px] justify-between items-start pr-[2%]">
-                {/* Side Navigation */}
-                <div className="flex w-[20%] h-full">
-                    <SideNav />
-                </div>
+            {/*----------Side navigation-----*/}
+            <div className="flex w-[20%] h-full max-sm:w-0 max-md:w-fit">
+                <SideNav></SideNav>
+            </div>
 
-                {/* Main Content */}
-                <div className="flex w-[78%] h-full flex-col">
+            {/*--------Main Contents-----------*/}
+            <div className="flex w-[78%] max-sm:w-full h-full flex-col max-sm:px-2">
+
                     {/* Header */}
                     <div className="p-6">
                         <div className="flex justify-between items-center mb-6">
                             <div>
-                                <h1 className="text-2xl font-semibold text-gray-900">Stock Management</h1>
+                                <h1 className="text-2xl max-sm:text-lg font-semibold text-gray-900">Stock Management</h1>
                                 <p className="text-sm text-gray-600">Manage your pharmacy inventory</p>
                             </div>
                             <button

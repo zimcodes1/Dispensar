@@ -42,18 +42,18 @@ export default function BillPayments() {
         <>
             <Topbar />
             <div className="flex w-full min-h-dvh bg-gray-50 pt-[60px] justify-between items-start pr-[2%]">
-                {/* Side Navigation */}
-                <div className="flex w-[20%] h-full">
-                    <SideNav />
-                </div>
+            {/*----------Side navigation-----*/}
+            <div className="flex w-[20%] h-full max-sm:w-0 max-md:w-fit">
+                <SideNav></SideNav>
+            </div>
 
-                {/* Main Content */}
-                <div className="flex w-[78%] h-full flex-col">
-                    {/* Header & Search */}
-                    <div className="p-6">
-                        <div className="flex justify-between items-center mb-6">
-                            <h1 className="text-2xl font-semibold text-gray-900">Bill Payments</h1>
-                            <div className="flex items-center gap-3">
+            {/*--------Main Contents-----------*/}
+            <div className="flex w-[78%] max-sm:w-full h-full flex-col max-sm:px-2">
+
+                    <div className="p-6 max-sm:p-4">
+                        <div className="flex flex-col justify-between items-center mb-6">
+                            <h1 className="text-2xl max-sm:text-lg font-semibold text-gray-900">Bill Payments</h1>
+                            <div className="flex items-center gap-3 max-sm:gap-2">
                                 <div className="relative">
                                     <input
                                         type="text"

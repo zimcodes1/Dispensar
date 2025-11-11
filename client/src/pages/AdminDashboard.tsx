@@ -11,20 +11,20 @@ export default function AdminDashboard() {
         <>
             <Topbar />
             <div className="flex w-full min-h-dvh bg-gray-50 pt-[60px] justify-between items-start pr-[2%]">
-                {/* Side Navigation */}
-                <div className="flex w-[20%] h-full">
-                    <SideNav />
-                </div>
+            {/*----------Side navigation-----*/}
+            <div className="flex w-[20%] h-full max-sm:w-0 max-md:w-fit">
+                <SideNav></SideNav>
+            </div>
 
-                {/* Main Content */}
-                <div className="flex w-[78%] h-full flex-col">
+            {/*--------Main Contents-----------*/}
+            <div className="flex w-[78%] max-sm:w-full h-full flex-col max-sm:px-2">
                     {/* Welcome Header */}
-                    <div className="flex justify-between items-center mb-6 pt-4">
+                    <div className="flex max-sm:flex-col justify-between max-sm:items-start max-sm:px-2 items-center mb-6 pt-4">
                         <div>
-                            <h1 className="text-2xl font-semibold text-gray-900">Admin Dashboard</h1>
-                            <p className="text-sm text-gray-600">Welcome back, here's what's happening today</p>
+                            <h1 className="text-2xl max-sm:text-lg font-semibold text-gray-900">Admin Dashboard</h1>
+                            <p className="text-sm text-gray-600 max-sm:text-sm">Welcome back, here's what's happening today</p>
                         </div>
-                        <div className="flex gap-3">
+                        <div className="flex gap-3 max-sm:mt-2">
                             <button className="bg-white text-gray-600 px-4 py-2 rounded-lg hover:bg-gray-50 transition border border-gray-200">
                                 <i className="bx bx-download mr-2"></i>
                                 Export Report

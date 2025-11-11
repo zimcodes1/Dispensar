@@ -141,12 +141,12 @@ export default function MedicalSupplies() {
             <Topbar />
             <div className="flex">
                 <SideNav />
-                <div className="w-[80%] absolute right-0 top-[60px] p-6">
+                <div className="w-[80%] max-sm:w-full absolute right-0 top-[60px] p-6">
                     {/* Header */}
                     <div className="flex justify-between items-center mb-6">
                         <div>
-                            <h1 className="text-2xl font-semibold text-gray-900">Medical Supplies</h1>
-                            <p className="text-gray-600 mt-1">
+                            <h1 className="text-2xl max-sm:text-lg font-semibold text-gray-900">Medical Supplies</h1>
+                            <p className="text-gray-600 mt-1 max-sm:text-sm">
                                 Manage your medical supplies inventory
                             </p>
                         </div>

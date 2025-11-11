@@ -56,11 +56,13 @@ const Reports = ()=>{
         {/*-----------Side Nav & Main Contents Container-----------*/}
         <div className="flex w-full h-dvh bg-gray-50 pt-[60px] justify-between items-start pr-[2%]">
             {/*----------Side navigation-----*/}
-            <div className="flex w-[20%] h-full">
+            <div className="flex w-[20%] h-full max-sm:w-0 max-md:w-fit">
                 <SideNav></SideNav>
             </div>
+
             {/*--------Main Contents-----------*/}
-            <div className="flex w-[78%] h-full flex-col">
+            <div className="flex w-[78%] max-sm:w-full h-full flex-col max-sm:px-2">
+
                 <div className="flex items-center justify-between p-4">
                     <h2 className="text-lg font-semibold text-gray-800">Reports</h2>
                     <button onClick={handleOpen} className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition flex items-center gap-2">
