@@ -15,12 +15,12 @@ function Dispense(){
         {/*-----------Side Nav & Main Contents Container-----------*/}
         <div className="flex w-full h-dvh bg-gray-50 pt-[60px] justify-between items-start pr-[2%]">
             {/*----------Side navigation-----*/}
-            <div className="flex w-[20%] h-full">
+            <div className="flex w-[20%] h-full max-sm:w-0 max-md:w-fit">
                 <SideNav></SideNav>
             </div>
 
             {/*--------Main Contents-----------*/}
-            <div className="flex flex-col px-5 w-[78%] h-full justify-start items-center">
+            <div className="flex w-[78%] max-sm:w-full h-full flex-col max-sm:px-2">
 
                 <DrugSearch></DrugSearch>
                 {/*---------Selected Drugs' details will appear here--------- */}

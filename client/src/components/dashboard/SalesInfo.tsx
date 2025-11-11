@@ -4,10 +4,10 @@ function SalesInfo(){
     return(
     <>
 
-        <div className="bg-white w-[57%] h-full shadow border border-gray-200 rounded-2xl overflow-hidden">
+        <div className="bg-white w-[57%] max-sm:w-full h-full max-sm:h-[300px] shadow border border-gray-200 rounded-2xl overflow-hidden">
             <SalesOverviewChart></SalesOverviewChart>
         </div>
-        <div className="bg-white w-[40%] h-full shadow border border-gray-200 rounded-2xl px-5 flex-col  overflow-scroll hide-scrollbar">
+        <div className="bg-white w-[40%] max-sm:w-full max-sm:h-[200px] max-sm:mt-2 h-full shadow border border-gray-200 rounded-2xl px-5 flex-col  overflow-scroll hide-scrollbar">
         <div className="sticky top-0 h-10 flex justify-between items-center">
             <h1 className="text-xs"><i className="bx bx-bar-chart-alt-2"></i> Activity Overview</h1> 
             <select name="" id="" className="text-xs">
