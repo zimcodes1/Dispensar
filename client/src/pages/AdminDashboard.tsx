@@ -44,23 +44,25 @@ export default function AdminDashboard() {
                     {/* Charts Section */}
                     <div className="grid grid-cols-3 gap-6 mb-6">
                         {/* Revenue Chart - Spans 2 columns */}
-                        <div className="col-span-2">
+                        <div className="col-span-2 max-sm:col-span-full">
                             <RevenueChart />
                         </div>
                         {/* Sales Distribution */}
-                        <div className="col-span-1">
+                        <div className="col-span-1 max-sm:col-span-full">
                             <SalesOverview />
                         </div>
                     </div>
 
                     {/* Bottom Section */}
-                    <div className="grid grid-cols-5 gap-6 mb-6">
+                    <div className="grid grid-cols-5 gap-6 mb-6 max-sm:mb-4">
                         {/* Employee List - Spans 3 columns */}
-                        <div className="col-span-3">
+                        <div className="col-span-3 max-sm:col-span-full overflow-x-scroll">
+                        <div className="w-[600px]">
                             <EmployeeList />
                         </div>
+                        </div>
                         {/* Inventory Status - Spans 2 columns */}
-                        <div className="col-span-2">
+                        <div className="col-span-2 max-sm:col-span-full">
                             <InventoryStatus />
                         </div>
                     </div>
