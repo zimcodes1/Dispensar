@@ -109,7 +109,7 @@ export default function StockManagement() {
             <div className="flex w-[78%] max-sm:w-full h-full flex-col max-sm:px-2">
 
                     {/* Header */}
-                    <div className="p-6">
+                    <div className="p-6 max-sm:p-0">
                         <div className="flex justify-between items-center mb-6">
                             <div>
                                 <h1 className="text-2xl max-sm:text-lg font-semibold text-gray-900">Stock Management</h1>
@@ -117,7 +117,7 @@ export default function StockManagement() {
                             </div>
                             <button
                                 onClick={() => setShowRegisterModal(true)}
-                                className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition flex items-center gap-2"
+                                className="bg-green-600 text-white px-4 py-2 max-sm:text-sm rounded-lg hover:bg-green-700 transition flex items-center gap-2"
                             >
                                 <i className="bx bx-plus"></i>
                                 <span>Register New Drug</span>

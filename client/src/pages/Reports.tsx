@@ -63,16 +63,16 @@ const Reports = ()=>{
             {/*--------Main Contents-----------*/}
             <div className="flex w-[78%] max-sm:w-full h-full flex-col max-sm:px-2">
 
-                <div className="flex items-center justify-between p-4">
+                <div className="flex items-center justify-between p-4 max-sm:p-0">
                     <h2 className="text-lg font-semibold text-gray-800">Reports</h2>
-                    <button onClick={handleOpen} className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition flex items-center gap-2">
+                    <button onClick={handleOpen} className="bg-green-600 text-white max-sm:text-sm px-4 py-2 rounded-lg hover:bg-green-700 transition flex items-center gap-2">
                         <i className="bx bx-plus"></i>
                         <span>Create Report</span>
                     </button>
                 </div>
 
                 {/* reports list */}
-                <div className="p-4">
+                <div className="p-4 max-sm:p-0 max-sm:mt-2">
                     {dummyReports.map(r => (
                         <ReportItem key={r.id} title={r.title} type={r.type} patient={r.patient} prescriber={r.prescriber} date={r.date} status={r.status as any} excerpt={r.excerpt} />
                     ))}

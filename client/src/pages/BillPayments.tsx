@@ -50,7 +50,7 @@ export default function BillPayments() {
             {/*--------Main Contents-----------*/}
             <div className="flex w-[78%] max-sm:w-full h-full flex-col max-sm:px-2">
 
-                    <div className="p-6 max-sm:p-4">
+                    <div className="p-6 max-sm:p-0">
                         <div className="flex flex-col justify-between items-center mb-6">
                             <h1 className="text-2xl max-sm:text-lg font-semibold text-gray-900">Bill Payments</h1>
                             <div className="flex items-center gap-3 max-sm:gap-2 max-sm:w-full max-sm:flex-col">

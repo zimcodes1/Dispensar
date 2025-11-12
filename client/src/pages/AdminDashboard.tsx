@@ -15,9 +15,8 @@ export default function AdminDashboard() {
             <div className="flex w-[20%] h-full max-sm:w-0 max-md:w-fit">
                 <SideNav></SideNav>
             </div>
-
             {/*--------Main Contents-----------*/}
-            <div className="flex w-[78%] max-sm:w-full h-full flex-col max-sm:px-2">
+            <div className="flex w-[78%] md:w-[calc(100%-4rem)] lg:w-[78%] max-[767px]:w-full h-full flex-col max-[767px]:px-2 md:px-4">
                     {/* Welcome Header */}
                     <div className="flex max-sm:flex-col justify-between max-sm:items-start max-sm:px-2 items-center mb-6 pt-4">
                         <div>

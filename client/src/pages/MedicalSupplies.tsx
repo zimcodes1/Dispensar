@@ -141,7 +141,7 @@ export default function MedicalSupplies() {
             <Topbar />
             <div className="flex">
                 <SideNav />
-                <div className="w-[80%] max-sm:w-full absolute right-0 top-[60px] p-6">
+                <div className="w-[80%] max-sm:w-full absolute right-0 top-[60px] p-6 max-sm:p-2">
                     {/* Header */}
                     <div className="flex justify-between items-center mb-6">
                         <div>
@@ -152,7 +152,7 @@ export default function MedicalSupplies() {
                         </div>
                         <button
                             onClick={() => setShowAddModal(true)}
-                            className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition flex items-center gap-2"
+                            className="px-4 py-2 bg-green-600 text-white max-sm:text-sm rounded-lg hover:bg-green-700 transition flex items-center gap-2"
                         >
                             <i className="bx bx-plus"></i>
                             Add New Supply
