@@ -138,12 +138,18 @@ export default function MedicalSupplies() {
 
     return (
         <div className="w-full h-screen">
-            <Topbar />
-            <div className="flex">
-                <SideNav />
-                <div className="w-[80%] max-sm:w-full absolute right-0 top-[60px] p-6 max-sm:p-2">
-                    {/* Header */}
-                    <div className="flex justify-between items-center mb-6">
+        {/*--------Topbar Component--------*/}
+        <Topbar></Topbar>
+        {/*-----------Side Nav & Main Contents Container-----------*/}
+        <div className="flex w-full h-dvh bg-gray-50 pt-[60px] justify-between items-start pr-[2%] max-[767px]:pr-0 md:pr-0">
+            {/*----------Side navigation-----*/}
+            <div className="flex w-[20%] h-full max-[767px]:w-0 md:w-16 lg:w-[20%]">
+                <SideNav></SideNav>
+            </div>
+            {/*--------Main Contents-----------*/}
+            <div className="flex w-[78%] md:w-[calc(100%-4rem)] lg:w-[78%] max-[767px]:w-full h-full flex-col max-[767px]:px-2 md:px-4">
+                <div className="flex w-full h-[40%] max-[767px]:h-fit md:h-fit justify-between pt-4 max-[767px]:pt-2 md:pt-3 max-[767px]:flex-col">
+                    
                         <div>
                             <h1 className="text-2xl max-sm:text-lg font-semibold text-gray-900">Medical Supplies</h1>
                             <p className="text-gray-600 mt-1 max-sm:text-sm">
@@ -152,7 +158,7 @@ export default function MedicalSupplies() {
                         </div>
                         <button
                             onClick={() => setShowAddModal(true)}
-                            className="px-4 py-2 bg-green-600 text-white max-sm:text-sm rounded-lg hover:bg-green-700 transition flex items-center gap-2"
+                            className="px-4 py-2 bg-green-600 h-12 w-fit text-white max-sm:text-sm rounded-lg hover:bg-green-700 transition flex items-center gap-2"
                         >
                             <i className="bx bx-plus"></i>
                             Add New Supply

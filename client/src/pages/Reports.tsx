@@ -54,15 +54,13 @@ const Reports = ()=>{
         {/*--------Topbar Component--------*/}
         <Topbar></Topbar>
         {/*-----------Side Nav & Main Contents Container-----------*/}
-        <div className="flex w-full h-dvh bg-gray-50 pt-[60px] justify-between items-start pr-[2%]">
+        <div className="flex w-full h-dvh bg-gray-50 pt-[60px] justify-between items-start pr-[2%] max-[767px]:pr-0 md:pr-0">
             {/*----------Side navigation-----*/}
-            <div className="flex w-[20%] h-full max-sm:w-0 max-md:w-fit">
+            <div className="flex w-[20%] h-full max-[767px]:w-0 md:w-16 lg:w-[20%]">
                 <SideNav></SideNav>
             </div>
-
             {/*--------Main Contents-----------*/}
-            <div className="flex w-[78%] max-sm:w-full h-full flex-col max-sm:px-2">
-
+            <div className="flex w-[78%] md:w-[calc(100%-4rem)] lg:w-[78%] max-[767px]:w-full h-full flex-col max-[767px]:px-2 md:px-4">
                 <div className="flex items-center justify-between p-4 max-sm:p-0">
                     <h2 className="text-lg font-semibold text-gray-800">Reports</h2>
                     <button onClick={handleOpen} className="bg-green-600 text-white max-sm:text-sm px-4 py-2 rounded-lg hover:bg-green-700 transition flex items-center gap-2">

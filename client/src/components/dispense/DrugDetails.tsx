@@ -9,7 +9,7 @@ function DrugDetails(){
                     </div>
                     {/* Drug Details */}
                     <div className="flex flex-col w-[70%] max-sm:w-full h-fit rounded-2xl">
-                        <div className="flex flex-col h-full justify-start px-5 py-2 relative">
+                        <div className="flex flex-col h-full justify-start px-5 max-sm:px-0 py-2 relative">
                             <i className="bx bx-star absolute right-0 text-xl cursor-pointer"></i>
                             <div>
                                 <h1 className="text-2xl max-sm:text-lg font-bold text-gray-800">Paracetamol 500mg</h1>
