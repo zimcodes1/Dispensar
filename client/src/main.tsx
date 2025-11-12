@@ -13,6 +13,7 @@ import AdminDashboard from './pages/AdminDashboard'
 import BillPayments from './pages/BillPayments'
 import StockManagement from './pages/StockManagement'
 import MedicalSupplies from './pages/MedicalSupplies'
+import Lost from './pages/Lost'
 
 
 const router = createBrowserRouter([
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
   {
     path: '/supplies',
     element: <MedicalSupplies/>
+  },
+  {
+    path: '*',
+    element: <Lost/>
   },
 ])
 

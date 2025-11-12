@@ -45,7 +45,7 @@ function SideNav(){
             )}
 
             {/* Sidebar: hidden on small unless opened; tablet: narrow (icons only); desktop: full width with text */}
-            <div className={`${isOpen ? 'flex' : 'hidden'} md:flex flex-col bg-[#5fdf85] fixed max-sm:top-[50px] top-[60px] left-0 z-50 w-64 md:w-16 lg:w-[20%] h-[95dvh] px-2 justify-between pb-5 transition-all duration-300`}>
+            <div className={`${isOpen ? 'flex' : 'hidden'} md:flex flex-col bg-[#5fdf85] fixed max-sm:top-[50px] top-[60px] left-0 z-50 w-64 md:w-16 lg:w-[20%] h-[95dvh] px-2 justify-between pb-6 transition-all duration-300`}>
 
                 {/* Close button (mobile only) */}
                 <button className="absolute top-2 right-2 md:hidden" onClick={() => setIsOpen(false)}>
@@ -64,7 +64,7 @@ function SideNav(){
                     ))}
                 </div>
 
-                <div className="mt-2 flex items-center justify-start md:justify-center w-full rounded-lg hover:bg-[#1313132a] h-12 px-2 transition-all duration-300 cursor-pointer">
+                <div className="mt-2 flex items-center justify-start max-md:justify-center w-full rounded-lg hover:bg-[#1313132a] h-12 px-2 transition-all duration-300 cursor-pointer">
                     <i className="bx bx-log-out text-red-500 text-lg"></i>
                     <span className="ml-2 text-red-500 font-semibold inline-block md:hidden lg:inline-block">Logout</span>
                 </div>
