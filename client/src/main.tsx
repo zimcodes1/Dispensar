@@ -14,7 +14,8 @@ import BillPayments from './pages/BillPayments'
 import StockManagement from './pages/StockManagement'
 import MedicalSupplies from './pages/MedicalSupplies'
 import Lost from './pages/Lost'
-
+import SignUp from './pages/SignUp'
+import Billing from './pages/Billing'
 
 const router = createBrowserRouter([
   {
@@ -60,6 +61,14 @@ const router = createBrowserRouter([
   {
     path: '/supplies',
     element: <MedicalSupplies/>
+  },
+  {
+    path: '/signup',
+    element: <SignUp/>
+  },
+  {
+    path: '/billing',
+    element: <Billing/>
   },
   {
     path: '*',
