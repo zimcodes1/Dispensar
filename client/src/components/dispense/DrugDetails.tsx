@@ -25,7 +25,7 @@ function DrugDetails(){
                             </div>
                         </div>
                         {/*--------------Price & Quantity----------- */}
-                <div className="w-[80%] max-sm:w-full mx-auto flex justify-between bg-white border border-gray-200 h-15 rounded-2xl">
+                <div className="w-[80%] max-sm:w-full mx-auto flex justify-between bg-gray-100 border border-gray-200 h-15 rounded-2xl">
                     <input type="text" placeholder="Price (₦)" className="focus:outline-none focus:ring-0 border-r rounded-r-none border-gray-300 rounded-lg p-2 w-[50%] text-xl max-sm:text-sm text-gray-900" />
                     <span className="w-[50%] border-gray-300 rounded-lg h-full flex justify-between items-center px-2">
                         <input type="number" placeholder="Quantity" className="focus:outline-none focus:ring-0 p-2 text-xl max-sm:text-sm text-gray-900 w-[70%]" />

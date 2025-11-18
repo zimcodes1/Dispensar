@@ -16,7 +16,8 @@ function SideNav(){
     const navItems = [
         { to: '/dashboard', icon: 'bx bx-tachometer', label: 'Dashboard' },
         { to: '/admin', icon: 'bx bx-shield-quarter', label: 'Admin Dashboard' },
-        { to: '/dispense', icon: 'bx bx-dollar', label: 'Dispense' },
+        { to: '/billing', icon: 'bx bx-dollar', label: 'Billing' },
+        {to: '/dispense', icon: 'bx bx-capsule', label: 'Dispense' },
         { to: '/billpayments', icon: 'bx bx-receipt', label: 'Bill Payments' },
         { to: '/inventory', icon: 'bx bx-package', label: 'Inventory' },
         { to: '/stock', icon: 'bx bx-cabinet', label: 'Stock Management' },
@@ -45,7 +46,7 @@ function SideNav(){
             )}
 
             {/* Sidebar: hidden on small unless opened; tablet: narrow (icons only); desktop: full width with text */}
-            <div className={`${isOpen ? 'flex' : 'hidden'} md:flex flex-col bg-[#5fdf85] fixed max-sm:top-[50px] top-[60px] left-0 z-50 w-64 md:w-16 lg:w-[20%] h-[95dvh] px-2 justify-between pb-6 transition-all duration-300`}>
+            <div className={`${isOpen ? 'flex' : 'hidden'} md:flex flex-col bg-[#5fdf85] fixed max-sm:top-[50px] top-[60px] left-0 z-50 w-64 md:w-16 lg:w-[20%] h-[95dvh] px-2 justify-between pb-6 transition-all duration-300 overflow-y-scroll hide-scrollbar`}>
 
                 {/* Close button (mobile only) */}
                 <button className="absolute top-2 right-2 md:hidden" onClick={() => setIsOpen(false)}>
