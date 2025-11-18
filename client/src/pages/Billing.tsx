@@ -20,6 +20,7 @@ function Billing(){
             </div>
             {/*--------Main Contents-----------*/}
             <div className="flex w-[78%] md:w-[calc(100%-4rem)] lg:w-[78%] max-[767px]:w-full h-full flex-col max-[767px]:px-2 md:px-4"> 
+                <h1 className="text-2xl max-sm:text-lg font-semibold text-gray-900 text-center mt-5">Billing</h1>
                 <DrugSearch></DrugSearch>
                 {/*---------Selected Drugs' details will appear here--------- */}
                 <DrugDetails></DrugDetails>
