@@ -16,8 +16,13 @@ import MedicalSupplies from './pages/MedicalSupplies'
 import Lost from './pages/Lost'
 import SignUp from './pages/SignUp'
 import Billing from './pages/Billing'
+import Home from './pages/Home'
 
 const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Home />,
+  },
   {
     path: '/login',
     element: <Login />,
