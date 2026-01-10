@@ -1,6 +1,8 @@
-
+import LogoutModal from "../LogoutModal"
+import React, { useState } from "react"
 
 function EmployeeSettings(){
+    const [modalState, setModalState] = useState(false)
     return(
         <div className="w-full h-full p-2 flex flex-col">
             <h1 className="text-2xl text-gray-900 max-sm:text-center max-sm:text-lg">Account Settings</h1>
@@ -16,8 +18,9 @@ function EmployeeSettings(){
                     <span className="w-full py-2"><p className="text-gray-500">Role: Employee</p></span>
                     <span className="w-full py-2 flex justify-between items-center"><p className="text-gray-500">Password: ********</p> <i className="bx bx-edit text-gray-600 p-1 cursor-pointer"></i></span>
                 </div>
-                <button className="mx-auto w-25 py-2 bg-red-500 text-white mt-10 rounded-lg shadow hover:bg-white hover:text-red-500 hover:border-2 transition">Logout <i className="bx bx-log-out"></i></button>
+                <button onClick={()=>{setModalState(true)}} className="mx-auto w-25 py-2 bg-red-500 text-white mt-10 rounded-lg shadow hover:bg-white hover:text-red-500 hover:border-2 transition">Logout <i className="bx bx-log-out"></i></button>
             </div>
+                           <LogoutModal open={modalState} onClose={()=>{setModalState(false)}}></LogoutModal>
         </div>
     )
 }
