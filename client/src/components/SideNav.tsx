@@ -68,11 +68,6 @@ function SideNav() {
                         </NavLink>
                     ))}
                 </div>
-
-                <div className="mt-2 flex items-center justify-start max-md:justify-center w-full rounded-lg hover:bg-[#1313132a] h-12 px-2 transition-all duration-300 cursor-pointer">
-                    <i className="bx bx-log-out text-red-500 text-lg"></i>
-                    <span className="ml-2 text-red-500 font-semibold inline-block md:hidden lg:inline-block">Logout</span>
-                </div>
             </div>
         </>
     )
