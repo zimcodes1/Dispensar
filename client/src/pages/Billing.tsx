@@ -25,7 +25,7 @@ function Billing() {
                     {/*---------Selected Drugs' details will appear here--------- */}
                     <DrugDetails></DrugDetails>
                     <DrugDetails></DrugDetails>
-                    <button className="bg-[#5fdf85] max-sm:w-[80%] max-sm:mx-auto text-gray-900 font-semibold py-2 px-5 rounded-lg mt-5 hover:bg-gray-900 hover:text-[#5fdf85] transition duration-500">Dispense <i className="bx bx-right-arrow-alt"></i></button>
+                    <button className="w-50 mx-auto my-10 bg-[#5fdf85] max-sm:w-[80%] text-gray-900 font-semibold py-2 px-5 rounded-lg mt-5 hover:bg-gray-900 hover:text-[#5fdf85] transition duration-500">Dispense <i className="bx bx-right-arrow-alt"></i></button>
                 </div>
 
             </div>
