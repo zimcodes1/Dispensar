@@ -1,13 +1,17 @@
-import React, { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { useEffect, useState } from "react"
+import { NavLink } from "react-router-dom"
 
-function SideNav(){
+
+const NavLinkStyles = ({ isActive }: { isActive: string | any }) => `mt-2 flex items-center justify-start max-[900px]:justify-center w-full rounded-lg hover:bg-[#1313132a] h-12 px-2 transition-all duration-300 cursor-pointer
+${isActive ? 'bg-[#1313132a]' //activeStyles
+: ''}`
+function SideNav() {
     const [isOpen, setIsOpen] = useState(false)
 
     // close on Escape
     useEffect(() => {
-        function onKey(e: KeyboardEvent){
-            if(e.key === 'Escape') setIsOpen(false)
+        function onKey(e: KeyboardEvent) {
+            if (e.key === 'Escape') setIsOpen(false)
         }
         window.addEventListener('keydown', onKey)
         return () => window.removeEventListener('keydown', onKey)
@@ -17,7 +21,7 @@ function SideNav(){
         { to: '/dashboard', icon: 'bx bx-tachometer', label: 'Dashboard' },
         { to: '/admin', icon: 'bx bx-shield-quarter', label: 'Admin Dashboard' },
         { to: '/billing', icon: 'bx bx-dollar', label: 'Billing' },
-        {to: '/dispense', icon: 'bx bx-capsule', label: 'Dispense' },
+        { to: '/dispense', icon: 'bx bx-capsule', label: 'Dispense' },
         { to: '/billpayments', icon: 'bx bx-receipt', label: 'Bill Payments' },
         { to: '/inventory', icon: 'bx bx-package', label: 'Inventory' },
         { to: '/stock', icon: 'bx bx-cabinet', label: 'Stock Management' },
@@ -26,7 +30,7 @@ function SideNav(){
         { to: '/settings', icon: 'bx bx-cog', label: 'Settings' },
     ]
 
-    return(
+    return (
         <>
             {/* Hamburger (mobile only) */}
             <button
@@ -45,7 +49,7 @@ function SideNav(){
                 />
             )}
 
-            {/* Sidebar: hidden on small unless opened; tablet: narrow (icons only); desktop: full width with text */}
+            {/* Sidebar: hidden on small screen devices unless opened; tablet: narrow (icons only); desktop: full width with text */}
             <div className={`${isOpen ? 'flex' : 'hidden'} md:flex flex-col bg-[#5fdf85] fixed max-sm:top-[50px] top-[60px] left-0 z-50 w-64 md:w-16 lg:w-[20%] h-[95dvh] px-2 justify-between pb-6 transition-all duration-300 overflow-y-scroll hide-scrollbar`}>
 
                 {/* Close button (mobile only) */}
@@ -55,13 +59,13 @@ function SideNav(){
 
                 <div className="mt-2">
                     {navItems.map(item => (
-                        <Link key={item.to} to={item.to} onClick={() => setIsOpen(false)}>
-                            <div className="mt-2 flex items-center justify-start max-md:justify-center w-full rounded-lg hover:bg-[#1313132a] h-12 px-2 transition-all duration-300 cursor-pointer">
+                        <NavLink key={item.to} to={item.to} onClick={() => setIsOpen(false)} className={NavLinkStyles}>
+                            <div>
                                 <i className={`${item.icon} text-gray-800 text-lg`}></i>
                                 {/* Text: visible on mobile and desktop (lg), hidden on tablet (md) */}
                                 <span className="ml-2 text-gray-800 font-semibold inline-block md:hidden lg:inline-block">{item.label}</span>
                             </div>
-                        </Link>
+                        </NavLink>
                     ))}
                 </div>
 
