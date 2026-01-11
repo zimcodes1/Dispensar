@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Topbar from "../components/dashboard/Topbar"
 import SideNav from "../components/SideNav"
 import DrugDetails from "../components/dispense/DrugDetails"
@@ -7,7 +7,7 @@ import DispenseQueueModal from "../components/dispense/DispenseQueueModal"
 
 function Billing() {
     const [showQueue, setShowQueue] = useState(false)
-
+    useEffect(()=>{document.title = 'Billing | Dispensar'})
     return (
         <>
             {/*--------Topbar Component--------*/}

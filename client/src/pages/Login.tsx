@@ -1,7 +1,9 @@
+import { useEffect } from 'react'
 import '../index.css'
 import { Link } from 'react-router-dom'
 
 function Login() {
+    useEffect(()=>{document.title = 'Login to your account | Dispensar'})
     return(
         <div className="w-full min-h-dvh bg-[#5fdf85] flex justify-center items-center">
             <div className="flex w-[400px] h-[500px] bg-white rounded-3xl shadow-lg flex-col max-sm:w-full max-sm:h-[80dvh] max-sm:rounded-none max-sm:absolute max-sm:bottom-0 max-sm:rounded-t-3xl max-sm:shadow-2xl">

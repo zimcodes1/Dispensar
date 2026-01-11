@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import RegisterSupplyModal from '../components/supplies/RegisterSupplyModal'
 import SuppliesList from '../components/supplies/SuppliesList'
 import SuppliesFilters from '../components/supplies/SuppliesFilters'
@@ -135,7 +135,7 @@ export default function MedicalSupplies() {
         if (quantity <= reorderLevel) return 'low_stock'
         return 'in_stock'
     }
-
+    useEffect(()=>{document.title = 'Medical Supplies | Dispensar'})
     return (
         <div className="w-full h-screen">
         {/*--------Topbar Component--------*/}

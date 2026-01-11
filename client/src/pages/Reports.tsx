@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import { useEffect, useState } from "react"
 import Topbar from "../components/dashboard/Topbar"
 import SideNav from "../components/SideNav"
 import CreateReportModal from "../components/CreateReportModal"
@@ -48,7 +48,7 @@ const Reports = ()=>{
             excerpt: 'Pending INR results for two patients; monitor and follow up with prescriber if INR > 4.0.'
         }
     ]
-
+    useEffect(()=>{document.title = 'Reports | Dispensar'})
     return(
         <>
         {/*--------Topbar Component--------*/}

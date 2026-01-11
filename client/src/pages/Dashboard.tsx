@@ -2,8 +2,10 @@ import Topbar from "../components/dashboard/Topbar"
 import SideNav from "../components/SideNav"
 import SalesInfo from "../components/dashboard/SalesInfo"
 import RecentSales from "../components/dashboard/RecentSales"
+import { useEffect } from "react"
 
 const Dashboard = ()=>{
+    useEffect(()=>{document.title = 'Dashboard | Dispensar'})
     return(
         <>
         {/*--------Topbar Component--------*/}

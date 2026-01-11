@@ -5,8 +5,10 @@ import SalesOverview from "../components/AdminDashboard/SalesOverview"
 import InventoryStatus from "../components/AdminDashboard/InventoryStatus"
 import Topbar from "../components/dashboard/Topbar"
 import SideNav from "../components/SideNav"
+import { useEffect } from "react"
 
 export default function AdminDashboard() {
+    useEffect(()=>{document.title = 'Admin Dashboard | Dispensar'})
     return (
         <>
         {/*--------Topbar Component--------*/}

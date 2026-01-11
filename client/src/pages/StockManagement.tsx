@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Topbar from "../components/dashboard/Topbar"
 import SideNav from "../components/SideNav"
 import RegisterDrugModal from "../components/stock/RegisterDrugModal"
@@ -85,8 +85,8 @@ export default function StockManagement() {
     function handleEdit(drug: Drug) {
         setEditingDrug({
             ...drug,
-            price: drug.price.toString(),
-            stock: drug.stock.toString()
+            price: drug.price,
+            stock: drug.stock
         })
         setShowRegisterModal(true)
     }
@@ -96,6 +96,7 @@ export default function StockManagement() {
         // Implement delist logic
     }
 
+    useEffect(()=>{document.title = 'Stock Management | Dispensar'})
     return (
         <>
         {/*--------Topbar Component--------*/}

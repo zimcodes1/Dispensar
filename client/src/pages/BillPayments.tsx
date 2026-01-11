@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Topbar from "../components/dashboard/Topbar"
 import SideNav from "../components/SideNav"
 import BillDetailsModal from "../components/billpayments/BillDetailsModal"
@@ -33,23 +33,23 @@ export default function BillPayments() {
     const [selectedBill, setSelectedBill] = useState<typeof demoBills[0] | null>(null)
 
     // Filter bills based on search query
-    const filteredBills = demoBills.filter(bill => 
+    const filteredBills = demoBills.filter(bill =>
         bill.dispenseCode.toLowerCase().includes(searchQuery.toLowerCase()) ||
         bill.employeeName.toLowerCase().includes(searchQuery.toLowerCase())
     )
-
+    useEffect(() => {document.title = 'Bill Payments | Dispensar'})
     return (
         <>
-        {/*--------Topbar Component--------*/}
-        <Topbar></Topbar>
-        {/*-----------Side Nav & Main Contents Container-----------*/}
-        <div className="flex w-full h-dvh bg-gray-50 pt-[60px] justify-between items-start pr-[2%] max-[767px]:pr-0 md:pr-0">
-            {/*----------Side navigation-----*/}
-            <div className="flex w-[20%] h-full max-[767px]:w-0 md:w-16 lg:w-[20%]">
-                <SideNav></SideNav>
-            </div>
-            {/*--------Main Contents-----------*/}
-            <div className="flex w-[78%] md:w-[calc(100%-4rem)] lg:w-[78%] max-[767px]:w-full h-full flex-col max-[767px]:px-2 md:px-4">
+            {/*--------Topbar Component--------*/}
+            <Topbar></Topbar>
+            {/*-----------Side Nav & Main Contents Container-----------*/}
+            <div className="flex w-full h-dvh bg-gray-50 pt-[60px] justify-between items-start pr-[2%] max-[767px]:pr-0 md:pr-0">
+                {/*----------Side navigation-----*/}
+                <div className="flex w-[20%] h-full max-[767px]:w-0 md:w-16 lg:w-[20%]">
+                    <SideNav></SideNav>
+                </div>
+                {/*--------Main Contents-----------*/}
+                <div className="flex w-[78%] md:w-[calc(100%-4rem)] lg:w-[78%] max-[767px]:w-full h-full flex-col max-[767px]:px-2 md:px-4">
                     <div className="p-6 max-sm:p-0">
                         <div className="flex flex-col justify-between items-center mb-6">
                             <h1 className="text-2xl max-sm:text-lg font-semibold text-gray-900">Bill Payments</h1>

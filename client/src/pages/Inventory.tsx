@@ -2,8 +2,10 @@ import Topbar from "../components/dashboard/Topbar"
 import SideNav from "../components/SideNav"
 import InventoryItem from "../components/InventoryItem"
 import DrugSearch from "../components/DrugSearch"
+import { useEffect } from "react"
 
 const Inventory = ()=>{
+    useEffect(()=>{document.title = 'Your Inventory | Dispensar'})
     return(
         <>
         {/*--------Topbar Component--------*/}

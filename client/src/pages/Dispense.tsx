@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Topbar from "../components/dashboard/Topbar"
 import SideNav from "../components/SideNav"
 import BillDetailsModal from "../components/billpayments/BillDetailsModal"
@@ -37,7 +37,7 @@ function Dispense(){
             bill.dispenseCode.toLowerCase().includes(searchQuery.toLowerCase()) ||
             bill.employeeName.toLowerCase().includes(searchQuery.toLowerCase())
         )
-    
+    useEffect(()=>{document.title = 'Dispense Drugs | Dispensar'})
     return(
         <>
         {/*--------Topbar Component--------*/}

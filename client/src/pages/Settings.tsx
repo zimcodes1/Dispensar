@@ -1,8 +1,10 @@
 import Topbar from "../components/dashboard/Topbar"
 import SideNav from "../components/SideNav"
 import EmployeeSettings from "../components/settings/EmployeeSettings"
+import { useEffect } from "react"
 
 const Settings = ()=>{
+    useEffect(()=>{document.title = 'Settings | Dispensar'})
     return(
         <>
         {/*--------Topbar Component--------*/}
