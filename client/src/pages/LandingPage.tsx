@@ -5,7 +5,7 @@ function Home() {
     return (
         <>
             <Topbar />
-            <div className="h-dvh pt-25 bgImage flex flex-col justify-between overflow-hidden">
+            <div className="h-dvh pt-25 bgImage flex flex-col justify-between overflow-hidden bg-gray-50">
                 <span>
                     <h1 className="text-4xl text-gray-50 text-center font-bold">One Platform. Every Prescription. <br /> Every Sale</h1>
                     <p className="text-sm text-gray-300 text-center my-3">Manage your inventory, billing, and dispensing in one seamless interface. <br />Built for the modern pharmacy.</p>
