@@ -1,5 +1,5 @@
 @import 'tailwindcss';
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 /* Hide scrollbar for Chrome, Safari, and Opera */
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
@@ -7,7 +7,14 @@
 
 /* Hide scrollbar for IE, Edge, and Firefox */
 .hide-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;     /* Firefox */
-  overflow-y: scroll;      /* Keep vertical scrolling functional */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+  overflow-y: scroll;
+  /* Keep vertical scrolling functional */
+}
+
+.bgImage {
+  background: rgb(4, 4, 20)
 }

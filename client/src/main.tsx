@@ -16,12 +16,12 @@ import MedicalSupplies from './pages/MedicalSupplies'
 import Lost from './pages/Lost'
 import SignUp from './pages/SignUp'
 import Billing from './pages/Billing'
-import Home from './pages/Home'
+import LandingPage from './pages/LandingPage'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Home />,
+    element: <LandingPage />,
   },
   {
     path: '/login',
