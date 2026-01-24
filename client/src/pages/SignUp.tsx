@@ -16,7 +16,7 @@ function SignUp(){
                     <input type="email" placeholder="Your Email..." className="p-2 border border-gray-300 rounded-md mb-4" />
                     <input type="password" placeholder="Password" className="p-2 border border-gray-300 rounded-md mb-4" />
                     <input type="password" placeholder="Confirm Password" className="p-2 border border-gray-300 rounded-md mb-4" />
-                    <button type="submit" className="font-bold transition-all duration-300 bg-[#5fdf85] text-white p-2 rounded-md hover:bg-white hover:border-2 hover:border-green-500 hover:text-gray-900">Sign Up <i className="bx bx-right-arrow-alt"></i></button>
+                    <button type="submit" className="font-bold transition-all duration-300 bg-[#5fdf85] text-white p-2 rounded-md hover:bg-white border-2 border-green-500 hover:text-gray-900">Sign Up <i className="bx bx-right-arrow-alt"></i></button>
                 </form>
                 {/*Login */}
                 <div className="flex justify-center items-center w-full py-3">
