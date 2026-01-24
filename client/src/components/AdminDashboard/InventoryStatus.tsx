@@ -50,7 +50,7 @@ export default function InventoryStatus() {
 
             <div className="space-y-4">
                 {demoItems.map((item, index) => (
-                    <div key={index} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                    <div key={index} className="flex items-center justify-between p-4 bg-white rounded-lg">
                         <div className="flex-1">
                             <div className="flex items-center justify-between mb-2">
                                 <h4 className="text-sm font-medium text-gray-900">{item.name}</h4>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Home() {
     return (
-        <div className="w-full h-fit bg-gray-100">
+        <div className="w-full min-h-screen bg-gray-100">
             <Topbar />
             <div className="h-dvh max-sm:h-fit pt-25 bgImage flex flex-col justify-between overflow-hidden rounded-b-3xl">
                 <span>

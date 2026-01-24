@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { NavLink } from "react-router-dom"
 
 
-const NavLinkStyles = ({ isActive }: { isActive: string | any }) => `mt-2 flex items-center justify-start max-[900px]:justify-center w-full rounded-lg hover:bg-[#1313132a] h-12 px-2 transition-all duration-300 cursor-pointer
+const NavLinkStyles = ({ isActive }: { isActive: string | any }) => `mt-2 flex items-center justify-start max-sm:justify-start max-[900px]:justify-center w-full rounded-lg hover:bg-[#1313132a] h-12 px-2 transition-all duration-300 cursor-pointer
 ${isActive ? 'bg-[#1313132a]' //activeStyles
 : ''}`
 function SideNav() {
@@ -53,11 +53,11 @@ function SideNav() {
             <div className={`${isOpen ? 'flex' : 'hidden'} md:flex flex-col bg-[#5fdf85] fixed max-sm:top-[50px] top-[60px] left-0 z-50 w-64 md:w-16 lg:w-[20%] h-[95dvh] px-2 justify-between pb-6 transition-all duration-300 overflow-y-scroll hide-scrollbar`}>
 
                 {/* Close button (mobile only) */}
-                <button className="absolute top-2 right-2 md:hidden" onClick={() => setIsOpen(false)}>
-                    <i className="bx bx-x text-2xl text-gray-800"></i>
+                <button className="fixed top-15 right-2 md:hidden" onClick={() => setIsOpen(false)}>
+                    <i className="bx bx-x text-3xl text-gray-50 p-2 bg-gray-700 hover:bg-gray-50 hover:text-gray-700 rounded-4xl transition duration-300 hover:rotate-90"></i>
                 </button>
 
-                <div className="mt-2">
+                <div>
                     {navItems.map(item => (
                         <NavLink key={item.to} to={item.to} onClick={() => setIsOpen(false)} className={NavLinkStyles}>
                             <div>
