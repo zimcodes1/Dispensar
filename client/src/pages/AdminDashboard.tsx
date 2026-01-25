@@ -6,6 +6,7 @@ import InventoryStatus from "../components/AdminDashboard/InventoryStatus"
 import Topbar from "../components/dashboard/Topbar"
 import SideNav from "../components/SideNav"
 import { useEffect } from "react"
+import AddEmployeeModal from "../components/AdminDashboard/AddEmployeeModal"
 
 export default function AdminDashboard() {
     useEffect(()=>{document.title = 'Admin Dashboard | Dispensar'})
@@ -61,6 +62,8 @@ export default function AdminDashboard() {
                         <div className="col-span-3 max-sm:col-span-full overflow-x-scroll">
                         <div className="w-[600px]">
                             <EmployeeList />
+                            {/* Add Employee Modal - For demonstration purposes */}
+                            <AddEmployeeModal />
                         </div>
                         </div>
                         {/* Inventory Status - Spans 2 columns */}
