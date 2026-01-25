@@ -63,7 +63,7 @@ export default function AdminDashboard() {
                         <div className="w-[600px]">
                             <EmployeeList />
                             {/* Add Employee Modal - For demonstration purposes */}
-                            <AddEmployeeModal />
+                            <AddEmployeeModal onClose={()=>{}} />
                         </div>
                         </div>
                         {/* Inventory Status - Spans 2 columns */}

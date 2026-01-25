@@ -180,7 +180,11 @@ export default function StockManagement() {
                         setEditingDrug(null)
                     }}
                     onSubmit={handleRegisterSubmit}
-                    initialData={editingDrug || undefined}
+                    initialData={editingDrug ? {
+                        ...editingDrug,
+                        price: editingDrug.price.toString(),
+                        stock: editingDrug.stock.toString()
+                    } : undefined}
                     isEdit={!!editingDrug}
                 />
             )}
