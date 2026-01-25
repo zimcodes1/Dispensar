@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 function AdminLogin() {
     useEffect(()=>{document.title = 'Admin Login | Dispensar'})
     return(
-        <div className="w-full min-h-dvh bg-[#5fdf85] flex justify-center items-center">
+        <div className="w-full min-h-dvh bg-linear-to-br from-slate-900 via-emerald-900 to-slate-900 flex justify-center items-center">
             <div className="flex w-[400px] h-[500px] bg-white rounded-3xl shadow-lg flex-col max-sm:w-full max-sm:h-[80dvh] max-sm:rounded-none max-sm:absolute max-sm:bottom-0 max-sm:rounded-t-3xl max-sm:shadow-2xl">
                 <div className="flex flex-col justify-center items-center w-full pt-10 max-sm:pt-20">
                     <img src="/images/logo.png" alt="Logo" className="w-20"/>
@@ -16,7 +16,7 @@ function AdminLogin() {
                 <form className="flex flex-col w-full px-5 mt-5">
                     <input type="email" placeholder="Email Address..." className="p-2 border border-gray-300 rounded-md mb-4" />
                     <input type="password" placeholder="Password" className="p-2 border border-gray-300 rounded-md mb-4" />
-                    <button type="submit" className="font-bold transition-all duration-300 bg-[#5fdf85] text-white p-2 rounded-md hover:bg-white hover:border-2 hover:border-green-500 hover:text-gray-900">Log In <i className="bx bx-right-arrow-alt"></i></button>
+                    <button type="submit" className="font-bold transition-all duration-300 bg-[#5fdf85] text-white p-2 rounded-md hover:bg-white border-2 border-green-500 hover:text-gray-900">Log In <i className="bx bx-right-arrow-alt"></i></button>
                 </form>
                 {/*Forgotten Password */}
                 <div className="flex justify-center items-center w-full py-3">

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 function Login() {
     useEffect(()=>{document.title = 'Login to your account | Dispensar'})
     return(
-        <div className="w-full min-h-dvh bg-[#5fdf85] flex justify-center items-center">
+        <div className="w-full min-h-dvh bg-linear-to-br from-slate-900 via-emerald-900 to-slate-900 flex justify-center items-center">
             <div className="flex w-[400px] h-[500px] bg-white rounded-3xl shadow-lg flex-col max-sm:w-full max-sm:h-[80dvh] max-sm:rounded-none max-sm:absolute max-sm:bottom-0 max-sm:rounded-t-3xl max-sm:shadow-2xl">
                 <div className="flex flex-col justify-center items-center w-full pt-10 max-sm:pt-20">
                     <img src="/images/logo.png" alt="Logo" className="w-20"/>
