@@ -191,7 +191,7 @@ function Home() {
                             </li>
                         </ul>
                     </div>
-                    <div className="bg-white p-8 rounded-2xl shadow-lg">
+                    <div className="bg-gray-100 p-8 rounded-2xl shadow-lg">
                         <img src="/images/dashboard.png" alt="Analytics" className="w-full rounded-lg" />
                     </div>
                 </div>

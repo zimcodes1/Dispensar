@@ -13,9 +13,9 @@ function AdminLogin() {
                     <p className="text-gray-600 mt-2">Please log in to continue</p>
                 </div>
                 {/* Login Form */}
-                <form className="flex flex-col w-full px-5 mt-5">
-                    <input type="email" placeholder="Email Address..." className="p-2 border border-gray-300 rounded-md mb-4" />
-                    <input type="password" placeholder="Password" className="p-2 border border-gray-300 rounded-md mb-4" />
+                <form className="flex flex-col w-full px-10 mt-5">
+                    <input type="email" placeholder="Email Address..." className="p-2 border border-gray-300 bg-gray-100 rounded-md mb-4" />
+                    <input type="password" placeholder="Password" className="p-2 border border-gray-300 bg-gray-100 rounded-md mb-4" />
                     <button type="submit" className="font-bold transition-all duration-300 bg-[#5fdf85] text-white p-2 rounded-md hover:bg-white border-2 border-green-500 hover:text-gray-900">Log In <i className="bx bx-right-arrow-alt"></i></button>
                 </form>
                 {/*Forgotten Password */}
