@@ -143,9 +143,9 @@ export default function CreateReportModal({ onClose, onSubmit, onSaveDraft, init
                 <div className="flex flex-col">
                   <label className="text-xs text-gray-600 mb-1">Severity</label>
                   <div className="flex items-center gap-4 text-sm">
-                    <label className="inline-flex items-center"><input type="radio" name="severity" value="low" checked={severity==='low'} onChange={e=>setSeverity('low')} className="mr-2" />Low</label>
-                    <label className="inline-flex items-center"><input type="radio" name="severity" value="moderate" checked={severity==='moderate'} onChange={e=>setSeverity('moderate')} className="mr-2" />Moderate</label>
-                    <label className="inline-flex items-center"><input type="radio" name="severity" value="high" checked={severity==='high'} onChange={e=>setSeverity('high')} className="mr-2" />High</label>
+                    <label className="inline-flex items-center"><input type="radio" name="severity" value="low" checked={severity==='low'} onChange={()=>setSeverity('low')} className="mr-2" />Low</label>
+                    <label className="inline-flex items-center"><input type="radio" name="severity" value="moderate" checked={severity==='moderate'} onChange={()=>setSeverity('moderate')} className="mr-2" />Moderate</label>
+                    <label className="inline-flex items-center"><input type="radio" name="severity" value="high" checked={severity==='high'} onChange={()=>setSeverity('high')} className="mr-2" />High</label>
                   </div>
                 </div>
               </div>
