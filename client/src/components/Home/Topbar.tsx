@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 
 function Topbar(){
     return(
-        <div className="w-full h-20 max-sm:h-15 bgImage backdrop-blur-2xl flex fixed top-0 left-0 justify-between items-center">
+        <div className="w-full px-10 max-sm:px-0 h-20 max-sm:h-15 bg-transparent flex justify-between items-center">
             <div className="flex items-center ml-10 max-sm:ml-2">
                 <img src="/images/logo.png" alt="Logo" className="w-10 max-sm:w-8"/>
                 <h1 className="text-gray-50 font-bold text-xl ml-3 max-sm:text-lg">Dispensar</h1>

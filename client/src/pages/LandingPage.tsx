@@ -3,19 +3,216 @@ import { Link } from "react-router-dom";
 
 function Home() {
     return (
-        <div className="w-full min-h-screen bg-gray-100">
-            <Topbar />
-            <div className="h-dvh max-sm:h-fit pt-25 bgImage flex flex-col justify-between overflow-hidden rounded-b-3xl">
-                <span>
-                    <h1 className="text-4xl max-sm:text-3xl text-gray-50 text-center font-bold">One Platform. Every Prescription. <br /> Every Sale</h1>
-                    <p className="text-sm text-gray-300 text-center my-3">Manage your inventory, billing, and dispensing in one seamless interface. <br />Built for the modern pharmacy.</p>
-                    <Link to='/login' className="mt-2 flex w-fit mx-auto"><button className="block text-gray-950 px-7 py-3 rounded-3xl bg-green-400 font-bold transition duration-300 hover:shadow-md shadow-[#80808058] hover:bg-gray-50 cursor-pointer mx-auto">Get Started</button></Link>
-                </span>
-                <div className="overflow-hidden w-5/10 max-sm:w-9/10 mt-5 max-sm:mt-5 mx-auto h-fit rounded-t-2xl shadow-2xl shadow-[#46ff65]">
-                    <img src="/images/dashboard.png" alt="Dashboard" />
+        <div className="w-full min-h-screen">
+            {/* Hero Section */}
+            <div className="relative w-full overflow-hidden max-sm:pt-5">
+                {/* Animated background with gradient */}
+                <div className="absolute inset-0 bg-linear-to-br from-slate-900 via-emerald-900 to-slate-900">
+                    <Topbar />
+                </div>
+                {/* Decorative elements */}
+                <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+                <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+                <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+
+                <div className="relative z-10 px-6 max-sm:px-4 pt-24 max-sm:pt-16 pb-20 max-sm:pb-12">
+                    <div className="max-w-6xl mx-auto">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[80vh] max-sm:min-h-auto">
+
+                            {/* Left Content */}
+                            <div className="flex flex-col justify-center space-y-6 max-sm:space-y-4">
+                                {/* Badge */}
+                                <div className="inline-flex items-center gap-2 w-fit px-4 py-2 rounded-full bg-emerald-900/50 border border-emerald-500/50 backdrop-blur-sm">
+                                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                                    <p className="text-sm font-medium text-emerald-300">The Modern Pharmacy Solution</p>
+                                </div>
+
+                                {/* Main Heading */}
+                                <div>
+                                    <h1 className="text-5xl max-sm:text-3xl font-bold text-white leading-tight mb-4">
+                                        Pharmacy Management
+                                        <span className="block text-transparent bg-clip-text bg-linear-to-r from-emerald-300 via-green-300 to-cyan-300">Simplified & Powerful</span>
+                                    </h1>
+                                    <p className="text-lg max-sm:text-base text-slate-300 max-w-xl leading-relaxed">
+                                        Manage inventory, process prescriptions, handle billing, and generate insightful reports—all in one intuitive platform built for modern pharmacies.
+                                    </p>
+                                </div>
+
+                                {/* CTA Buttons */}
+                                <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                                    <Link to='/signup'>
+                                        <button className="px-8 py-4 max-sm:w-full bg-linear-to-r from-emerald-400 to-green-500 text-gray-900 font-bold rounded-lg transition duration-300 hover:shadow-2xl hover:shadow-emerald-500/50 hover:scale-105 transform">
+                                            Start Free Trial
+                                        </button>
+                                    </Link>
+                                    <Link to='/login'>
+                                        <button className="px-8 py-4 max-sm:w-full border-2 border-slate-400 text-white font-bold rounded-lg transition duration-300 hover:bg-slate-800 hover:border-emerald-400 backdrop-blur-sm">
+                                            Sign In
+                                        </button>
+                                    </Link>
+                                </div>
+
+                                {/* Trust indicators */}
+                                <div className="pt-6 space-y-3 text-sm text-slate-300">
+                                    <div className="flex items-center gap-2">
+                                        <svg className="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
+                                        <span>HIPAA Compliant & Secure</span>
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <svg className="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
+                                        <span>No credit card required</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Right Visual Section */}
+                            <div className="relative hidden lg:flex items-center justify-center">
+                                {/* Floating cards background effect */}
+                                <div className="relative w-full h-96 max-sm:h-64">
+
+                                    {/* Main Dashboard Preview - Center */}
+                                    <div className="absolute inset-0 flex items-center justify-center">
+                                        <div className="w-full h-full bg-linear-to-br from-slate-800 to-slate-900 rounded-2xl border border-slate-700 shadow-2xl overflow-hidden transform hover:scale-105 transition duration-500">
+                                            <img
+                                                src="/images/hero.jpg"
+                                                alt="Pharmacy Dashboard"
+                                                className="w-full h-full object-cover"
+                                            />
+                                            <div className="absolute inset-0 bg-linear-to-t from-slate-900/60 to-transparent"></div>
+                                        </div>
+                                    </div>
+
+                                    {/* Floating card 1 - Top Left */}
+                                    <div className="absolute -top-6 -left-6 w-32 h-32 bg-linear-to-br from-emerald-500/20 to-green-600/20 rounded-xl border border-emerald-400/50 backdrop-blur-lg p-4 shadow-xl transform hover:scale-110 transition duration-500 hidden xl:flex flex-col justify-center items-center text-center">
+                                        <div className="text-2xl font-bold text-emerald-300">99.9%</div>
+                                        <div className="text-xs text-slate-300 mt-2">Uptime Guaranteed</div>
+                                    </div>
+
+                                    {/* Floating card 2 - Bottom Right */}
+                                    <div className="absolute -bottom-6 -right-6 w-40 h-28 bg-linear-to-br from-cyan-500/20 to-blue-600/20 rounded-xl border border-cyan-400/50 backdrop-blur-lg p-4 shadow-xl transform hover:scale-110 transition duration-500 hidden xl:flex flex-col justify-between">
+                                        <div className="text-xs font-semibold text-cyan-300">Real-Time Analytics</div>
+                                        <div className="flex gap-2">
+                                            <div className="flex-1 h-8 bg-linear-to-r from-emerald-400 to-green-500 rounded opacity-70"></div>
+                                            <div className="flex-1 h-8 bg-linear-to-r from-cyan-400 to-blue-500 rounded opacity-50"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Scroll indicator */}
+                    <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hidden sm:block">
+                        <svg className="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                        </svg>
+                    </div>
                 </div>
             </div>
-            <div className="w-full h-50"></div>
+
+            {/* Features Section */}
+            <div className="py-20 max-sm:py-12 px-6 max-sm:px-4 bg-gray-100">
+                <h2 className="text-4xl max-sm:text-2xl font-bold text-center text-gray-900 mb-4">Powerful Features for Modern Pharmacies</h2>
+                <p className="text-center text-gray-600 mb-16 max-sm:mb-10 max-w-2xl mx-auto">Everything you need to run your pharmacy efficiently and compliantly</p>
+
+                <div className="grid grid-cols-3 max-sm:grid-cols-1 gap-8 max-sm:gap-6 max-w-6xl mx-auto">
+                    <div className="bg-white border border-gray-200 p-6 rounded-2xl hover:shadow-lg transition duration-300">
+                        <div className="w-12 h-12 bg-green-400 rounded-xl flex items-center justify-center mb-4">
+                            <svg className="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>
+                        </div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">Real-Time Inventory</h3>
+                        <p className="text-gray-600">Track stock levels, expiration dates, and lot numbers with automatic reorder alerts</p>
+                    </div>
+
+                    <div className="bg-white border border-gray-200 p-6 rounded-2xl hover:shadow-lg transition duration-300">
+                        <div className="w-12 h-12 bg-green-400 rounded-xl flex items-center justify-center mb-4">
+                            <svg className="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                        </div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">E-Prescription Integration</h3>
+                        <p className="text-gray-600">Seamlessly receive and process electronic prescriptions with automated inventory checks</p>
+                    </div>
+
+                    <div className="bg-white border border-gray-200 p-6 rounded-2xl hover:shadow-lg transition duration-300">
+                        <div className="w-12 h-12 bg-green-400 rounded-xl flex items-center justify-center mb-4">
+                            <svg className="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+                        </div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">Compliance & Security</h3>
+                        <p className="text-gray-600">HIPAA-compliant with controlled substance tracking and role-based access control</p>
+                    </div>
+
+                    <div className="bg-white border border-gray-200 p-6 rounded-2xl hover:shadow-lg transition duration-300">
+                        <div className="w-12 h-12 bg-green-400 rounded-xl flex items-center justify-center mb-4">
+                            <svg className="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
+                        </div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">Purchase Management</h3>
+                        <p className="text-gray-600">Create and track purchase orders with electronic ordering and invoice reconciliation</p>
+                    </div>
+
+                    <div className="bg-white border border-gray-200 p-6 rounded-2xl hover:shadow-lg transition duration-300">
+                        <div className="w-12 h-12 bg-green-400 rounded-xl flex items-center justify-center mb-4">
+                            <svg className="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+                        </div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">Analytics & Reports</h3>
+                        <p className="text-gray-600">Comprehensive reports on inventory valuation, turnover, and usage trends</p>
+                    </div>
+
+                    <div className="bg-white border border-gray-200 p-6 rounded-2xl hover:shadow-lg transition duration-300">
+                        <div className="w-12 h-12 bg-green-400 rounded-xl flex items-center justify-center mb-4">
+                            <svg className="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" /></svg>
+                        </div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">Cloud-Based Access</h3>
+                        <p className="text-gray-600">Access your pharmacy data securely from anywhere with multi-store management</p>
+                    </div>
+                </div>
+            </div>
+
+            {/* Benefits Section */}
+            <div className="py-20 max-sm:py-12 px-6 max-sm:px-4 bg-gray-50">
+                <div className="max-w-6xl mx-auto grid grid-cols-2 max-sm:grid-cols-1 gap-12 max-sm:gap-8 items-center">
+                    <div>
+                        <h2 className="text-4xl max-sm:text-2xl font-bold text-gray-900 mb-6">Reduce Loss. Increase Efficiency.</h2>
+                        <p className="text-gray-600 mb-6">Dispensar helps medical store owners manage their businesses effectively and reduce financial losses due to expired stock, theft, and inefficient practices.</p>
+                        <ul className="space-y-4">
+                            <li className="flex items-start">
+                                <svg className="w-6 h-6 text-green-400 mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                                <span className="text-gray-700">Automated expiration tracking prevents stock wastage</span>
+                            </li>
+                            <li className="flex items-start">
+                                <svg className="w-6 h-6 text-green-400 mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                                <span className="text-gray-700">Barcode scanning reduces manual errors and saves time</span>
+                            </li>
+                            <li className="flex items-start">
+                                <svg className="w-6 h-6 text-green-400 mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                                <span className="text-gray-700">Detailed audit logs ensure accountability and transparency</span>
+                            </li>
+                            <li className="flex items-start">
+                                <svg className="w-6 h-6 text-green-400 mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                                <span className="text-gray-700">Smart reorder points prevent stockouts and overstocking</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="bg-white p-8 rounded-2xl shadow-lg">
+                        <img src="/images/dashboard.png" alt="Analytics" className="w-full rounded-lg" />
+                    </div>
+                </div>
+            </div>
+
+            {/* CTA Section */}
+            <div className="py-20 max-sm:py-12 px-6 max-sm:px-4 bgImage">
+                <div className="max-w-4xl mx-auto text-center">
+                    <h2 className="text-4xl max-sm:text-2xl font-bold text-gray-50 mb-6">Ready to Transform Your Pharmacy?</h2>
+                    <p className="text-lg max-sm:text-base text-gray-300 mb-8 max-w-2xl mx-auto">Join modern pharmacies using Dispensar to streamline operations, ensure compliance, and grow their business.</p>
+                    <div className="flex max-sm:flex-col gap-4 justify-center">
+                        <Link to='/signup'><button className="text-gray-950 px-8 py-3 rounded-3xl bg-green-400 font-bold transition duration-300 hover:shadow-lg hover:bg-gray-50">Start Free Trial</button></Link>
+                        <Link to='/login'><button className="text-gray-50 px-8 py-3 rounded-3xl border-2 border-gray-50 font-bold transition duration-300 hover:bg-gray-50 hover:text-gray-950">Sign In</button></Link>
+                    </div>
+                </div>
+            </div>
+
+            {/* Footer */}
+            <div className="py-8 px-6 bg-gray-900 text-center">
+                <p className="text-gray-400 text-sm">© 2026 Dispensar by Rizon Labs. Built for the modern pharmacy.</p>
+            </div>
         </div>
     );
 }

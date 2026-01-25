@@ -141,7 +141,7 @@ export default function MedicalSupplies() {
         {/*--------Topbar Component--------*/}
         <Topbar></Topbar>
         {/*-----------Side Nav & Main Contents Container-----------*/}
-        <div className="flex w-full h-dvh bg-gray-100 pt-[60px] justify-between items-start pr-[2%] max-[767px]:pr-0 md:pr-0">
+        <div className="flex w-full h-fit bg-gray-100 pt-[60px] justify-between items-start pr-[2%] max-[767px]:pr-0 md:pr-0">
             {/*----------Side navigation-----*/}
             <div className="flex w-[20%] h-full max-[767px]:w-0 md:w-16 lg:w-[20%]">
                 <SideNav></SideNav>
@@ -158,7 +158,7 @@ export default function MedicalSupplies() {
                         </div>
                         <button
                             onClick={() => setShowAddModal(true)}
-                            className="px-4 py-2 bg-green-600 h-12 w-fit text-white max-sm:text-sm rounded-lg hover:bg-green-700 transition flex items-center gap-2"
+                            className="px-4 py-2 bg-green-600 max-sm:mb-2 h-12 w-fit text-white max-sm:text-sm rounded-lg hover:bg-green-700 transition flex items-center gap-2"
                         >
                             <i className="bx bx-plus"></i>
                             Add New Supply
