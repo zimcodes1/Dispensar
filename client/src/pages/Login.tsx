@@ -20,7 +20,7 @@ function Login() {
                 </form>
                 {/*Forgotten Password */}
                 <div className="flex justify-center items-center w-full py-3">
-                    <p className="text-gray-600">Forgot your password? <a href="#" className="text-green-400 hover:underline">Reset it here</a></p>
+                    <p className="text-gray-600">Forgot your password? <a href="/dashboard" className="text-green-400 hover:underline">Reset it here</a></p>
                 </div>
                 {/*Admin Login*/}
                 <div className="flex justify-center items-center w-full py-3">
