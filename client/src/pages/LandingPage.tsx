@@ -1,9 +1,12 @@
 import Topbar from "../components/Home/Topbar"
 import { Link } from "react-router-dom";
+import { useDarkMode } from "../utils/useDarkMode";
 
 function Home() {
+    const { isDarkMode } = useDarkMode() as { isDarkMode: boolean };
+
     return (
-        <div className="w-full min-h-screen">
+        <div className={`w-full min-h-screen ${isDarkMode ? 'dark' : ''}`}>
             {/* Hero Section */}
             <div className="relative w-full overflow-hidden max-sm:pt-5">
                 {/* Animated background with gradient */}
@@ -111,185 +114,185 @@ function Home() {
             </div>
 
             {/* Features Section */}
-            <div className="py-20 max-sm:py-12 px-6 max-sm:px-4 bg-gray-100">
-                <h2 className="text-4xl max-sm:text-2xl font-bold text-center text-gray-900 mb-4">Powerful Features for Modern Pharmacies</h2>
-                <p className="text-center text-gray-600 mb-16 max-sm:mb-10 max-w-2xl mx-auto">Everything you need to run your pharmacy efficiently and compliantly</p>
+            <div className={`py-20 max-sm:py-12 px-6 max-sm:px-4 ${isDarkMode ? 'bg-gray-900' : 'bg-gray-100'}`}>
+                <h2 className={`text-4xl max-sm:text-2xl font-bold text-center mb-4 ${isDarkMode ? 'text-gray-50' : 'text-gray-900'}`}>Powerful Features for Modern Pharmacies</h2>
+                <p className={`text-center mb-16 max-sm:mb-10 max-w-2xl mx-auto ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Everything you need to run your pharmacy efficiently and compliantly</p>
 
                 <div className="grid grid-cols-3 max-sm:grid-cols-1 gap-8 max-sm:gap-6 max-w-6xl mx-auto">
-                    <div className="bg-white border border-gray-200 p-6 rounded-2xl hover:shadow-lg transition duration-300">
+                    <div className={`border p-6 rounded-2xl hover:shadow-lg transition duration-300 ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
                         <div className="w-12 h-12 bg-green-400 rounded-xl flex items-center justify-center mb-4">
                             <svg className="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>
                         </div>
-                        <h3 className="text-xl font-bold text-gray-900 mb-2">Real-Time Inventory</h3>
-                        <p className="text-gray-600">Track stock levels, expiration dates, and lot numbers with automatic reorder alerts</p>
+                        <h3 className={`text-xl font-bold mb-2 ${isDarkMode ? 'text-gray-50' : 'text-gray-900'}`}>Real-Time Inventory</h3>
+                        <p className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>Track stock levels, expiration dates, and lot numbers with automatic reorder alerts</p>
                     </div>
 
-                    <div className="bg-white border border-gray-200 p-6 rounded-2xl hover:shadow-lg transition duration-300">
+                    <div className={`border p-6 rounded-2xl hover:shadow-lg transition duration-300 ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
                         <div className="w-12 h-12 bg-green-400 rounded-xl flex items-center justify-center mb-4">
                             <svg className="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
                         </div>
-                        <h3 className="text-xl font-bold text-gray-900 mb-2">E-Prescription Integration</h3>
-                        <p className="text-gray-600">Seamlessly receive and process electronic prescriptions with automated inventory checks</p>
+                        <h3 className={`text-xl font-bold mb-2 ${isDarkMode ? 'text-gray-50' : 'text-gray-900'}`}>E-Prescription Integration</h3>
+                        <p className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>Seamlessly receive and process electronic prescriptions with automated inventory checks</p>
                     </div>
 
-                    <div className="bg-white border border-gray-200 p-6 rounded-2xl hover:shadow-lg transition duration-300">
+                    <div className={`border p-6 rounded-2xl hover:shadow-lg transition duration-300 ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
                         <div className="w-12 h-12 bg-green-400 rounded-xl flex items-center justify-center mb-4">
                             <svg className="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
                         </div>
-                        <h3 className="text-xl font-bold text-gray-900 mb-2">Compliance & Security</h3>
-                        <p className="text-gray-600">HIPAA-compliant with controlled substance tracking and role-based access control</p>
+                        <h3 className={`text-xl font-bold mb-2 ${isDarkMode ? 'text-gray-50' : 'text-gray-900'}`}>Compliance & Security</h3>
+                        <p className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>HIPAA-compliant with controlled substance tracking and role-based access control</p>
                     </div>
 
-                    <div className="bg-white border border-gray-200 p-6 rounded-2xl hover:shadow-lg transition duration-300">
+                    <div className={`border p-6 rounded-2xl hover:shadow-lg transition duration-300 ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
                         <div className="w-12 h-12 bg-green-400 rounded-xl flex items-center justify-center mb-4">
                             <svg className="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
                         </div>
-                        <h3 className="text-xl font-bold text-gray-900 mb-2">Purchase Management</h3>
-                        <p className="text-gray-600">Create and track purchase orders with electronic ordering and invoice reconciliation</p>
+                        <h3 className={`text-xl font-bold mb-2 ${isDarkMode ? 'text-gray-50' : 'text-gray-900'}`}>Purchase Management</h3>
+                        <p className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>Create and track purchase orders with electronic ordering and invoice reconciliation</p>
                     </div>
 
-                    <div className="bg-white border border-gray-200 p-6 rounded-2xl hover:shadow-lg transition duration-300">
+                    <div className={`border p-6 rounded-2xl hover:shadow-lg transition duration-300 ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
                         <div className="w-12 h-12 bg-green-400 rounded-xl flex items-center justify-center mb-4">
                             <svg className="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
                         </div>
-                        <h3 className="text-xl font-bold text-gray-900 mb-2">Analytics & Reports</h3>
-                        <p className="text-gray-600">Comprehensive reports on inventory valuation, turnover, and usage trends</p>
+                        <h3 className={`text-xl font-bold mb-2 ${isDarkMode ? 'text-gray-50' : 'text-gray-900'}`}>Analytics & Reports</h3>
+                        <p className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>Comprehensive reports on inventory valuation, turnover, and usage trends</p>
                     </div>
 
-                    <div className="bg-white border border-gray-200 p-6 rounded-2xl hover:shadow-lg transition duration-300">
+                    <div className={`border p-6 rounded-2xl hover:shadow-lg transition duration-300 ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
                         <div className="w-12 h-12 bg-green-400 rounded-xl flex items-center justify-center mb-4">
                             <svg className="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" /></svg>
                         </div>
-                        <h3 className="text-xl font-bold text-gray-900 mb-2">Cloud-Based Access</h3>
-                        <p className="text-gray-600">Access your pharmacy data securely from anywhere with multi-store management</p>
+                        <h3 className={`text-xl font-bold mb-2 ${isDarkMode ? 'text-gray-50' : 'text-gray-900'}`}>Cloud-Based Access</h3>
+                        <p className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>Access your pharmacy data securely from anywhere with multi-store management</p>
                     </div>
                 </div>
             </div>
 
             {/* Pricing Section */}
-            <div className="py-20 max-sm:py-12 px-6 max-sm:px-4 bg-white">
+            <div className={`py-20 max-sm:py-12 px-6 max-sm:px-4 ${isDarkMode ? 'bg-gray-800' : 'bg-white'}`}>
                 <div className="max-w-6xl mx-auto text-center mb-12">
-                    <h2 className="text-4xl max-sm:text-2xl font-bold text-gray-900">Simple, transparent pricing</h2>
-                    <p className="text-gray-600 mt-4 max-w-2xl mx-auto">Choose a plan that fits your pharmacy — scale as you grow. No hidden fees, cancel anytime.</p>
+                    <h2 className={`text-4xl max-sm:text-2xl font-bold ${isDarkMode ? 'text-gray-50' : 'text-gray-900'}`}>Simple, transparent pricing</h2>
+                    <p className={`mt-4 max-w-2xl mx-auto ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Choose a plan that fits your pharmacy — scale as you grow. No hidden fees, cancel anytime.</p>
                 </div>
 
                 <div className="max-w-6xl mx-auto grid grid-cols-3 max-sm:grid-cols-1 gap-8">
                     {/* Free Plan */}
-                    <div className="border border-gray-200 rounded-2xl p-8 text-left bg-gray-50">
+                    <div className={`border rounded-2xl p-8 text-left ${isDarkMode ? 'bg-gray-700 border-gray-600' : 'bg-gray-50 border-gray-200'}`}>
                         <div className="flex items-center justify-between mb-4">
-                            <h3 className="text-xl font-bold text-gray-900">Free</h3>
+                            <h3 className={`text-xl font-bold ${isDarkMode ? 'text-gray-50' : 'text-gray-900'}`}>Free</h3>
                             <span className="text-sm text-green-600 font-semibold">For small pharmacies</span>
                         </div>
-                        <div className="text-3xl font-extrabold text-gray-900 mb-4">$0<span className="text-base font-medium text-gray-600">/mo</span></div>
-                        <ul className="space-y-2 text-gray-600 mb-6">
+                        <div className={`text-3xl font-extrabold mb-4 ${isDarkMode ? 'text-gray-50' : 'text-gray-900'}`}>$0<span className={`text-base font-medium ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>/mo</span></div>
+                        <ul className={`space-y-2 mb-6 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                             <li>Basic inventory management</li>
                             <li>Billing & receipts</li>
                             <li>Email support</li>
                         </ul>
-                        <Link to="/signup"><button className="w-full py-3 rounded-lg bg-white border border-gray-300 text-gray-900 font-bold hover:shadow">Get Started</button></Link>
+                        <Link to="/signup"><button className={`w-full py-3 rounded-lg border font-bold transition ${isDarkMode ? 'bg-gray-600 border-gray-500 text-gray-50 hover:bg-gray-700' : 'bg-white border-gray-300 text-gray-900 hover:shadow'}`}>Get Started</button></Link>
                     </div>
 
                     {/* Standard Plan */}
-                    <div className="border-2 border-emerald-400 rounded-2xl p-8 text-left bg-linear-to-r from-emerald-50 to-white shadow-lg">
+                    <div className={`border-2 border-emerald-400 rounded-2xl p-8 text-left shadow-lg ${isDarkMode ? 'bg-gray-700' : 'bg-linear-to-r from-emerald-50 to-white'}`}>
                         <div className="flex items-center justify-between mb-4">
-                            <h3 className="text-xl font-bold text-gray-900">Standard</h3>
+                            <h3 className={`text-xl font-bold ${isDarkMode ? 'text-gray-50' : 'text-gray-900'}`}>Standard</h3>
                             <span className="text-sm text-emerald-600 font-semibold">Most popular</span>
                         </div>
-                        <div className="text-4xl font-extrabold text-gray-900 mb-4">$29<span className="text-base font-medium text-gray-600">/mo</span></div>
-                        <ul className="space-y-2 text-gray-700 mb-6">
+                        <div className={`text-4xl font-extrabold mb-4 ${isDarkMode ? 'text-gray-50' : 'text-gray-900'}`}>$29<span className={`text-base font-medium ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>/mo</span></div>
+                        <ul className={`space-y-2 mb-6 ${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>
                             <li>All Free features</li>
                             <li>Automated reorder alerts</li>
                             <li>E-prescription integration</li>
                             <li>Priority support</li>
                         </ul>
-                        <Link to="/signup"><button className="w-full py-3 rounded-lg bg-emerald-400 text-gray-900 font-bold hover:shadow-lg">Start Free Trial</button></Link>
+                        <Link to="/signup"><button className="w-full py-3 rounded-lg bg-emerald-400 text-gray-900 font-bold hover:shadow-lg transition">Start Free Trial</button></Link>
                     </div>
 
                     {/* Enterprise Plan */}
-                    <div className="border border-gray-200 rounded-2xl p-8 text-left bg-white">
+                    <div className={`border rounded-2xl p-8 text-left ${isDarkMode ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-200'}`}>
                         <div className="flex items-center justify-between mb-4">
-                            <h3 className="text-xl font-bold text-gray-900">Enterprise</h3>
-                            <span className="text-sm text-slate-500 font-medium">Custom for chains</span>
+                            <h3 className={`text-xl font-bold ${isDarkMode ? 'text-gray-50' : 'text-gray-900'}`}>Enterprise</h3>
+                            <span className={`text-sm font-medium ${isDarkMode ? 'text-gray-400' : 'text-slate-500'}`}>Custom for chains</span>
                         </div>
-                        <div className="text-3xl font-extrabold text-gray-900 mb-4">Custom</div>
-                        <ul className="space-y-2 text-gray-600 mb-6">
+                        <div className={`text-3xl font-extrabold mb-4 ${isDarkMode ? 'text-gray-50' : 'text-gray-900'}`}>Custom</div>
+                        <ul className={`space-y-2 mb-6 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                             <li>Multi-store management</li>
                             <li>Dedicated account manager</li>
                             <li>Custom integrations & onboarding</li>
                         </ul>
-                        <Link to="/contact"><button className="w-full py-3 rounded-lg border-2 border-emerald-400 text-emerald-400 font-bold hover:bg-emerald-50">Contact Sales</button></Link>
+                        <Link to="/contact"><button className="w-full py-3 rounded-lg border-2 border-emerald-400 text-emerald-400 font-bold transition hover:bg-emerald-400/20">Contact Sales</button></Link>
                     </div>
                 </div>
             </div>
 
             {/* Benefits Section */}
-            <div className="py-20 max-sm:py-12 px-6 max-sm:px-4 bg-gray-50">
+            <div className={`py-20 max-sm:py-12 px-6 max-sm:px-4 ${isDarkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
                 <div className="max-w-6xl mx-auto grid grid-cols-2 max-sm:grid-cols-1 gap-12 max-sm:gap-8 items-center">
                     <div>
-                        <h2 className="text-4xl max-sm:text-2xl font-bold text-gray-900 mb-6">Reduce Loss. Increase Efficiency.</h2>
-                        <p className="text-gray-600 mb-6">Dispensar helps medical store owners manage their businesses effectively and reduce financial losses due to expired stock, theft, and inefficient practices.</p>
+                        <h2 className={`text-4xl max-sm:text-2xl font-bold mb-6 ${isDarkMode ? 'text-gray-50' : 'text-gray-900'}`}>Reduce Loss. Increase Efficiency.</h2>
+                        <p className={`mb-6 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Dispensar helps medical store owners manage their businesses effectively and reduce financial losses due to expired stock, theft, and inefficient practices.</p>
                         <ul className="space-y-4">
                             <li className="flex items-start">
                                 <svg className="w-6 h-6 text-green-400 mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                                <span className="text-gray-700">Automated expiration tracking prevents stock wastage</span>
+                                <span className={isDarkMode ? 'text-gray-300' : 'text-gray-700'}>Automated expiration tracking prevents stock wastage</span>
                             </li>
                             <li className="flex items-start">
                                 <svg className="w-6 h-6 text-green-400 mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                                <span className="text-gray-700">Barcode scanning reduces manual errors and saves time</span>
+                                <span className={isDarkMode ? 'text-gray-300' : 'text-gray-700'}>Barcode scanning reduces manual errors and saves time</span>
                             </li>
                             <li className="flex items-start">
                                 <svg className="w-6 h-6 text-green-400 mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                                <span className="text-gray-700">Detailed audit logs ensure accountability and transparency</span>
+                                <span className={isDarkMode ? 'text-gray-300' : 'text-gray-700'}>Detailed audit logs ensure accountability and transparency</span>
                             </li>
                             <li className="flex items-start">
                                 <svg className="w-6 h-6 text-green-400 mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                                <span className="text-gray-700">Smart reorder points prevent stockouts and overstocking</span>
+                                <span className={isDarkMode ? 'text-gray-300' : 'text-gray-700'}>Smart reorder points prevent stockouts and overstocking</span>
                             </li>
                         </ul>
                     </div>
-                    <div className="p-8 rounded-2xl shadow-lg">
+                    <div className={`p-8 rounded-2xl shadow-lg ${isDarkMode ? 'bg-gray-800' : 'bg-white'}`}>
                         <img src="/images/dashboard.png" alt="Analytics" className="w-full rounded-lg" />
                     </div>
                 </div>
             </div>
 
             {/* Workflows Section */}
-            <div className="py-20 max-sm:py-12 px-6 max-sm:px-4 bg-gray-100">
+            <div className={`py-20 max-sm:py-12 px-6 max-sm:px-4 ${isDarkMode ? 'bg-gray-800' : 'bg-gray-100'}`}>
                 <div className="max-w-6xl mx-auto">
                     <div className="text-center mb-16">
-                        <h2 className="text-4xl max-sm:text-2xl font-bold text-gray-900 mb-4">Flexible Workflows for Every Pharmacy</h2>
-                        <p className="text-gray-600 max-w-2xl mx-auto">Dispensar adapts to your pharmacy's unique operational structure—whether you're running a solo operation or a complex multi-person workflow.</p>
+                        <h2 className={`text-4xl max-sm:text-2xl font-bold mb-4 ${isDarkMode ? 'text-gray-50' : 'text-gray-900'}`}>Flexible Workflows for Every Pharmacy</h2>
+                        <p className={`max-w-2xl mx-auto ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Dispensar adapts to your pharmacy's unique operational structure—whether you're running a solo operation or a complex multi-person workflow.</p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-sm:gap-6">
                         {/* Single Worker Workflow */}
-                        <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105 flex flex-col">
+                        <div className={`rounded-2xl p-8 border shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105 flex flex-col ${isDarkMode ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-200'}`}>
                             <div className="flex items-center justify-center w-14 h-14 bg-blue-100 rounded-xl mb-6">
                                 <svg className="w-7 h-7 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                     <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
                                 </svg>
                             </div>
-                            <h3 className="text-2xl font-bold text-gray-900 mb-3">Single Worker</h3>
-                            <p className="text-gray-600 mb-6">Perfect for solo pharmacists or small operations where one person handles all tasks—billing, payments, and dispensing.</p>
+                            <h3 className={`text-2xl font-bold mb-3 ${isDarkMode ? 'text-gray-50' : 'text-gray-900'}`}>Single Worker</h3>
+                            <p className={`mb-6 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Perfect for solo pharmacists or small operations where one person handles all tasks—billing, payments, and dispensing.</p>
                             <div className="space-y-2 mb-6">
                                 <div className="flex items-center gap-2 text-gray-700">
                                     <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                                    <span className="text-sm">Simplified operations</span>
+                                    <span className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Simplified operations</span>
                                 </div>
                                 <div className="flex items-center gap-2 text-gray-700">
                                     <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                                    <span className="text-sm">Faster processing</span>
+                                    <span className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Faster processing</span>
                                 </div>
                                 <div className="flex items-center gap-2 text-gray-700">
                                     <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                                    <span className="text-sm">Complete control</span>
+                                    <span className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Complete control</span>
                                 </div>
                             </div>
-                            <button className="mt-auto w-full py-2 px-4 rounded-lg bg-blue-50 text-blue-600 font-semibold hover:bg-blue-100 transition">Learn More</button>
+                            <button className={`mt-auto w-full py-2 px-4 rounded-lg font-semibold transition ${isDarkMode ? 'bg-blue-900 text-blue-200 hover:bg-blue-800' : 'bg-blue-50 text-blue-600 hover:bg-blue-100'}`}>Learn More</button>
                         </div>
 
                         {/* Billing → Payment → Dispense Workflow */}
-                        <div className="bg-white rounded-2xl p-8 border-2 border-emerald-400 shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105 flex flex-col">
+                        <div className={`rounded-2xl p-8 border-2 border-emerald-400 shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105 flex flex-col ${isDarkMode ? 'bg-gray-700' : 'bg-linear-to-r from-emerald-50 to-white'}`}>
                             <div className="flex items-center justify-center w-14 h-14 bg-emerald-100 rounded-xl mb-6">
                                 <svg className="w-7 h-7 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                     <path d="M13 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V9" />
@@ -297,70 +300,70 @@ function Home() {
                                     <path d="M9 17L15 11" />
                                 </svg>
                             </div>
-                            <h3 className="text-2xl font-bold text-gray-900 mb-3">Billing → Payment → Dispense</h3>
-                            <p className="text-gray-600 mb-6">Structured workflow where one staff member bills, another collects payment, and a third dispenses medication—ideal for busier pharmacies.</p>
+                            <h3 className={`text-2xl font-bold mb-3 ${isDarkMode ? 'text-gray-50' : 'text-gray-900'}`}>Billing → Payment → Dispense</h3>
+                            <p className={`mb-6 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Structured workflow where one staff member bills, another collects payment, and a third dispenses medication—ideal for busier pharmacies.</p>
                             <div className="space-y-2 mb-6">
                                 <div className="flex items-center gap-2 text-gray-700">
                                     <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                                    <span className="text-sm">Clear role separation</span>
+                                    <span className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Clear role separation</span>
                                 </div>
                                 <div className="flex items-center gap-2 text-gray-700">
                                     <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                                    <span className="text-sm">Improved accuracy</span>
+                                    <span className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Improved accuracy</span>
                                 </div>
                                 <div className="flex items-center gap-2 text-gray-700">
                                     <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                                    <span className="text-sm">Higher throughput</span>
+                                    <span className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Higher throughput</span>
                                 </div>
                             </div>
-                            <button className="mt-auto w-full py-2 px-4 rounded-lg bg-emerald-50 text-emerald-600 font-semibold hover:bg-emerald-100 transition">Learn More</button>
+                            <button className={`mt-auto w-full py-2 px-4 rounded-lg font-semibold transition ${isDarkMode ? 'bg-emerald-900 text-emerald-200 hover:bg-emerald-800' : 'bg-emerald-50 text-emerald-600 hover:bg-emerald-100'}`}>Learn More</button>
                         </div>
 
                         {/* Billing → Payment (Biller as Dispenser) Workflow */}
-                        <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105 flex flex-col">
+                        <div className={`rounded-2xl p-8 border shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105 flex flex-col ${isDarkMode ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-200'}`}>
                             <div className="flex items-center justify-center w-14 h-14 bg-purple-100 rounded-xl mb-6">
                                 <svg className="w-7 h-7 text-purple-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                     <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
                                     <path d="M18 16h6M21 13v6" />
                                 </svg>
                             </div>
-                            <h3 className="text-2xl font-bold text-gray-900 mb-3">Billing → Payment with Dual Roles</h3>
-                            <p className="text-gray-600 mb-6">Hybrid workflow where one staff member bills and handles payment collection, while another dispenses medication—balancing efficiency and specialization.</p>
+                            <h3 className={`text-2xl font-bold mb-3 ${isDarkMode ? 'text-gray-50' : 'text-gray-900'}`}>Billing → Payment with Dual Roles</h3>
+                            <p className={`mb-6 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Hybrid workflow where one staff member bills and handles payment collection, while another dispenses medication—balancing efficiency and specialization.</p>
                             <div className="space-y-2 mb-6">
                                 <div className="flex items-center gap-2 text-gray-700">
                                     <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                                    <span className="text-sm">Flexible role assignment</span>
+                                    <span className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Flexible role assignment</span>
                                 </div>
                                 <div className="flex items-center gap-2 text-gray-700">
                                     <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                                    <span className="text-sm">Balanced workload</span>
+                                    <span className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Balanced workload</span>
                                 </div>
                                 <div className="flex items-center gap-2 text-gray-700">
                                     <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                                    <span className="text-sm">Cost-effective staffing</span>
+                                    <span className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Cost-effective staffing</span>
                                 </div>
                             </div>
-                            <button className="mt-auto w-full py-2 px-4 rounded-lg bg-purple-50 text-purple-600 font-semibold hover:bg-purple-100 transition">Learn More</button>
+                            <button className={`mt-auto w-full py-2 px-4 rounded-lg font-semibold transition ${isDarkMode ? 'bg-purple-900 text-purple-200 hover:bg-purple-800' : 'bg-purple-50 text-purple-600 hover:bg-purple-100'}`}>Learn More</button>
                         </div>
                     </div>
                 </div>
             </div>
 
             {/* CTA Section */}
-            <div className="py-20 max-sm:py-12 px-6 max-sm:px-4 bgImage">
+            <div className={`py-20 max-sm:py-12 px-6 max-sm:px-4 ${isDarkMode ? 'bg-gray-900' : 'bgImage'}`}>
                 <div className="max-w-4xl mx-auto text-center">
-                    <h2 className="text-4xl max-sm:text-2xl font-bold text-gray-50 mb-6">Ready to Transform Your Pharmacy?</h2>
-                    <p className="text-lg max-sm:text-base text-gray-300 mb-8 max-w-2xl mx-auto">Join modern pharmacies using Dispensar to streamline operations, ensure compliance, and grow their business.</p>
+                    <h2 className={`text-4xl max-sm:text-2xl font-bold mb-6 ${isDarkMode ? 'text-gray-50' : 'text-gray-50'}`}>Ready to Transform Your Pharmacy?</h2>
+                    <p className={`text-lg max-sm:text-base mb-8 max-w-2xl mx-auto ${isDarkMode ? 'text-gray-300' : 'text-gray-300'}`}>Join modern pharmacies using Dispensar to streamline operations, ensure compliance, and grow their business.</p>
                     <div className="flex max-sm:flex-col gap-4 justify-center">
-                        <Link to='/signup'><button className="text-gray-950 px-8 py-3 rounded-3xl bg-green-400 font-bold transition duration-300 hover:shadow-lg hover:bg-gray-50">Start Free Trial</button></Link>
-                        <Link to='/login'><button className="text-gray-50 px-8 py-3 rounded-3xl border-2 border-gray-50 font-bold transition duration-300 hover:bg-gray-50 hover:text-gray-950">Sign In</button></Link>
+                        <Link to='/signup'><button className={`px-8 py-3 rounded-3xl font-bold transition duration-300 ${isDarkMode ? 'bg-green-400 text-gray-950 hover:bg-green-300' : 'text-gray-950 bg-green-400 hover:shadow-lg hover:bg-gray-50'}`}>Start Free Trial</button></Link>
+                        <Link to='/login'><button className={`px-8 py-3 rounded-3xl border-2 border-gray-50 font-bold transition duration-300 ${isDarkMode ? 'text-gray-50 hover:bg-gray-800' : 'text-gray-50 hover:bg-gray-50 hover:text-gray-950'}`}>Sign In</button></Link>
                     </div>
                 </div>
             </div>
 
             {/* Footer */}
-            <div className="py-8 px-6 bg-gray-900 text-center">
-                <p className="text-gray-400 text-sm">© 2026 Dispensar by Rizon Labs. Built for the modern pharmacy.</p>
+            <div className={`py-8 px-6 text-center ${isDarkMode ? 'bg-gray-950 text-gray-400' : 'bg-gray-900 text-gray-400'}`}>
+                <p className="text-sm">© 2026 Dispensar by Rizon Labs. Built for the modern pharmacy.</p>
             </div>
         </div>
     );

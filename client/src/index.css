@@ -1,5 +1,16 @@
 @import 'tailwindcss';
 
+/* Dark mode configuration */
+@supports (selector(:has(*))) {
+  :root {
+    color-scheme: light dark;
+  }
+  
+  html.dark {
+    color-scheme: dark;
+  }
+}
+
 /* Hide scrollbar for Chrome, Safari, and Opera */
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
@@ -17,6 +28,11 @@
 
 .bgImage {
   background: rgb(4, 4, 20);
+}
+
+/* Dark mode background image */
+html.dark .bgImage {
+  background: rgb(17, 24, 39);
 }
 
 @keyframes blob {
