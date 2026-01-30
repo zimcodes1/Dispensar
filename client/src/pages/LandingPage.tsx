@@ -166,6 +166,62 @@ function Home() {
                 </div>
             </div>
 
+            {/* Pricing Section */}
+            <div className="py-20 max-sm:py-12 px-6 max-sm:px-4 bg-white">
+                <div className="max-w-6xl mx-auto text-center mb-12">
+                    <h2 className="text-4xl max-sm:text-2xl font-bold text-gray-900">Simple, transparent pricing</h2>
+                    <p className="text-gray-600 mt-4 max-w-2xl mx-auto">Choose a plan that fits your pharmacy — scale as you grow. No hidden fees, cancel anytime.</p>
+                </div>
+
+                <div className="max-w-6xl mx-auto grid grid-cols-3 max-sm:grid-cols-1 gap-8">
+                    {/* Free Plan */}
+                    <div className="border border-gray-200 rounded-2xl p-8 text-left bg-gray-50">
+                        <div className="flex items-center justify-between mb-4">
+                            <h3 className="text-xl font-bold text-gray-900">Free</h3>
+                            <span className="text-sm text-green-600 font-semibold">For small pharmacies</span>
+                        </div>
+                        <div className="text-3xl font-extrabold text-gray-900 mb-4">$0<span className="text-base font-medium text-gray-600">/mo</span></div>
+                        <ul className="space-y-2 text-gray-600 mb-6">
+                            <li>Basic inventory management</li>
+                            <li>Billing & receipts</li>
+                            <li>Email support</li>
+                        </ul>
+                        <Link to="/signup"><button className="w-full py-3 rounded-lg bg-white border border-gray-300 text-gray-900 font-bold hover:shadow">Get Started</button></Link>
+                    </div>
+
+                    {/* Standard Plan */}
+                    <div className="border-2 border-emerald-400 rounded-2xl p-8 text-left bg-linear-to-r from-emerald-50 to-white shadow-lg">
+                        <div className="flex items-center justify-between mb-4">
+                            <h3 className="text-xl font-bold text-gray-900">Standard</h3>
+                            <span className="text-sm text-emerald-600 font-semibold">Most popular</span>
+                        </div>
+                        <div className="text-4xl font-extrabold text-gray-900 mb-4">$29<span className="text-base font-medium text-gray-600">/mo</span></div>
+                        <ul className="space-y-2 text-gray-700 mb-6">
+                            <li>All Free features</li>
+                            <li>Automated reorder alerts</li>
+                            <li>E-prescription integration</li>
+                            <li>Priority support</li>
+                        </ul>
+                        <Link to="/signup"><button className="w-full py-3 rounded-lg bg-emerald-400 text-gray-900 font-bold hover:shadow-lg">Start Free Trial</button></Link>
+                    </div>
+
+                    {/* Enterprise Plan */}
+                    <div className="border border-gray-200 rounded-2xl p-8 text-left bg-white">
+                        <div className="flex items-center justify-between mb-4">
+                            <h3 className="text-xl font-bold text-gray-900">Enterprise</h3>
+                            <span className="text-sm text-slate-500 font-medium">Custom for chains</span>
+                        </div>
+                        <div className="text-3xl font-extrabold text-gray-900 mb-4">Custom</div>
+                        <ul className="space-y-2 text-gray-600 mb-6">
+                            <li>Multi-store management</li>
+                            <li>Dedicated account manager</li>
+                            <li>Custom integrations & onboarding</li>
+                        </ul>
+                        <Link to="/contact"><button className="w-full py-3 rounded-lg border-2 border-emerald-400 text-emerald-400 font-bold hover:bg-emerald-50">Contact Sales</button></Link>
+                    </div>
+                </div>
+            </div>
+
             {/* Benefits Section */}
             <div className="py-20 max-sm:py-12 px-6 max-sm:px-4 bg-gray-50">
                 <div className="max-w-6xl mx-auto grid grid-cols-2 max-sm:grid-cols-1 gap-12 max-sm:gap-8 items-center">
@@ -191,8 +247,101 @@ function Home() {
                             </li>
                         </ul>
                     </div>
-                    <div className="bg-gray-100 p-8 rounded-2xl shadow-lg">
+                    <div className="p-8 rounded-2xl shadow-lg">
                         <img src="/images/dashboard.png" alt="Analytics" className="w-full rounded-lg" />
+                    </div>
+                </div>
+            </div>
+
+            {/* Workflows Section */}
+            <div className="py-20 max-sm:py-12 px-6 max-sm:px-4 bg-gray-100">
+                <div className="max-w-6xl mx-auto">
+                    <div className="text-center mb-16">
+                        <h2 className="text-4xl max-sm:text-2xl font-bold text-gray-900 mb-4">Flexible Workflows for Every Pharmacy</h2>
+                        <p className="text-gray-600 max-w-2xl mx-auto">Dispensar adapts to your pharmacy's unique operational structure—whether you're running a solo operation or a complex multi-person workflow.</p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-sm:gap-6">
+                        {/* Single Worker Workflow */}
+                        <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105 flex flex-col">
+                            <div className="flex items-center justify-center w-14 h-14 bg-blue-100 rounded-xl mb-6">
+                                <svg className="w-7 h-7 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                                </svg>
+                            </div>
+                            <h3 className="text-2xl font-bold text-gray-900 mb-3">Single Worker</h3>
+                            <p className="text-gray-600 mb-6">Perfect for solo pharmacists or small operations where one person handles all tasks—billing, payments, and dispensing.</p>
+                            <div className="space-y-2 mb-6">
+                                <div className="flex items-center gap-2 text-gray-700">
+                                    <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                                    <span className="text-sm">Simplified operations</span>
+                                </div>
+                                <div className="flex items-center gap-2 text-gray-700">
+                                    <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                                    <span className="text-sm">Faster processing</span>
+                                </div>
+                                <div className="flex items-center gap-2 text-gray-700">
+                                    <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                                    <span className="text-sm">Complete control</span>
+                                </div>
+                            </div>
+                            <button className="mt-auto w-full py-2 px-4 rounded-lg bg-blue-50 text-blue-600 font-semibold hover:bg-blue-100 transition">Learn More</button>
+                        </div>
+
+                        {/* Billing → Payment → Dispense Workflow */}
+                        <div className="bg-white rounded-2xl p-8 border-2 border-emerald-400 shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105 flex flex-col">
+                            <div className="flex items-center justify-center w-14 h-14 bg-emerald-100 rounded-xl mb-6">
+                                <svg className="w-7 h-7 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                    <path d="M13 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V9" />
+                                    <polyline points="13 5 13 9 17 9" />
+                                    <path d="M9 17L15 11" />
+                                </svg>
+                            </div>
+                            <h3 className="text-2xl font-bold text-gray-900 mb-3">Billing → Payment → Dispense</h3>
+                            <p className="text-gray-600 mb-6">Structured workflow where one staff member bills, another collects payment, and a third dispenses medication—ideal for busier pharmacies.</p>
+                            <div className="space-y-2 mb-6">
+                                <div className="flex items-center gap-2 text-gray-700">
+                                    <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                                    <span className="text-sm">Clear role separation</span>
+                                </div>
+                                <div className="flex items-center gap-2 text-gray-700">
+                                    <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                                    <span className="text-sm">Improved accuracy</span>
+                                </div>
+                                <div className="flex items-center gap-2 text-gray-700">
+                                    <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                                    <span className="text-sm">Higher throughput</span>
+                                </div>
+                            </div>
+                            <button className="mt-auto w-full py-2 px-4 rounded-lg bg-emerald-50 text-emerald-600 font-semibold hover:bg-emerald-100 transition">Learn More</button>
+                        </div>
+
+                        {/* Billing → Payment (Biller as Dispenser) Workflow */}
+                        <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105 flex flex-col">
+                            <div className="flex items-center justify-center w-14 h-14 bg-purple-100 rounded-xl mb-6">
+                                <svg className="w-7 h-7 text-purple-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                                    <path d="M18 16h6M21 13v6" />
+                                </svg>
+                            </div>
+                            <h3 className="text-2xl font-bold text-gray-900 mb-3">Billing → Payment with Dual Roles</h3>
+                            <p className="text-gray-600 mb-6">Hybrid workflow where one staff member bills and handles payment collection, while another dispenses medication—balancing efficiency and specialization.</p>
+                            <div className="space-y-2 mb-6">
+                                <div className="flex items-center gap-2 text-gray-700">
+                                    <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                                    <span className="text-sm">Flexible role assignment</span>
+                                </div>
+                                <div className="flex items-center gap-2 text-gray-700">
+                                    <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                                    <span className="text-sm">Balanced workload</span>
+                                </div>
+                                <div className="flex items-center gap-2 text-gray-700">
+                                    <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                                    <span className="text-sm">Cost-effective staffing</span>
+                                </div>
+                            </div>
+                            <button className="mt-auto w-full py-2 px-4 rounded-lg bg-purple-50 text-purple-600 font-semibold hover:bg-purple-100 transition">Learn More</button>
+                        </div>
                     </div>
                 </div>
             </div>
