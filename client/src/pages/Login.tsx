@@ -14,8 +14,8 @@ function Login() {
                 </div>
                 {/* Login Form */}
                 <form className="flex flex-col w-full px-10 mt-5">
-                    <input type="text" placeholder="Employee ID" className="p-2 border border-gray-300 bg-gray-100 rounded-md mb-4" />
-                    <input type="password" placeholder="Password" className="p-2 border border-gray-300 bg-gray-100 rounded-md mb-4" />
+                    <input type="text" placeholder="Employee ID" className="p-2 border border-gray-300 bg-gray-100 text-gray-600 rounded-md mb-4" />
+                    <input type="password" placeholder="Password" className="p-2 border border-gray-300 bg-gray-100 text-gray-600 rounded-md mb-4" />
                     <button type="submit" className="font-bold transition-all duration-300 bg-[#5fdf85] text-white p-2 rounded-md hover:bg-white border-2 border-green-500 hover:text-gray-900">Log In <i className="bx bx-right-arrow-alt"></i></button>
                 </form>
                 {/*Forgotten Password */}

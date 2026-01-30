@@ -58,3 +58,12 @@ html.dark .bgImage {
 .animation-delay-4000 {
   animation-delay: 4s;
 }
+
+@layer base {
+  input {
+    @apply text-gray-600
+  }
+  select {
+    @apply text-gray-600
+  }
+}
