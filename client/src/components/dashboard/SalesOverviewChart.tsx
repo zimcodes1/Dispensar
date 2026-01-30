@@ -54,10 +54,10 @@ const SalesOverviewChart: React.FC = () => {
           22000, 26000, 23000, 28000, 30000, 35000
         ],
         fill: true, // This creates the area chart
-        backgroundColor: 'rgba(54, 162, 235, 0.2)', // Light blue fill
-        borderColor: 'rgb(54, 162, 235)', // Solid blue line
+        backgroundColor: 'rgba(54, 235, 162, 0.2)', // Light blue fill
+        borderColor: 'rgb(54, 235, 162)', // Solid blue line
         tension: 0.4, // Makes the line smooth
-        pointBackgroundColor: 'rgb(54, 162, 235)',
+        pointBackgroundColor: 'rgb(54, 235, 162)',
         pointRadius: 4,
         pointHoverRadius: 8,
       },
@@ -143,9 +143,8 @@ const SalesOverviewChart: React.FC = () => {
               }
             },
             y: {
-              beginAtZero: true,
               grid: {
-                color: '#e7e7e7', // Lighten y-axis grid lines
+                display: false, // hide y-axis grid lines
               },
               ticks: {
                 color: '#555',
