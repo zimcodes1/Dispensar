@@ -55,7 +55,7 @@ export default function RegisterDrugModal({ onClose, onSubmit, initialData, isEd
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
             <div className="bg-white w-full max-w-2xl max-h-[90vh] rounded-lg shadow-lg flex flex-col">
                 {/* Modal Header */}
-                <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 flex-shrink-0">
+                <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 shrink-0">
                     <h3 className="text-lg font-semibold text-gray-900">
                         {isEdit ? 'Edit Drug Details' : 'Register New Drug'}
                     </h3>
@@ -200,7 +200,7 @@ export default function RegisterDrugModal({ onClose, onSubmit, initialData, isEd
                         </div>
                     </div>
                     </div>
-                    
+
                     {/* Footer */}
                     <div className="px-6 pb-6 flex justify-end gap-3">
                         <button

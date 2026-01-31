@@ -11,7 +11,7 @@ interface Employee {
 
 function EmployeeActions({ employeeId }: { employeeId: string }) {
     const [isOpen, setIsOpen] = useState(false)
-    
+    employeeId = employeeId; // to avoid unused variable warning
     return (
         <div className="relative">
             <button 
