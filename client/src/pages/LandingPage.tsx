@@ -1,9 +1,24 @@
 import Topbar from "../components/Home/Topbar"
 import { Link } from "react-router-dom";
 import { useDarkMode } from "../utils/useDarkMode";
+import { motion } from "framer-motion";
 
 function Home() {
     const { isDarkMode } = useDarkMode() as { isDarkMode: boolean };
+
+    const fadeInUp = {
+        initial: { opacity: 0, y: 60 },
+        animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.6 }
+    }
+
+    const staggerContainer = {
+        animate: {
+            transition: {
+                staggerChildren: 0.1
+            }
+        }
+    }
 
     return (
         <div className={`w-full min-h-screen ${isDarkMode ? 'dark' : ''}`}>
@@ -23,15 +38,20 @@ function Home() {
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[80vh] max-sm:min-h-auto">
 
                             {/* Left Content */}
-                            <div className="flex flex-col justify-center space-y-6 max-sm:space-y-4">
+                            <motion.div 
+                                initial="initial"
+                                animate="animate"
+                                variants={staggerContainer}
+                                className="flex flex-col justify-center space-y-6 max-sm:space-y-4"
+                            >
                                 {/* Badge */}
-                                <div className="inline-flex items-center gap-2 w-fit px-4 py-2 rounded-full bg-emerald-900/50 border border-emerald-500/50 backdrop-blur-sm">
+                                <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 w-fit px-4 py-2 rounded-full bg-emerald-900/50 border border-emerald-500/50 backdrop-blur-sm">
                                     <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                                     <p className="text-sm font-medium text-emerald-300">The Modern Pharmacy Solution</p>
-                                </div>
+                                </motion.div>
 
                                 {/* Main Heading */}
-                                <div>
+                                <motion.div variants={fadeInUp}>
                                     <h1 className="text-5xl max-sm:text-3xl font-bold text-white leading-tight mb-4">
                                         Pharmacy Management
                                         <span className="block text-transparent bg-clip-text bg-linear-to-r from-emerald-300 via-green-300 to-cyan-300">Simplified & Powerful</span>
@@ -39,24 +59,32 @@ function Home() {
                                     <p className="text-lg max-sm:text-base text-slate-300 max-w-xl leading-relaxed">
                                         Manage inventory, process prescriptions, handle billing, and generate insightful reports—all in one intuitive platform built for modern pharmacies.
                                     </p>
-                                </div>
+                                </motion.div>
 
                                 {/* CTA Buttons */}
-                                <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                                <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 pt-4">
                                     <Link to='/signup'>
-                                        <button className="px-8 py-4 max-sm:w-full bg-linear-to-r from-emerald-400 to-green-500 text-gray-900 font-bold rounded-lg transition duration-300 hover:shadow-2xl hover:shadow-emerald-500/50 hover:scale-105 transform">
+                                        <motion.button 
+                                            whileHover={{ scale: 1.05 }}
+                                            whileTap={{ scale: 0.95 }}
+                                            className="px-8 py-4 max-sm:w-full bg-linear-to-r from-emerald-400 to-green-500 text-gray-900 font-bold rounded-lg transition duration-300 hover:shadow-2xl hover:shadow-emerald-500/50"
+                                        >
                                             Start Free Trial
-                                        </button>
+                                        </motion.button>
                                     </Link>
                                     <Link to='/login'>
-                                        <button className="px-8 py-4 max-sm:w-full border-2 border-slate-400 text-white font-bold rounded-lg transition duration-300 hover:bg-slate-800 hover:border-emerald-400 backdrop-blur-sm">
+                                        <motion.button 
+                                            whileHover={{ scale: 1.05 }}
+                                            whileTap={{ scale: 0.95 }}
+                                            className="px-8 py-4 max-sm:w-full border-2 border-slate-400 text-white font-bold rounded-lg transition duration-300 hover:bg-slate-800 hover:border-emerald-400 backdrop-blur-sm"
+                                        >
                                             Sign In
-                                        </button>
+                                        </motion.button>
                                     </Link>
-                                </div>
+                                </motion.div>
 
                                 {/* Trust indicators */}
-                                <div className="pt-6 space-y-3 text-sm text-slate-300">
+                                <motion.div variants={fadeInUp} className="pt-6 space-y-3 text-sm text-slate-300">
                                     <div className="flex items-center gap-2">
                                         <svg className="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
                                         <span>HIPAA Compliant & Secure</span>
@@ -65,16 +93,26 @@ function Home() {
                                         <svg className="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
                                         <span>No credit card required</span>
                                     </div>
-                                </div>
-                            </div>
+                                </motion.div>
+                            </motion.div>
 
                             {/* Right Visual Section */}
-                            <div className="relative hidden lg:flex items-center justify-center">
+                            <motion.div 
+                                initial={{ opacity: 0, x: 60 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ duration: 0.8, delay: 0.2 }}
+                                className="relative hidden lg:flex items-center justify-center"
+                            >
                                 {/* Floating cards background effect */}
                                 <div className="relative w-full h-96 max-sm:h-64">
 
                                     {/* Main Dashboard Preview - Center */}
-                                    <div className="absolute inset-0 flex items-center justify-center">
+                                    <motion.div 
+                                        initial={{ scale: 0.8, opacity: 0 }}
+                                        animate={{ scale: 1, opacity: 1 }}
+                                        transition={{ duration: 0.6, delay: 0.4 }}
+                                        className="absolute inset-0 flex items-center justify-center"
+                                    >
                                         <div className="w-full h-full bg-linear-to-br from-slate-800 to-slate-900 rounded-2xl border border-slate-700 shadow-2xl overflow-hidden transform hover:scale-105 transition duration-500">
                                             <img
                                                 src="/images/hero.jpg"
@@ -83,24 +121,36 @@ function Home() {
                                             />
                                             <div className="absolute inset-0 bg-linear-to-t from-slate-900/60 to-transparent"></div>
                                         </div>
-                                    </div>
+                                    </motion.div>
 
                                     {/* Floating card 1 - Top Left */}
-                                    <div className="absolute -top-6 -left-6 w-32 h-32 bg-linear-to-br from-emerald-500/20 to-green-600/20 rounded-xl border border-emerald-400/50 backdrop-blur-lg p-4 shadow-xl transform hover:scale-110 transition duration-500 hidden xl:flex flex-col justify-center items-center text-center">
+                                    <motion.div 
+                                        initial={{ opacity: 0, x: -50, y: -50 }}
+                                        animate={{ opacity: 1, x: 0, y: 0 }}
+                                        transition={{ duration: 0.6, delay: 0.6 }}
+                                        whileHover={{ scale: 1.1 }}
+                                        className="absolute -top-6 -left-6 w-32 h-32 bg-linear-to-br from-emerald-500/20 to-green-600/20 rounded-xl border border-emerald-400/50 backdrop-blur-lg p-4 shadow-xl hidden xl:flex flex-col justify-center items-center text-center"
+                                    >
                                         <div className="text-2xl font-bold text-emerald-300">99.9%</div>
                                         <div className="text-xs text-slate-300 mt-2">Uptime Guaranteed</div>
-                                    </div>
+                                    </motion.div>
 
                                     {/* Floating card 2 - Bottom Right */}
-                                    <div className="absolute -bottom-6 -right-6 w-40 h-28 bg-linear-to-br from-cyan-500/20 to-blue-600/20 rounded-xl border border-cyan-400/50 backdrop-blur-lg p-4 shadow-xl transform hover:scale-110 transition duration-500 hidden xl:flex flex-col justify-between">
+                                    <motion.div 
+                                        initial={{ opacity: 0, x: 50, y: 50 }}
+                                        animate={{ opacity: 1, x: 0, y: 0 }}
+                                        transition={{ duration: 0.6, delay: 0.8 }}
+                                        whileHover={{ scale: 1.1 }}
+                                        className="absolute -bottom-6 -right-6 w-40 h-28 bg-linear-to-br from-cyan-500/20 to-blue-600/20 rounded-xl border border-cyan-400/50 backdrop-blur-lg p-4 shadow-xl hidden xl:flex flex-col justify-between"
+                                    >
                                         <div className="text-xs font-semibold text-cyan-300">Real-Time Analytics</div>
                                         <div className="flex gap-2">
                                             <div className="flex-1 h-8 bg-linear-to-r from-emerald-400 to-green-500 rounded opacity-70"></div>
                                             <div className="flex-1 h-8 bg-linear-to-r from-cyan-400 to-blue-500 rounded opacity-50"></div>
                                         </div>
-                                    </div>
+                                    </motion.div>
                                 </div>
-                            </div>
+                            </motion.div>
                         </div>
                     </div>
 
@@ -115,58 +165,45 @@ function Home() {
 
             {/* Features Section */}
             <div className={`py-20 max-sm:py-12 px-6 max-sm:px-4 ${isDarkMode ? 'bg-gray-900' : 'bg-gray-100'}`}>
-                <h2 className={`text-4xl max-sm:text-2xl font-bold text-center mb-4 ${isDarkMode ? 'text-gray-50' : 'text-gray-900'}`}>Powerful Features for Modern Pharmacies</h2>
-                <p className={`text-center mb-16 max-sm:mb-10 max-w-2xl mx-auto ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Everything you need to run your pharmacy efficiently and compliantly</p>
+                <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.6 }}
+                >
+                    <h2 className={`text-4xl max-sm:text-2xl font-bold text-center mb-4 ${isDarkMode ? 'text-gray-50' : 'text-gray-900'}`}>Powerful Features for Modern Pharmacies</h2>
+                    <p className={`text-center mb-16 max-sm:mb-10 max-w-2xl mx-auto ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Everything you need to run your pharmacy efficiently and compliantly</p>
+                </motion.div>
 
-                <div className="grid grid-cols-3 max-sm:grid-cols-1 gap-8 max-sm:gap-6 max-w-6xl mx-auto">
-                    <div className={`border p-6 rounded-2xl hover:shadow-lg transition duration-300 ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
-                        <div className="w-12 h-12 bg-green-400 rounded-xl flex items-center justify-center mb-4">
-                            <svg className="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>
-                        </div>
-                        <h3 className={`text-xl font-bold mb-2 ${isDarkMode ? 'text-gray-50' : 'text-gray-900'}`}>Real-Time Inventory</h3>
-                        <p className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>Track stock levels, expiration dates, and lot numbers with automatic reorder alerts</p>
-                    </div>
-
-                    <div className={`border p-6 rounded-2xl hover:shadow-lg transition duration-300 ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
-                        <div className="w-12 h-12 bg-green-400 rounded-xl flex items-center justify-center mb-4">
-                            <svg className="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-                        </div>
-                        <h3 className={`text-xl font-bold mb-2 ${isDarkMode ? 'text-gray-50' : 'text-gray-900'}`}>E-Prescription Integration</h3>
-                        <p className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>Seamlessly receive and process electronic prescriptions with automated inventory checks</p>
-                    </div>
-
-                    <div className={`border p-6 rounded-2xl hover:shadow-lg transition duration-300 ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
-                        <div className="w-12 h-12 bg-green-400 rounded-xl flex items-center justify-center mb-4">
-                            <svg className="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
-                        </div>
-                        <h3 className={`text-xl font-bold mb-2 ${isDarkMode ? 'text-gray-50' : 'text-gray-900'}`}>Compliance & Security</h3>
-                        <p className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>HIPAA-compliant with controlled substance tracking and role-based access control</p>
-                    </div>
-
-                    <div className={`border p-6 rounded-2xl hover:shadow-lg transition duration-300 ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
-                        <div className="w-12 h-12 bg-green-400 rounded-xl flex items-center justify-center mb-4">
-                            <svg className="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
-                        </div>
-                        <h3 className={`text-xl font-bold mb-2 ${isDarkMode ? 'text-gray-50' : 'text-gray-900'}`}>Purchase Management</h3>
-                        <p className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>Create and track purchase orders with electronic ordering and invoice reconciliation</p>
-                    </div>
-
-                    <div className={`border p-6 rounded-2xl hover:shadow-lg transition duration-300 ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
-                        <div className="w-12 h-12 bg-green-400 rounded-xl flex items-center justify-center mb-4">
-                            <svg className="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
-                        </div>
-                        <h3 className={`text-xl font-bold mb-2 ${isDarkMode ? 'text-gray-50' : 'text-gray-900'}`}>Analytics & Reports</h3>
-                        <p className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>Comprehensive reports on inventory valuation, turnover, and usage trends</p>
-                    </div>
-
-                    <div className={`border p-6 rounded-2xl hover:shadow-lg transition duration-300 ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
-                        <div className="w-12 h-12 bg-green-400 rounded-xl flex items-center justify-center mb-4">
-                            <svg className="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" /></svg>
-                        </div>
-                        <h3 className={`text-xl font-bold mb-2 ${isDarkMode ? 'text-gray-50' : 'text-gray-900'}`}>Cloud-Based Access</h3>
-                        <p className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>Access your pharmacy data securely from anywhere with multi-store management</p>
-                    </div>
-                </div>
+                <motion.div 
+                    initial="initial"
+                    whileInView="animate"
+                    viewport={{ once: true, margin: "-100px" }}
+                    variants={staggerContainer}
+                    className="grid grid-cols-3 max-sm:grid-cols-1 gap-8 max-sm:gap-6 max-w-6xl mx-auto"
+                >
+                    {[
+                        { icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2', title: 'Real-Time Inventory', desc: 'Track stock levels, expiration dates, and lot numbers with automatic reorder alerts' },
+                        { icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z', title: 'E-Prescription Integration', desc: 'Seamlessly receive and process electronic prescriptions with automated inventory checks' },
+                        { icon: 'M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z', title: 'Compliance & Security', desc: 'HIPAA-compliant with controlled substance tracking and role-based access control' },
+                        { icon: 'M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z', title: 'Purchase Management', desc: 'Create and track purchase orders with electronic ordering and invoice reconciliation' },
+                        { icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z', title: 'Analytics & Reports', desc: 'Comprehensive reports on inventory valuation, turnover, and usage trends' },
+                        { icon: 'M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z', title: 'Cloud-Based Access', desc: 'Access your pharmacy data securely from anywhere with multi-store management' }
+                    ].map((feature, i) => (
+                        <motion.div 
+                            key={i}
+                            variants={fadeInUp}
+                            whileHover={{ y: -8 }}
+                            className={`border p-6 rounded-2xl hover:shadow-lg transition duration-300 ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}
+                        >
+                            <div className="w-12 h-12 bg-green-400 rounded-xl flex items-center justify-center mb-4">
+                                <svg className="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={feature.icon} /></svg>
+                            </div>
+                            <h3 className={`text-xl font-bold mb-2 ${isDarkMode ? 'text-gray-50' : 'text-gray-900'}`}>{feature.title}</h3>
+                            <p className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>{feature.desc}</p>
+                        </motion.div>
+                    ))}
+                </motion.div>
             </div>
 
             {/* Pricing Section */}
