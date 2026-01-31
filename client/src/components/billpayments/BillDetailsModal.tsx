@@ -27,10 +27,10 @@ export default function BillDetailsModal({
     const total = items.reduce((sum, item) => sum + item.totalPrice, 0)
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-            <div className="bg-white w-full max-w-2xl rounded-lg shadow-lg">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
+            <div className="bg-white w-full max-w-2xl max-h-[90vh] rounded-lg shadow-lg flex flex-col">
                 {/* Modal Header */}
-                <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200">
+                <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 flex-shrink-0">
                     <div>
                         <h3 className="text-lg font-semibold text-gray-900">Bill Details</h3>
                         <p className="text-sm text-gray-600 mt-1">Dispense Code: <span className="font-mono font-medium">{dispenseCode}</span></p>
@@ -58,7 +58,8 @@ export default function BillDetailsModal({
                 </div>
 
                 {/* Items List */}
-                <div className="px-6 py-4 max-h-[400px] overflow-y-auto">
+                <div className="flex-1 overflow-y-auto table-scroll">
+                    <div className="px-6 py-4">
                     <table className="w-full">
                         <thead>
                             <tr className="text-sm text-gray-600">
@@ -79,10 +80,11 @@ export default function BillDetailsModal({
                             ))}
                         </tbody>
                     </table>
+                    </div>
                 </div>
 
                 {/* Footer with Total */}
-                <div className="px-6 py-4 border-t border-gray-200 bg-gray-50">
+                <div className="px-6 py-4 border-t border-gray-200 bg-gray-50 flex-shrink-0">
                     <div className="flex justify-between items-center">
                         <div className="text-gray-600">
                             Total Items: <span className="font-medium text-gray-900">{items.length}</span>

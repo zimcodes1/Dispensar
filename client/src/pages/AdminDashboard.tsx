@@ -5,10 +5,11 @@ import SalesOverview from "../components/AdminDashboard/SalesOverview"
 import InventoryStatus from "../components/AdminDashboard/InventoryStatus"
 import Topbar from "../components/dashboard/Topbar"
 import SideNav from "../components/SideNav"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import AddEmployeeModal from "../components/AdminDashboard/AddEmployeeModal"
 
 export default function AdminDashboard() {
+    const [showAddEmployee, setShowAddEmployee] = useState(false)
     useEffect(()=>{document.title = 'Admin Dashboard | Dispensar'})
     return (
         <>
@@ -45,34 +46,33 @@ export default function AdminDashboard() {
                     </div>
 
                     {/* Charts Section */}
-                    <div className="grid grid-cols-3 gap-6 mb-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
                         {/* Revenue Chart - Spans 2 columns */}
-                        <div className="col-span-2 max-sm:col-span-full">
+                        <div className="lg:col-span-2">
                             <RevenueChart />
                         </div>
                         {/* Sales Distribution */}
-                        <div className="col-span-1 max-sm:col-span-full">
+                        <div className="lg:col-span-1">
                             <SalesOverview />
                         </div>
                     </div>
 
                     {/* Bottom Section */}
-                    <div className="grid grid-cols-5 gap-6 mb-6 max-sm:mb-4">
+                    <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 mb-6 max-sm:mb-4">
                         {/* Employee List - Spans 3 columns */}
-                        <div className="col-span-3 max-sm:col-span-full overflow-x-scroll">
-                        <div className="w-[600px]">
-                            <EmployeeList />
-                            {/* Add Employee Modal - For demonstration purposes */}
-                            <AddEmployeeModal onClose={()=>{}} />
-                        </div>
+                        <div className="lg:col-span-3">
+                            <EmployeeList onAddEmployee={() => setShowAddEmployee(true)} />
                         </div>
                         {/* Inventory Status - Spans 2 columns */}
-                        <div className="col-span-2 max-sm:col-span-full">
+                        <div className="lg:col-span-2">
                             <InventoryStatus />
                         </div>
                     </div>
                 </div>
             </div>
+            
+            {/* Add Employee Modal */}
+            {showAddEmployee && <AddEmployeeModal onClose={() => setShowAddEmployee(false)} />}
         </>
     )
 }

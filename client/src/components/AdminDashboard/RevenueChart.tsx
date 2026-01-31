@@ -1,4 +1,5 @@
 import { Line } from 'react-chartjs-2'
+import { memo } from 'react'
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -23,7 +24,7 @@ ChartJS.register(
     Filler
 )
 
-export default function RevenueChart() {
+function RevenueChart() {
     const data = {
         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
         datasets: [
@@ -78,3 +79,5 @@ export default function RevenueChart() {
         </div>
     )
 }
+
+export default memo(RevenueChart)

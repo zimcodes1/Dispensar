@@ -38,6 +38,8 @@ const demoItems: InventoryItem[] = [
 ]
 
 export default function InventoryStatus() {
+    const lowStockCount = demoItems.length
+    
     return (
         <div className="bg-white p-6 rounded-xl shadow-sm">
             <div className="flex justify-between items-center mb-6">
@@ -45,7 +47,9 @@ export default function InventoryStatus() {
                     <h3 className="text-lg font-semibold text-gray-900">Low Stock Alert</h3>
                     <p className="text-sm text-gray-600">Items below reorder threshold</p>
                 </div>
-                <button className="text-green-600 hover:text-green-700 text-sm font-medium">View All</button>
+                <button className="text-green-600 hover:text-green-700 text-sm font-medium">
+                    View All ({lowStockCount})
+                </button>
             </div>
 
             <div className="space-y-4">
@@ -68,7 +72,7 @@ export default function InventoryStatus() {
                         </div>
 
                         <div className="ml-4 w-24">
-                            <div className="h-2 bg-gray-200 rounded-full">
+                            <div className="h-2 bg-gray-200 rounded-full relative">
                                 <div 
                                     className={`h-full rounded-full ${
                                         (item.stock / item.threshold) < 0.3 ? 'bg-red-500' : 'bg-yellow-500'
@@ -76,6 +80,9 @@ export default function InventoryStatus() {
                                     style={{ width: `${(item.stock / item.threshold) * 100}%` }}
                                 ></div>
                             </div>
+                            <p className="text-xs text-gray-500 mt-1 text-center">
+                                {Math.round((item.stock / item.threshold) * 100)}%
+                            </p>
                         </div>
                     </div>
                 ))}

@@ -23,72 +23,82 @@ export default function SuppliesList({ supplies, onEdit, onDelete }: SuppliesLis
     const [selectedSupply, setSelectedSupply] = useState<Supply | null>(null)
 
     return (
-        <div className="overflow-x-auto">
-            <table className="min-w-full table-auto">
-                <thead className="bg-gray-50">
+        <div className="overflow-x-auto table-scroll">
+            <table className="w-full min-w-[900px]">
+                <thead className="bg-gray-50 border-b border-gray-200">
                     <tr>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th className="py-3 px-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                             Name
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th className="py-3 px-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                             Category
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th className="py-3 px-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                             Quantity
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Price (₦)
+                        <th className="py-3 px-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                            Price
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th className="py-3 px-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                             Status
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th className="py-3 px-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                             Supplier
                         </th>
-                        <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th className="py-3 px-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                             Actions
                         </th>
                     </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                     {supplies.map((supply) => (
-                        <tr key={supply.id} className="hover:bg-gray-50">
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                <div className="font-medium">{supply.name}</div>
+                        <tr key={supply.id} className="hover:bg-gray-50 transition">
+                            <td className="py-3 px-4">
+                                <div className="text-sm font-medium text-gray-900">{supply.name}</div>
                                 {supply.location && (
-                                    <div className="text-gray-500 text-xs">
-                                        Location: {supply.location}
+                                    <div className="text-xs text-gray-500">
+                                        {supply.location}
                                     </div>
                                 )}
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                {supply.category}
+                            <td className="py-3 px-4">
+                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                    {supply.category}
+                                </span>
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                {supply.quantity} {supply.unit}
+                            <td className="py-3 px-4">
+                                <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                                    supply.quantity === 0 ? 'bg-red-100 text-red-800' :
+                                    supply.quantity <= supply.reorderLevel ? 'bg-yellow-100 text-yellow-800' :
+                                    'bg-green-100 text-green-800'
+                                }`}>
+                                    {supply.quantity} {supply.unit}
+                                </span>
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                {supply.price.toLocaleString()}
+                            <td className="py-3 px-4 text-sm font-medium text-gray-900">
+                                ₦{supply.price.toLocaleString()}
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap">
+                            <td className="py-3 px-4">
                                 <StockStatus quantity={supply.quantity} reorderLevel={supply.reorderLevel} />
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            <td className="py-3 px-4 text-sm text-gray-700">
                                 {supply.supplier}
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                <div className="flex gap-2">
+                            <td className="py-3 px-4">
+                                <div className="flex items-center gap-2">
                                     <button
                                         onClick={() => onEdit(supply)}
-                                        className="text-blue-600 hover:text-blue-900"
+                                        className="text-blue-600 hover:text-blue-800 p-1 hover:bg-blue-50 rounded transition"
+                                        title="Edit"
                                     >
-                                        <i className="bx bx-edit text-xl"></i>
+                                        <i className="bx bx-edit text-lg"></i>
                                     </button>
                                     <button
                                         onClick={() => setSelectedSupply(supply)}
-                                        className="text-gray-600 hover:text-gray-900"
+                                        className="text-gray-600 hover:text-gray-800 p-1 hover:bg-gray-50 rounded transition"
+                                        title="View Details"
                                     >
-                                        <i className="bx bx-info-circle text-xl"></i>
+                                        <i className="bx bx-info-circle text-lg"></i>
                                     </button>
                                     <button
                                         onClick={() => {
@@ -96,9 +106,10 @@ export default function SuppliesList({ supplies, onEdit, onDelete }: SuppliesLis
                                                 onDelete(supply.id)
                                             }
                                         }}
-                                        className="text-red-600 hover:text-red-900"
+                                        className="text-red-600 hover:text-red-800 p-1 hover:bg-red-50 rounded transition"
+                                        title="Delete"
                                     >
-                                        <i className="bx bx-trash text-xl"></i>
+                                        <i className="bx bx-trash text-lg"></i>
                                     </button>
                                 </div>
                             </td>
@@ -106,6 +117,16 @@ export default function SuppliesList({ supplies, onEdit, onDelete }: SuppliesLis
                     ))}
                 </tbody>
             </table>
+
+            {supplies.length === 0 && (
+                <div className="text-center py-12">
+                    <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i className="bx bx-package text-3xl text-gray-400"></i>
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2">No supplies found</h3>
+                    <p className="text-sm text-gray-500">Try adjusting your search or filters</p>
+                </div>
+            )}
 
             {/* Supply Details Modal */}
             {selectedSupply && (
@@ -154,23 +175,15 @@ export default function SuppliesList({ supplies, onEdit, onDelete }: SuppliesLis
 }
 
 function StockStatus({ quantity, reorderLevel }: { quantity: number, reorderLevel: number }) {
-    let color = ''
-    let text = ''
-
-    if (quantity === 0) {
-        color = 'bg-red-100 text-red-800'
-        text = 'Out of Stock'
-    } else if (quantity <= reorderLevel) {
-        color = 'bg-yellow-100 text-yellow-800'
-        text = 'Low Stock'
-    } else {
-        color = 'bg-green-100 text-green-800'
-        text = 'In Stock'
-    }
+    const config = quantity === 0 
+        ? { color: 'bg-red-100 text-red-800', text: 'Out of Stock' }
+        : quantity <= reorderLevel
+        ? { color: 'bg-yellow-100 text-yellow-800', text: 'Low Stock' }
+        : { color: 'bg-green-100 text-green-800', text: 'In Stock' }
 
     return (
-        <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${color}`}>
-            {text}
+        <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${config.color}`}>
+            {config.text}
         </span>
     )
 }

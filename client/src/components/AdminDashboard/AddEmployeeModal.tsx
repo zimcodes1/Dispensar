@@ -8,11 +8,11 @@ function AddEmployeeModal({ onClose }: { onClose: () => void }) {
                 if (e.target === e.currentTarget) onClose();
             }}
         >
-            <div className="bg-white w-full max-w-2xl rounded-lg shadow-lg overflow-hidden">
+            <div className="bg-white w-full max-w-2xl max-h-[90vh] rounded-lg shadow-lg flex flex-col">
                 {/* header */}
-                <div className="flex flex-col items-center justify-start px-10 py-5 border-b border-gray-200">
+                <div className="flex flex-col items-center justify-start px-10 py-5 border-b border-gray-200 flex-shrink-0">
                     <h3 className="text-lg font-semibold text-gray-800">Add Employee</h3>     
-                    <form className="w-full space-y-4 mt-4">
+                    <form className="w-full space-y-4 mt-4 flex-1 overflow-y-auto table-scroll">
                         <div>
                             <label className="block text-sm font-medium text-gray-700">Full Name</label>
                             <input 

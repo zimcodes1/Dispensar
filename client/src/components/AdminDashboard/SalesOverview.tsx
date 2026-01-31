@@ -1,9 +1,10 @@
 import { Doughnut } from 'react-chartjs-2'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
+import { memo } from 'react'
 
 ChartJS.register(ArcElement, Tooltip, Legend)
 
-export default function SalesOverview() {
+function SalesOverview() {
     const data = {
         labels: ['Prescription', 'OTC', 'Medical Supplies'],
         datasets: [
@@ -68,3 +69,5 @@ export default function SalesOverview() {
         </div>
     )
 }
+
+export default memo(SalesOverview)

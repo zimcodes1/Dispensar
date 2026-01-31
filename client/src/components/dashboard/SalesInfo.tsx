@@ -18,13 +18,21 @@ function SalesInfo(){
         </div>
 
         <div className="w-full h-[75%] justify-between items-start flex flex-col">
-            <div className="flex flex-col items-center justify-evenly w-full h-[50%] border-b border-green-300">
+            <div className="flex flex-col items-center justify-evenly w-full h-[50%] border-b border-gray-300">
                 <h1 className="text-2xl font-bold text-gray-900">2430+</h1>
                 <p className="text-sm text-gray-800">Drugs Sold</p>
+                <span className="text-xs text-green-600 flex items-center gap-1">
+                    <i className="bx bx-trending-up"></i>
+                    +12.5% vs last week
+                </span>
             </div>
             <div className=" flex flex-col items-center justify-evenly w-full h-[50%]">
                 <h1 className="text-2xl font-bold text-gray-900">₦ 50,000+</h1>
                 <p className="text-sm text-gray-800">Transacted</p>
+                <span className="text-xs text-green-600 flex items-center gap-1">
+                    <i className="bx bx-trending-up"></i>
+                    +8.3% vs last week
+                </span>
             </div>
         </div>
         </div>

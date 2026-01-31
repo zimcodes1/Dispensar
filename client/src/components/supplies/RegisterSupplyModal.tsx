@@ -69,10 +69,10 @@ export default function RegisterSupplyModal({
     }
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-            <div className="bg-white w-full max-w-2xl rounded-lg shadow-lg">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
+            <div className="bg-white w-full max-w-2xl max-h-[90vh] rounded-lg shadow-lg flex flex-col">
                 {/* Modal Header */}
-                <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200">
+                <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 flex-shrink-0">
                     <h3 className="text-lg font-semibold text-gray-900">
                         {isEdit ? 'Edit Medical Supply' : 'Register New Medical Supply'}
                     </h3>
@@ -82,7 +82,8 @@ export default function RegisterSupplyModal({
                 </div>
 
                 {/* Form */}
-                <form onSubmit={handleSubmit} className="p-6">
+                <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto table-scroll">
+                    <div className="p-6">
                     <div className="grid grid-cols-2 gap-4">
                         {/* Supply Name */}
                         <div className="col-span-2">
@@ -238,18 +239,16 @@ export default function RegisterSupplyModal({
                     </div>
 
                     {/* Footer */}
-                    <div className="mt-6 flex justify-end gap-3">
+                    <div className="px-6 pb-6 flex justify-end gap-3">
                         <button
                             type="button"
                             onClick={onClose}
-                            className="px-4 py-2 text-sm text-gray-700 hover:text-gray-900"
-                        >
+                            className="px-4 py-2 text-sm text-gray-700 hover:text-gray-900">
                             Cancel
                         </button>
                         <button
                             type="submit"
-                            className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
-                        >
+                            className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
                             {isEdit ? 'Save Changes' : 'Register Supply'}
                         </button>
                     </div>

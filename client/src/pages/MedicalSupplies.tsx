@@ -45,7 +45,104 @@ interface Supply {
 
 export default function MedicalSupplies() {
     const [showAddModal, setShowAddModal] = useState(false)
-    const [supplies, setSupplies] = useState<Supply[]>([]) // This would be managed by your state management solution
+    const [supplies, setSupplies] = useState<Supply[]>([
+        {
+            id: '1',
+            name: 'Disposable Syringes 5ml',
+            category: 'Injection & Infusion',
+            quantity: 500,
+            price: 50,
+            supplier: 'MedEquip Ltd',
+            reorderLevel: 200,
+            unit: 'pieces',
+            location: 'Storage Room A',
+            description: 'Sterile disposable syringes with needle'
+        },
+        {
+            id: '2',
+            name: 'Surgical Gloves (Medium)',
+            category: 'Personal Protective',
+            quantity: 150,
+            price: 1200,
+            supplier: 'SafetyFirst Supplies',
+            reorderLevel: 100,
+            unit: 'boxes',
+            location: 'Storage Room B',
+            description: 'Latex-free surgical gloves'
+        },
+        {
+            id: '3',
+            name: 'Sterile Gauze Pads 4x4',
+            category: 'Wound Care',
+            quantity: 80,
+            price: 800,
+            supplier: 'MedEquip Ltd',
+            reorderLevel: 100,
+            unit: 'packs',
+            location: 'Storage Room A',
+            description: 'Sterile gauze pads for wound dressing'
+        },
+        {
+            id: '4',
+            name: 'Digital Thermometer',
+            category: 'Diagnostic',
+            quantity: 25,
+            price: 3500,
+            supplier: 'HealthTech Solutions',
+            reorderLevel: 10,
+            unit: 'pieces',
+            location: 'Equipment Room',
+            description: 'Digital oral/rectal thermometer'
+        },
+        {
+            id: '5',
+            name: 'Blood Pressure Monitor',
+            category: 'Diagnostic',
+            quantity: 8,
+            price: 15000,
+            supplier: 'HealthTech Solutions',
+            reorderLevel: 5,
+            unit: 'pieces',
+            location: 'Equipment Room',
+            description: 'Automatic digital BP monitor'
+        },
+        {
+            id: '6',
+            name: 'IV Cannula 18G',
+            category: 'Injection & Infusion',
+            quantity: 0,
+            price: 150,
+            supplier: 'MedEquip Ltd',
+            reorderLevel: 50,
+            unit: 'pieces',
+            location: 'Storage Room A',
+            description: 'Intravenous cannula 18 gauge'
+        },
+        {
+            id: '7',
+            name: 'Surgical Masks (50pcs)',
+            category: 'Personal Protective',
+            quantity: 300,
+            price: 2500,
+            supplier: 'SafetyFirst Supplies',
+            reorderLevel: 150,
+            unit: 'boxes',
+            location: 'Storage Room B',
+            description: '3-ply disposable surgical masks'
+        },
+        {
+            id: '8',
+            name: 'Alcohol Swabs',
+            category: 'Sterilization',
+            quantity: 45,
+            price: 600,
+            supplier: 'MedEquip Ltd',
+            reorderLevel: 50,
+            unit: 'boxes',
+            location: 'Storage Room A',
+            description: '70% isopropyl alcohol prep pads'
+        },
+    ]) // This would be managed by your state management solution
     const [editSupply, setEditSupply] = useState<Supply | null>(null)
     const [filteredSupplies, setFilteredSupplies] = useState<Supply[]>([])
 
@@ -201,7 +298,7 @@ export default function MedicalSupplies() {
                     </div>
 
                     {/* Supplies List */}
-                    <div className="bg-white rounded-lg shadow">
+                    <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
                         <SuppliesList
                             supplies={filteredSupplies.length > 0 ? filteredSupplies : supplies}
                             onEdit={setEditSupply}

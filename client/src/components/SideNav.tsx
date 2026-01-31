@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { NavLink } from "react-router-dom"
+import { motion, AnimatePresence } from "framer-motion"
 
 
 const NavLinkStyles = ({ isActive }: { isActive: string | any }) => `mt-2 flex items-center justify-start max-sm:justify-start max-[900px]:justify-center w-full rounded-lg hover:bg-[#1313132a] h-12 px-2 transition-all duration-300 cursor-pointer
@@ -7,6 +8,13 @@ ${isActive ? 'bg-[#1313132a]' //activeStyles
 : ''}`
 function SideNav() {
     const [isOpen, setIsOpen] = useState(false)
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
+
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth < 768)
+        window.addEventListener('resize', handleResize)
+        return () => window.removeEventListener('resize', handleResize)
+    }, [])
 
     // close on Escape
     useEffect(() => {
@@ -42,15 +50,28 @@ function SideNav() {
             </button>
 
             {/* Overlay for mobile when open */}
-            {isOpen && (
-                <div
-                    className="fixed inset-0 bg-black/40 z-40 md:hidden"
-                    onClick={() => setIsOpen(false)}
-                />
-            )}
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="fixed inset-0 bg-black/40 z-40 md:hidden"
+                        onClick={() => setIsOpen(false)}
+                    />
+                )}
+            </AnimatePresence>
 
             {/* Sidebar: hidden on small screen devices unless opened; tablet: narrow (icons only); desktop: full width with text */}
-            <div className={`${isOpen ? 'flex' : 'hidden'} md:flex flex-col bg-[#5fdf85] fixed max-sm:top-[50px] top-[60px] left-0 z-50 w-64 md:w-16 lg:w-[20%] h-[95dvh] px-2 justify-between pb-6 transition-all duration-300 overflow-y-scroll hide-scrollbar`}>
+            <AnimatePresence>
+                {(isOpen || !isMobile) && (
+                    <motion.div
+                        initial={isMobile ? { x: -280 } : false}
+                        animate={{ x: 0 }}
+                        exit={isMobile ? { x: -280 } : {}}
+                        transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                        className="flex flex-col bg-[#5fdf85] fixed max-sm:top-[50px] top-[60px] left-0 z-50 w-64 md:w-16 lg:w-[20%] h-[95dvh] px-2 justify-between pb-6 overflow-y-scroll hide-scrollbar">
 
                 {/* Close button (mobile only) */}
                 <button className="fixed top-15 right-2 md:hidden" onClick={() => setIsOpen(false)}>
@@ -68,7 +89,9 @@ function SideNav() {
                         </NavLink>
                     ))}
                 </div>
-            </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </>
     )
 }

@@ -56,10 +56,10 @@ export default function DispenseQueueModal({ onClose }: DispenseQueueModalProps)
     const [queue] = useState<QueueItem[]>(demoQueue)
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-            <div className="bg-white w-full max-w-2xl rounded-lg shadow-lg">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
+            <div className="bg-white w-full max-w-2xl max-h-[90vh] rounded-lg shadow-lg flex flex-col">
                 {/* Modal Header */}
-                <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200">
+                <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 flex-shrink-0">
                     <div className="flex items-center gap-2">
                         <h3 className="text-lg font-semibold text-gray-800">Dispense Queue</h3>
                         <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">{queue.length} items</span>
@@ -70,7 +70,7 @@ export default function DispenseQueueModal({ onClose }: DispenseQueueModalProps)
                 </div>
 
                 {/* Queue List */}
-                <div className="max-h-[60vh] overflow-y-auto p-4">
+                <div className="flex-1 overflow-y-auto table-scroll p-4">
                     {queue.length === 0 ? (
                         <p className="text-gray-500 text-center py-4">No items in queue</p>
                     ) : (
@@ -97,7 +97,7 @@ export default function DispenseQueueModal({ onClose }: DispenseQueueModalProps)
                 </div>
 
                 {/* Modal Footer */}
-                <div className="border-t border-gray-100 px-4 py-3 flex justify-end gap-3">
+                <div className="border-t border-gray-100 px-4 py-3 flex justify-end gap-3 flex-shrink-0">
                     <button onClick={onClose} className="bg-gray-100 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-200 transition">
                         Close
                     </button>
