@@ -199,7 +199,8 @@ export default function RegisterDrugModal({ onClose, onSubmit, initialData, isEd
                             />
                         </div>
                     </div>
-
+                    </div>
+                    
                     {/* Footer */}
                     <div className="px-6 pb-6 flex justify-end gap-3">
                         <button

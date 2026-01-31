@@ -250,7 +250,7 @@ function Home() {
                             </li>
                         </ul>
                     </div>
-                    <div className={`p-8 rounded-2xl shadow-lg ${isDarkMode ? 'bg-gray-800' : 'bg-white'}`}>
+                    <div className={`p-8 rounded-2xl shadow-lg max-sm:p-0 ${isDarkMode ? 'bg-gray-800' : 'bg-white'}`}>
                         <img src="/images/dashboard.png" alt="Analytics" className="w-full rounded-lg" />
                     </div>
                 </div>
