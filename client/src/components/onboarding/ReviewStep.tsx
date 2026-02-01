@@ -31,7 +31,7 @@ function ReviewStep({ formData }: ReviewStepProps) {
                 <p className={`mt-2 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Please verify all details before submitting</p>
             </div>
 
-            <div className="space-y-4 max-h-[400px] overflow-y-auto pr-2">
+            <div className="space-y-4 max-h-[400px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent">
                 <div>
                     <h3 className={`text-lg font-semibold mb-3 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Basic Information</h3>
                     <div className="space-y-3">
