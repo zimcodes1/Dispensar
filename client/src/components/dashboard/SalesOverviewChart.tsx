@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, memo } from 'react';
+import { useDarkMode } from '../../utils/useDarkMode';
 import {
   Chart,
   LineController, // <-- IMPORT THE CONTROLLER
@@ -35,6 +36,7 @@ Chart.register(
  * yarn add chart.js
  */
 const SalesOverviewChart: React.FC = () => {
+  const { isDarkMode } = useDarkMode() as { isDarkMode: boolean }
   // Create a ref to store the canvas element
   const chartRef = useRef<HTMLCanvasElement>(null);
   // Create a ref to store the chart instance
@@ -95,7 +97,7 @@ const SalesOverviewChart: React.FC = () => {
                   size: 14,
                   family: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
                 },
-                color: '#333',
+                color: isDarkMode ? '#d1d5db' : '#333',
               },
             },
             title: {
@@ -106,7 +108,7 @@ const SalesOverviewChart: React.FC = () => {
                 weight: 'bold',
                 family: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
               },
-              color: '#222',
+              color: isDarkMode ? '#f3f4f6' : '#222',
               padding: {
                 top: 10,
                 bottom: 20,
@@ -116,6 +118,11 @@ const SalesOverviewChart: React.FC = () => {
               enabled: true,
               mode: 'index',
               intersect: false,
+              backgroundColor: isDarkMode ? 'rgba(55, 65, 81, 0.9)' : 'rgba(0, 0, 0, 0.8)',
+              titleColor: isDarkMode ? '#f3f4f6' : '#fff',
+              bodyColor: isDarkMode ? '#f3f4f6' : '#fff',
+              borderColor: isDarkMode ? '#4b5563' : '#999',
+              borderWidth: 1,
               callbacks: {
                 label: function (context) {
                   let label = context.dataset.label || '';
@@ -137,17 +144,19 @@ const SalesOverviewChart: React.FC = () => {
             x: {
               grid: {
                 display: false, // Hide x-axis grid lines
+                color: isDarkMode ? 'rgba(107, 114, 128, 0.1)' : 'rgba(0, 0, 0, 0.1)',
               },
               ticks: {
-                color: '#555',
+                color: isDarkMode ? '#d1d5db' : '#555',
               }
             },
             y: {
               grid: {
                 display: false, // hide y-axis grid lines
+                color: isDarkMode ? 'rgba(107, 114, 128, 0.1)' : 'rgba(0, 0, 0, 0.1)',
               },
               ticks: {
-                color: '#555',
+                color: isDarkMode ? '#d1d5db' : '#555',
                 // Format y-axis labels as currency
                 callback: function (value) {
                   if (typeof value === 'number') {
@@ -174,7 +183,7 @@ const SalesOverviewChart: React.FC = () => {
         chartInstanceRef.current = null;
       }
     };
-  }, [salesData]); // Re-run effect if salesData changes
+  }, [salesData, isDarkMode]); // Re-run effect if salesData or isDarkMode changes
 
   return (
     <div className="p-4 rounded-lg h-full w-full">

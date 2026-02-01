@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useDarkMode } from "../../utils/useDarkMode"
 
 interface SaleItem {
     id: string
@@ -9,20 +10,25 @@ interface SaleItem {
     quantity: number
 }
 
-function RecentSalesTableItem({ sale, onClick }: { sale: SaleItem, onClick: () => void }) {
+function RecentSalesTableItem({ sale, onClick, isDarkMode }: { sale: SaleItem, onClick: () => void, isDarkMode: boolean }) {
     return(
-        <tr onClick={onClick} className="border-b border-gray-200 hover:bg-gray-50 transition cursor-pointer">
-            <td className="py-3 px-4 text-sm text-gray-700">{sale.time}</td>
-            <td className="py-3 px-4 text-sm text-gray-700">{sale.date}</td>
-            <td className="py-3 px-4 text-sm font-medium text-gray-900">{sale.drugName}</td>
-            <td className="py-3 px-4 text-sm text-gray-700">{sale.quantity}</td>
-            <td className="py-3 px-4 text-sm font-medium text-gray-900">₦{sale.price.toLocaleString()}</td>
+        <tr onClick={onClick} className={`border-b transition-colors duration-300 cursor-pointer ${
+            isDarkMode
+                ? 'border-gray-700 hover:bg-gray-700/50'
+                : 'border-gray-200 hover:bg-gray-50'
+        }`}>
+            <td className={`py-3 px-4 text-sm transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>{sale.time}</td>
+            <td className={`py-3 px-4 text-sm transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>{sale.date}</td>
+            <td className={`py-3 px-4 text-sm font-medium transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{sale.drugName}</td>
+            <td className={`py-3 px-4 text-sm transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>{sale.quantity}</td>
+            <td className={`py-3 px-4 text-sm font-medium transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>₦{sale.price.toLocaleString()}</td>
         </tr>
     )
 }
 
 
 function RecentSales(){
+    const { isDarkMode } = useDarkMode() as { isDarkMode: boolean }
     const [lastUpdated, setLastUpdated] = useState(new Date())
     
     // Demo data
@@ -52,32 +58,53 @@ function RecentSales(){
     }
     
     return(
-        <div className="bg-white flex flex-col w-full h-[95%] md:h-full border border-gray-200 rounded-2xl shadow-sm overflow-hidden">
-            <div className="px-5 h-12 border-b border-gray-200 flex justify-between items-center bg-gray-50">
+        <div className={`flex flex-col w-full h-[95%] md:h-full border rounded-2xl shadow-sm overflow-hidden transition-colors duration-300 ${
+            isDarkMode 
+                ? 'bg-gray-800 border-gray-700' 
+                : 'bg-white border-gray-200'
+        }`}>
+            <div className={`px-5 h-12 border-b flex justify-between items-center transition-colors duration-300 ${
+                isDarkMode
+                    ? 'bg-gray-700 border-gray-600'
+                    : 'bg-gray-50 border-gray-200'
+            }`}>
                 <div className="flex items-center gap-2">
-                    <h1 className="text-sm font-semibold text-gray-900"><i className="bx bx-timer"></i> Recent Sales Activity</h1>
-                    <span className="text-xs text-gray-500">{getTimeAgo()}</span>
+                    <h1 className={`text-sm font-semibold transition-colors duration-300 ${isDarkMode ? 'text-gray-200' : 'text-gray-900'}`}><i className="bx bx-timer"></i> Recent Sales Activity</h1>
+                    <span className={`text-xs transition-colors duration-300 ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>{getTimeAgo()}</span>
                 </div>
-                <button onClick={handleRefresh} className="hover:bg-gray-200 rounded p-1 transition">
-                    <i className="bx bx-refresh text-xl text-gray-900 cursor-pointer"></i>
+                <button onClick={handleRefresh} className={`rounded p-1 transition-colors duration-300 ${
+                    isDarkMode
+                        ? 'hover:bg-gray-600 text-gray-300'
+                        : 'hover:bg-gray-200 text-gray-900'
+                }`}>
+                    <i className={`bx bx-refresh text-xl cursor-pointer transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-900'}`}></i>
                 </button>
             </div>
             <div className="overflow-x-auto table-scroll">
                 <table className="w-full min-w-[600px]">
-                    <thead className="bg-gray-50 border-b border-gray-200 sticky top-0">
+                    <thead className={`border-b sticky top-0 transition-colors duration-300 ${
+                        isDarkMode
+                            ? 'bg-gray-700 border-gray-600'
+                            : 'bg-gray-50 border-gray-200'
+                    }`}>
                         <tr>
-                            <th className="py-3 px-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Time</th>
-                            <th className="py-3 px-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Date</th>
-                            <th className="py-3 px-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Drug Name</th>
-                            <th className="py-3 px-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Qty</th>
-                            <th className="py-3 px-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Price</th>
+                            <th className={`py-3 px-4 text-left text-xs font-semibold uppercase tracking-wider transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Time</th>
+                            <th className={`py-3 px-4 text-left text-xs font-semibold uppercase tracking-wider transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Date</th>
+                            <th className={`py-3 px-4 text-left text-xs font-semibold uppercase tracking-wider transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Drug Name</th>
+                            <th className={`py-3 px-4 text-left text-xs font-semibold uppercase tracking-wider transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Qty</th>
+                            <th className={`py-3 px-4 text-left text-xs font-semibold uppercase tracking-wider transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Price</th>
                         </tr>
                     </thead>
-                    <tbody className="bg-white divide-y divide-gray-200">
+                    <tbody className={`divide-y transition-colors duration-300 ${
+                        isDarkMode
+                            ? 'bg-gray-800 divide-gray-700'
+                            : 'bg-white divide-gray-200'
+                    }`}>
                         {salesData.map(sale => (
                             <RecentSalesTableItem 
                                 key={sale.id} 
                                 sale={sale} 
+                                isDarkMode={isDarkMode}
                                 onClick={() => console.log('View transaction:', sale.id)}
                             />
                         ))}

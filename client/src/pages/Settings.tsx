@@ -2,8 +2,10 @@ import { useState } from "react"
 import Topbar from "../components/dashboard/Topbar"
 import SideNav from "../components/SideNav"
 import { useEffect } from "react"
+import { useDarkMode } from "../utils/useDarkMode"
 
 const Settings = ()=>{
+    const { isDarkMode } = useDarkMode() as { isDarkMode: boolean }
     const [activeTab, setActiveTab] = useState('profile')
     const [showLogoutModal, setShowLogoutModal] = useState(false)
     const [userRole] = useState<'admin' | 'employee'>('employee') // Change based on auth
@@ -40,28 +42,36 @@ const Settings = ()=>{
     return(
         <>
         <Topbar />
-        <div className="flex w-full min-h-screen bg-gray-100 pt-[60px] justify-between items-start pr-[2%] max-[767px]:pr-0 md:pr-0">
+        <div className={`flex w-full min-h-screen pt-[60px] justify-between items-start pr-[2%] max-[767px]:pr-0 md:pr-0 transition-colors duration-300 ${
+            isDarkMode ? 'bg-gray-950' : 'bg-gray-100'
+        }`}>
             <div className="flex w-[20%] h-full max-[767px]:w-0 md:w-16 lg:w-[20%]">
                 <SideNav />
             </div>
             <div className="flex w-[78%] md:w-[calc(100%-4rem)] lg:w-[78%] max-[767px]:w-full h-full flex-col max-[767px]:px-2 md:px-4 py-6">
                 <div className="mb-6">
-                    <h1 className="text-2xl max-sm:text-lg font-semibold text-gray-900">Settings</h1>
-                    <p className="text-sm text-gray-600 mt-1">Manage your account and preferences</p>
+                    <h1 className={`text-2xl max-sm:text-lg font-semibold transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Settings</h1>
+                    <p className={`text-sm mt-1 transition-colors duration-300 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Manage your account and preferences</p>
                 </div>
                 
                 {/* Tabs */}
-                <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-                    <div className="border-b border-gray-200 overflow-x-auto">
+                <div className={`rounded-lg shadow-sm border overflow-hidden transition-colors duration-300 ${
+                    isDarkMode
+                        ? 'bg-gray-800 border-gray-700'
+                        : 'bg-white border-gray-200'
+                }`}>
+                    <div className={`border-b overflow-x-auto transition-colors duration-300 ${isDarkMode ? 'border-gray-700' : 'border-gray-200'}`}>
                         <nav className="flex min-w-max">
                             {tabs.map(tab => (
                                 <button
                                     key={tab.id}
                                     onClick={() => setActiveTab(tab.id)}
-                                    className={`px-6 py-4 text-sm font-medium border-b-2 transition flex items-center gap-2 ${
+                                    className={`px-6 py-4 text-sm font-medium border-b-2 transition-colors duration-300 flex items-center gap-2 ${
                                         activeTab === tab.id
                                             ? 'border-green-600 text-green-600'
-                                            : 'border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300'
+                                            : isDarkMode
+                                                ? 'border-transparent text-gray-400 hover:text-gray-300 hover:border-gray-600'
+                                                : 'border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300'
                                     }`}
                                 >
                                     <i className={`bx ${tab.icon} text-lg`}></i>
@@ -76,40 +86,48 @@ const Settings = ()=>{
                         {activeTab === 'profile' && (
                             <div className="space-y-6">
                                 <div className="flex items-center gap-6">
-                                    <div className="w-24 h-24 rounded-full overflow-hidden bg-gray-200">
+                                    <div className={`w-24 h-24 rounded-full overflow-hidden transition-colors duration-300 ${isDarkMode ? 'bg-gray-700' : 'bg-gray-200'}`}>
                                         <img src="/images/defaultUser.jpg" alt="User" className="w-full h-full object-cover"/>
                                     </div>
                                     <div>
                                         <button className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition text-sm">
                                             Change Photo
                                         </button>
-                                        <p className="text-xs text-gray-500 mt-2">JPG, PNG or GIF. Max 2MB</p>
+                                        <p className={`text-xs mt-2 transition-colors duration-300 ${isDarkMode ? 'text-gray-500' : 'text-gray-500'}`}>JPG, PNG or GIF. Max 2MB</p>
                                     </div>
                                 </div>
                                 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                                        <label className={`block text-sm font-medium mb-1 transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Full Name</label>
                                         <input
                                             type="text"
                                             value={formData.name}
                                             onChange={(e) => setFormData({...formData, name: e.target.value})}
-                                            className="w-full p-2 border border-gray-300 rounded-lg text-sm"
+                                            className={`w-full p-2 border rounded-lg text-sm transition-colors duration-300 ${
+                                                isDarkMode
+                                                    ? 'bg-gray-800 border-gray-700 text-white'
+                                                    : 'bg-white border-gray-300 text-gray-900'
+                                            }`}
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                        <label className={`block text-sm font-medium mb-1 transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Email</label>
                                         <input
                                             type="email"
                                             value={formData.email}
                                             disabled={userRole === 'employee'}
                                             onChange={(e) => setFormData({...formData, email: e.target.value})}
-                                            className={`w-full p-2 border border-gray-300 rounded-lg text-sm ${userRole === 'employee' ? 'bg-gray-50' : ''}`}
+                                            className={`w-full p-2 border rounded-lg text-sm transition-colors duration-300 ${
+                                                isDarkMode
+                                                    ? `bg-gray-800 border-gray-700 text-white ${userRole === 'employee' ? 'opacity-60' : ''}`
+                                                    : `bg-white border-gray-300 text-gray-900 ${userRole === 'employee' ? 'bg-gray-50' : ''}`
+                                            }`}
                                         />
-                                        {userRole === 'employee' && <p className="text-xs text-gray-500 mt-1">Contact admin to change email</p>}
+                                        {userRole === 'employee' && <p className={`text-xs mt-1 transition-colors duration-300 ${isDarkMode ? 'text-gray-500' : 'text-gray-500'}`}>Contact admin to change email</p>}
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                                        <label className={`block text-sm font-medium mb-1 transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Phone</label>
                                         <input
                                             type="tel"
                                             value={formData.phone}
@@ -169,10 +187,10 @@ const Settings = ()=>{
                         {/* Notifications Tab */}
                         {activeTab === 'notifications' && (
                             <div className="space-y-4">
-                                <div className="flex items-center justify-between py-3 border-b border-gray-200">
+                                <div className={`flex items-center justify-between py-3 border-b transition-colors duration-300 ${isDarkMode ? 'border-gray-700' : 'border-gray-200'}`}>
                                     <div>
-                                        <p className="text-sm font-medium text-gray-900">Push Notifications</p>
-                                        <p className="text-xs text-gray-500">Receive push notifications</p>
+                                        <p className={`text-sm font-medium transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Push Notifications</p>
+                                        <p className={`text-xs transition-colors duration-300 ${isDarkMode ? 'text-gray-500' : 'text-gray-500'}`}>Receive push notifications</p>
                                     </div>
                                     <label className="relative inline-flex items-center cursor-pointer">
                                         <input
@@ -181,14 +199,18 @@ const Settings = ()=>{
                                             onChange={(e) => setFormData({...formData, notifications: e.target.checked})}
                                             className="sr-only peer"
                                         />
-                                        <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+                                        <div className={`w-11 h-6 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600 transition-colors duration-300 ${
+                                            isDarkMode
+                                                ? 'bg-gray-700 after:bg-gray-800 after:border-gray-600'
+                                                : 'bg-gray-200 after:bg-white after:border-gray-300'
+                                        }`}></div>
                                     </label>
                                 </div>
                                 
-                                <div className="flex items-center justify-between py-3 border-b border-gray-200">
+                                <div className={`flex items-center justify-between py-3 border-b transition-colors duration-300 ${isDarkMode ? 'border-gray-700' : 'border-gray-200'}`}>
                                     <div>
-                                        <p className="text-sm font-medium text-gray-900">Email Alerts</p>
-                                        <p className="text-xs text-gray-500">Receive email notifications</p>
+                                        <p className={`text-sm font-medium transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Email Alerts</p>
+                                        <p className={`text-xs transition-colors duration-300 ${isDarkMode ? 'text-gray-500' : 'text-gray-500'}`}>Receive email notifications</p>
                                     </div>
                                     <label className="relative inline-flex items-center cursor-pointer">
                                         <input
@@ -197,7 +219,11 @@ const Settings = ()=>{
                                             onChange={(e) => setFormData({...formData, emailAlerts: e.target.checked})}
                                             className="sr-only peer"
                                         />
-                                        <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+                                        <div className={`w-11 h-6 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600 transition-colors duration-300 ${
+                                            isDarkMode
+                                                ? 'bg-gray-700 after:bg-gray-800 after:border-gray-600'
+                                                : 'bg-gray-200 after:bg-white after:border-gray-300'
+                                        }`}></div>
                                     </label>
                                 </div>
                                 

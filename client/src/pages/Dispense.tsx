@@ -3,6 +3,7 @@ import Topbar from "../components/dashboard/Topbar"
 import SideNav from "../components/SideNav"
 import BillDetailsModal from "../components/billpayments/BillDetailsModal"
 import BillQueueItem from "../components/billpayments/BillQueueItem"
+import { useDarkMode } from "../utils/useDarkMode"
 
 // Demo data - replace with real data from your API/state
 const demoBills = [
@@ -29,6 +30,7 @@ const demoBills = [
 ]
 
 function Dispense(){
+        const { isDarkMode } = useDarkMode() as { isDarkMode: boolean }
         const [searchQuery, setSearchQuery] = useState("")
         const [selectedBill, setSelectedBill] = useState<typeof demoBills[0] | null>(null)
     
@@ -43,7 +45,9 @@ function Dispense(){
         {/*--------Topbar Component--------*/}
         <Topbar></Topbar>
         {/*-----------Side Nav & Main Contents Container-----------*/}
-        <div className="flex w-full min-h-screen bg-gray-100 pt-[60px] justify-between items-start pr-[2%] max-[767px]:pr-0 md:pr-0">
+        <div className={`flex w-full min-h-screen pt-[60px] justify-between items-start pr-[2%] max-[767px]:pr-0 md:pr-0 transition-colors duration-300 ${
+            isDarkMode ? 'bg-gray-950' : 'bg-gray-100'
+        }`}>
             {/*----------Side navigation-----*/}
             <div className="flex w-[20%] h-full max-[767px]:w-0 md:w-16 lg:w-[20%]">
                 <SideNav></SideNav>
@@ -52,18 +56,26 @@ function Dispense(){
             <div className="flex w-[78%] md:w-[calc(100%-4rem)] lg:w-[78%] max-[767px]:w-full h-full flex-col max-[767px]:px-2 md:px-4">
                     <div className="p-6 max-sm:p-0">
                         <div className="flex flex-col justify-between items-center mb-6">
-                            <h1 className="text-2xl max-sm:text-lg font-semibold text-gray-900 my-2">Dispense</h1>
+                            <h1 className={`text-2xl max-sm:text-lg font-semibold my-2 transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Dispense</h1>
                             <div className="flex items-center gap-3 max-sm:gap-2 max-sm:w-full max-sm:flex-col">
                                 <div className="relative">
                                     <input
                                         placeholder="Search by code or employee..."
                                         value={searchQuery}
                                         onChange={(e) => setSearchQuery(e.target.value)}
-                                        className="w-64 pl-10 pr-4 py-2 border border-gray-300 bg-white rounded-lg text-sm"
+                                        className={`w-64 pl-10 pr-4 py-2 border rounded-lg text-sm transition-colors duration-300 ${
+                                            isDarkMode
+                                                ? 'bg-gray-800 border-gray-700 text-white placeholder-gray-400'
+                                                : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
+                                        }`}
                                     />
-                                    <i className="bx bx-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                                    <i className={`bx bx-search absolute left-3 top-1/2 -translate-y-1/2 transition-colors duration-300 ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`}></i>
                                 </div>
-                                <select className="border border-gray-300 bg-white rounded-lg px-3 py-2 text-sm">
+                                <select className={`border rounded-lg px-3 py-2 text-sm transition-colors duration-300 ${
+                                    isDarkMode
+                                        ? 'bg-gray-800 border-gray-700 text-white'
+                                        : 'bg-white border-gray-300 text-gray-900'
+                                }`}>
                                     <option>All Status</option>
                                     <option>Pending</option>
                                     <option>Completed</option>
@@ -90,7 +102,7 @@ function Dispense(){
 
                         {filteredBills.length === 0 && (
                             <div className="text-center py-8">
-                                <p className="text-gray-600">No bills found matching your search.</p>
+                                <p className={`transition-colors duration-300 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>No bills found matching your search.</p>
                             </div>
                         )}
                     </div>

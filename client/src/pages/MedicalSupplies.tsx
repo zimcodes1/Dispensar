@@ -4,6 +4,7 @@ import SuppliesList from '../components/supplies/SuppliesList'
 import SuppliesFilters from '../components/supplies/SuppliesFilters'
 import SideNav from '../components/SideNav'
 import Topbar from '../components/dashboard/Topbar'
+import { useDarkMode } from '../utils/useDarkMode'
 
 // These would typically come from your backend
 const SUPPLY_CATEGORIES = [
@@ -233,12 +234,15 @@ export default function MedicalSupplies() {
         return 'in_stock'
     }
     useEffect(()=>{document.title = 'Medical Supplies | Dispensar'})
+    const { isDarkMode } = useDarkMode() as { isDarkMode: boolean }
     return (
         <div className="w-full min-h-screen">
         {/*--------Topbar Component--------*/}
         <Topbar></Topbar>
         {/*-----------Side Nav & Main Contents Container-----------*/}
-        <div className="flex w-full min-h-screen bg-gray-100 pt-[60px] justify-between items-start pr-[2%] max-[767px]:pr-0 md:pr-0">
+        <div className={`flex w-full min-h-screen pt-[60px] justify-between items-start pr-[2%] max-[767px]:pr-0 md:pr-0 transition-colors duration-300 ${
+            isDarkMode ? 'bg-gray-950' : 'bg-gray-100'
+        }`}>
             {/*----------Side navigation-----*/}
             <div className="flex w-[20%] h-full max-[767px]:w-0 md:w-16 lg:w-[20%]">
                 <SideNav></SideNav>
@@ -248,8 +252,8 @@ export default function MedicalSupplies() {
                 <div className="flex w-full h-[40%] max-[767px]:h-fit md:h-fit justify-between pt-4 max-[767px]:pt-2 md:pt-3 max-[767px]:flex-col">
                     
                         <div>
-                            <h1 className="text-2xl max-sm:text-lg font-semibold text-gray-900">Medical Supplies</h1>
-                            <p className="text-gray-600 my-2 max-sm:text-sm">
+                            <h1 className={`text-2xl max-sm:text-lg font-semibold transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Medical Supplies</h1>
+                            <p className={`my-2 max-sm:text-sm transition-colors duration-300 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                                 Manage your medical supplies inventory
                             </p>
                         </div>

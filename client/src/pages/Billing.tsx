@@ -4,8 +4,10 @@ import SideNav from "../components/SideNav"
 import DrugDetails from "../components/dispense/DrugDetails"
 import DrugSearch from "../components/DrugSearch"
 import DispenseQueueModal from "../components/dispense/DispenseQueueModal"
+import { useDarkMode } from "../utils/useDarkMode"
 
 function Billing() {
+    const { isDarkMode } = useDarkMode() as { isDarkMode: boolean }
     const [showQueue, setShowQueue] = useState(false)
     useEffect(()=>{document.title = 'Billing | Dispensar'})
     return (
@@ -13,7 +15,9 @@ function Billing() {
             {/*--------Topbar Component--------*/}
             <Topbar></Topbar>
             {/*-----------Side Nav & Main Contents Container-----------*/}
-            <div className="flex w-full min-h-screen bg-gray-100 pt-[60px] justify-between items-start pr-[2%] max-[767px]:pr-0 md:pr-0">
+            <div className={`flex w-full min-h-screen pt-[60px] justify-between items-start pr-[2%] max-[767px]:pr-0 md:pr-0 transition-colors duration-300 ${
+                isDarkMode ? 'bg-gray-950' : 'bg-gray-100'
+            }`}>
                 {/*----------Side navigation-----*/}
                 <div className="flex w-[20%] h-full max-[767px]:w-0 md:w-16 lg:w-[20%]">
                     <SideNav></SideNav>

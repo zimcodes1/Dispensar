@@ -3,8 +3,10 @@ import Topbar from "../components/dashboard/Topbar"
 import SideNav from "../components/SideNav"
 import CreateReportModal from "../components/CreateReportModal"
 import ReportItem from "../components/reports/ReportItem"
+import { useDarkMode } from "../utils/useDarkMode"
 
 const Reports = ()=>{
+    const { isDarkMode } = useDarkMode() as { isDarkMode: boolean }
     const [showModal, setShowModal] = useState(false)
 
     function handleOpen(){
@@ -54,7 +56,9 @@ const Reports = ()=>{
         {/*--------Topbar Component--------*/}
         <Topbar></Topbar>
         {/*-----------Side Nav & Main Contents Container-----------*/}
-        <div className="flex w-full min-h-screen bg-gray-100 pt-[60px] justify-between items-start pr-[2%] max-[767px]:pr-0 md:pr-0">
+        <div className={`flex w-full min-h-screen pt-[60px] justify-between items-start pr-[2%] max-[767px]:pr-0 md:pr-0 transition-colors duration-300 ${
+            isDarkMode ? 'bg-gray-950' : 'bg-gray-100'
+        }`}>
             {/*----------Side navigation-----*/}
             <div className="flex w-[20%] h-full max-[767px]:w-0 md:w-16 lg:w-[20%]">
                 <SideNav></SideNav>
@@ -62,7 +66,7 @@ const Reports = ()=>{
             {/*--------Main Contents-----------*/}
             <div className="flex w-[78%] md:w-[calc(100%-4rem)] lg:w-[78%] max-[767px]:w-full h-full flex-col max-[767px]:px-2 md:px-4">
                 <div className="flex items-center justify-between p-4 max-sm:p-0">
-                    <h2 className="text-lg font-semibold text-gray-800">Reports</h2>
+                    <h2 className={`text-lg font-semibold transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>Reports</h2>
                     <button onClick={handleOpen} className="bg-green-600 text-white max-sm:text-sm px-4 py-2 rounded-lg hover:bg-green-700 transition flex items-center gap-2">
                         <i className="bx bx-plus"></i>
                         <span>Create Report</span>

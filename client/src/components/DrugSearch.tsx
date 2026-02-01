@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useDarkMode } from '../utils/useDarkMode'
 
 interface DrugSearchProps {
     onSearch?: (query: string) => void
@@ -11,6 +12,7 @@ function DrugSearch({
     onFilter, 
     placeholder = "Search by drug name, category, or manufacturer..." 
 }: DrugSearchProps) {
+    const { isDarkMode } = useDarkMode() as { isDarkMode: boolean }
     const [searchQuery, setSearchQuery] = useState('')
     
     const handleSearch = () => {
@@ -32,7 +34,7 @@ function DrugSearch({
         <div className="flex w-full gap-3 items-center mt-4">
             <div className="relative flex-1">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <i className="bx bx-search text-gray-400 text-xl"></i>
+                    <i className={`bx bx-search text-xl transition-colors duration-300 ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`}></i>
                 </div>
                 <input 
                     type="text" 
@@ -40,12 +42,20 @@ function DrugSearch({
                     onChange={(e) => setSearchQuery(e.target.value)}
                     onKeyPress={handleKeyPress}
                     placeholder={placeholder}
-                    className="bg-white w-full h-12 pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
+                    className={`w-full h-12 pl-10 pr-10 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors duration-300 ${
+                        isDarkMode
+                            ? 'bg-gray-800 border-gray-700 text-white placeholder-gray-500'
+                            : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
+                    }`}
                 />
                 {searchQuery && (
                     <button
                         onClick={handleClear}
-                        className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600"
+                        className={`absolute inset-y-0 right-0 pr-3 flex items-center transition-colors duration-300 ${
+                            isDarkMode
+                                ? 'text-gray-500 hover:text-gray-400'
+                                : 'text-gray-400 hover:text-gray-600'
+                        }`}
                     >
                         <i className="bx bx-x text-xl"></i>
                     </button>

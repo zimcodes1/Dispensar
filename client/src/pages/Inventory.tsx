@@ -4,8 +4,10 @@ import InventoryItem from "../components/InventoryItem"
 import DrugSearch from "../components/DrugSearch"
 import AddItemModal from "../components/inventory/AddItemModal"
 import { useEffect, useState } from "react"
+import { useDarkMode } from "../utils/useDarkMode"
 
 const Inventory = ()=>{
+    const { isDarkMode } = useDarkMode() as { isDarkMode: boolean }
     const [selectedItems, setSelectedItems] = useState<string[]>([])
     const [selectAll, setSelectAll] = useState(false)
     const [showAddModal, setShowAddModal] = useState(false)
@@ -48,7 +50,9 @@ const Inventory = ()=>{
         {/*--------Topbar Component--------*/}
         <Topbar></Topbar>
         {/*-----------Side Nav & Main Contents Container-----------*/}
-        <div className="flex w-full min-h-screen bg-gray-100 pt-[60px] justify-between items-start pr-[2%] max-[767px]:pr-0 md:pr-0">
+        <div className={`flex w-full min-h-screen pt-[60px] justify-between items-start pr-[2%] max-[767px]:pr-0 md:pr-0 transition-colors duration-300 ${
+            isDarkMode ? 'bg-gray-950' : 'bg-gray-100'
+        }`}>
             {/*----------Side navigation-----*/}
             <div className="flex w-[20%] h-full max-[767px]:w-0 md:w-16 lg:w-[20%]">
                 <SideNav></SideNav>
@@ -56,7 +60,7 @@ const Inventory = ()=>{
             {/*--------Main Contents-----------*/}
             <div className="flex w-[78%] md:w-[calc(100%-4rem)] lg:w-[78%] max-[767px]:w-full h-full flex-col max-[767px]:px-2 md:px-4">
                 <div className="flex justify-between items-center mt-5 mb-4">
-                    <h1 className="text-2xl max-sm:text-lg font-semibold text-gray-900">Inventory</h1>
+                    <h1 className={`text-2xl max-sm:text-lg font-semibold transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Inventory</h1>
                     <div className="flex gap-2">
                         {selectedItems.length > 0 && (
                             <button className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition text-sm">
