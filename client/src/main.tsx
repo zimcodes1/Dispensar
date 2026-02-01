@@ -18,6 +18,7 @@ import Lost from './pages/Lost'
 import SignUp from './pages/SignUp'
 import Billing from './pages/Billing'
 import LandingPage from './pages/LandingPage'
+import Onboarding from './pages/Onboarding'
 
 const router = createBrowserRouter([
   {
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
   {
     path: '/signup',
     element: <SignUp/>
+  },
+  {
+    path: '/onboarding',
+    element: <Onboarding/>
   },
   {
     path: '/billing',
