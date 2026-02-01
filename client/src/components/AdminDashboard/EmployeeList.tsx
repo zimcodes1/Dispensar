@@ -23,7 +23,7 @@ function EmployeeActions({ employeeId }: { employeeId: string }) {
             {isOpen && (
                 <>
                     <div className="fixed inset-0 z-10" onClick={() => setIsOpen(false)} />
-                    <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-20">
+                    <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-50">
                         <button className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                             <i className="bx bx-edit mr-2"></i>Edit
                         </button>
@@ -95,8 +95,8 @@ export default function EmployeeList({ onAddEmployee }: EmployeeListProps) {
                 </button>
             </div>
 
-            <div className="overflow-x-auto">
-                <table className="w-full">
+            <div className="overflow-x-auto table-scroll">
+                <table className="w-full min-w-[700px]">
                     <thead>
                         <tr className="text-sm text-gray-600 border-b border-gray-200">
                             <th className="pb-3 text-left font-medium">Employee</th>
