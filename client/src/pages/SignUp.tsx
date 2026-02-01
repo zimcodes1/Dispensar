@@ -18,11 +18,11 @@ function SignUp(){
                     <input type="email" placeholder="Your Email" className={`p-3 rounded-lg mb-4 transition-all focus:outline-none focus:ring-2 focus:ring-green-500 ${isDarkMode ? 'bg-gray-700 border border-gray-600 text-white placeholder-gray-400' : 'bg-gray-100 border border-gray-300 text-gray-900 placeholder-gray-500'}`} />
                     <input type="password" placeholder="Password" className={`p-3 rounded-lg mb-4 transition-all focus:outline-none focus:ring-2 focus:ring-green-500 ${isDarkMode ? 'bg-gray-700 border border-gray-600 text-white placeholder-gray-400' : 'bg-gray-100 border border-gray-300 text-gray-900 placeholder-gray-500'}`} />
                     <input type="password" placeholder="Confirm Password" className={`p-3 rounded-lg mb-6 transition-all focus:outline-none focus:ring-2 focus:ring-green-500 ${isDarkMode ? 'bg-gray-700 border border-gray-600 text-white placeholder-gray-400' : 'bg-gray-100 border border-gray-300 text-gray-900 placeholder-gray-500'}`} />
-                    <button type="submit" className="font-semibold transition-all duration-300 bg-green-500 text-white p-3 rounded-lg hover:bg-green-600 shadow-md hover:shadow-lg">Sign Up <i className="bx bx-right-arrow-alt"></i></button>
+                    <button  className="font-semibold transition-all duration-300 bg-green-500 text-white p-3 rounded-lg hover:bg-green-600 shadow-md hover:shadow-lg">Sign Up <i className="bx bx-right-arrow-alt"></i></button>
                 </form>
                 {/*Login */}
                 <div className="flex justify-center items-center w-full py-3 mt-2">
-                    <p className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>Already have an account? <Link to='/login' className="text-green-400 hover:text-green-500 hover:underline font-medium">Login here</Link></p>
+                    <p className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>Already have an account? <Link to='/onboarding' className="text-green-400 hover:text-green-500 hover:underline font-medium">Login here</Link></p>
                 </div>
             </div>
         </div>
