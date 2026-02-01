@@ -95,8 +95,8 @@ export default function EmployeeList({ onAddEmployee }: EmployeeListProps) {
                 </button>
             </div>
 
-            <div className="overflow-x-auto table-scroll">
-                <table className="w-full min-w-[700px]">
+            <div className="overflow-x-auto lg:overflow-x-visible">
+                <table className="w-full min-w-[700px] lg:min-w-0">
                     <thead>
                         <tr className="text-sm text-gray-600 border-b border-gray-200">
                             <th className="pb-3 text-left font-medium">Employee</th>

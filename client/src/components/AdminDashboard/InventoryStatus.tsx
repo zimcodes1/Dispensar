@@ -52,8 +52,8 @@ export default function InventoryStatus() {
                 </button>
             </div>
 
-            <div className="space-y-4 overflow-x-auto table-scroll">
-                <div className="min-w-[500px] space-y-4">
+            <div className="space-y-4 overflow-x-auto lg:overflow-x-visible">
+                <div className="min-w-[500px] lg:min-w-0 space-y-4">
                 {demoItems.map((item, index) => (
                     <div key={index} className="flex items-center justify-between p-4 bg-white rounded-lg">
                         <div className="flex-1">
