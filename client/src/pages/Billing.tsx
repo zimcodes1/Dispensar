@@ -29,7 +29,7 @@ function Billing() {
                     {/*---------Selected Drugs' details will appear here--------- */}
                     <DrugDetails></DrugDetails>
                     <DrugDetails></DrugDetails>
-                    <button className="w-50 mx-auto my-10 bg-[#5fdf85] max-sm:w-[40%] text-gray-900 font-semibold py-2 px-5 rounded-lg mt-5 hover:bg-gray-900 hover:text-[#5fdf85] transition duration-500">Dispense <i className="bx bx-right-arrow-alt"></i></button>
+                    <button className="w-50 mx-auto my-10 bg-green-600 max-sm:w-[40%] text-gray-900 font-semibold py-2 px-5 rounded-lg mt-5 hover:bg-gray-900 hover:text-[#5fdf85] transition duration-500">Dispense <i className="bx bx-right-arrow-alt"></i></button>
                 </div>
 
             </div>
@@ -37,7 +37,7 @@ function Billing() {
             {/* Fixed Queue Button */}
             <button
                 onClick={() => setShowQueue(true)}
-                className="fixed bottom-6 max-sm:bottom-2 right-6 max-sm:right-2 bg-gray-900 text-[#5fdf85] px-4 py-3 rounded-full max-sm:rounded-xl shadow-lg hover:bg-[#5fdf85] hover:text-gray-900 transition duration-500 flex items-center gap-2"
+                className="fixed bottom-6 max-sm:bottom-2 right-6 max-sm:right-2 bg-gray-900 text-[#5fdf85] px-4 py-3 rounded-full max-sm:rounded-xl shadow-lg hover:bg-green-600 hover:text-gray-900 transition duration-500 flex items-center gap-2"
             >
                 <i className="bx bx-list-ul text-xl"></i>
                 <span className="max-sm:hidden">View Queue</span>

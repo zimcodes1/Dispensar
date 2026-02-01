@@ -26,10 +26,10 @@ function DrugDetails(){
                             </div>
                         </div>
                         {/*--------------Price & Quantity----------- */}
-                <div className={`w-[80%] max-sm:w-full mx-auto flex justify-between border h-15 rounded-2xl ${isDarkMode ? 'bg-gray-700 border-gray-600' : 'bg-gray-100 border-gray-200'}`}>
+                <div className={`w-[80%] overflow-hidden max-sm:w-full mx-auto flex justify-between border h-15 rounded-2xl ${isDarkMode ? 'bg-gray-700 border-gray-600' : 'bg-gray-100 border-gray-200'}`}>
                     <input type="text" placeholder="Price (₦)" className={`focus:outline-none focus:ring-0 border-r rounded-r-none rounded-lg p-2 w-[50%] text-xl max-sm:text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-500' : 'border-gray-300 text-gray-900'}`} />
                     <span className={`w-[50%] rounded-lg h-full flex justify-between items-center px-2 ${isDarkMode ? 'border-gray-600' : 'border-gray-300'}`}>
-                        <input type="number" placeholder="Quantity" className={`focus:outline-none focus:ring-0 p-2 text-xl max-sm:text-sm w-[70%] ${isDarkMode ? 'bg-gray-700 text-white placeholder-gray-500' : 'text-gray-900'}`} />
+                        <input min={0} type="number" placeholder="Quantity" className={`focus:outline-none focus:ring-0 p-2 text-xl max-sm:text-sm w-[70%] ${isDarkMode ? 'bg-gray-700 text-white placeholder-gray-500' : 'text-gray-900'}`} />
                         <p className={`font-semibold max-sm:text-xs ${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>100</p>
                         <h1 className={`font-semibold cursor-pointer max-sm:text-xs ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>MAX</h1>
                     </span>

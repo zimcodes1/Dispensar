@@ -1,26 +1,28 @@
 import { useEffect } from "react"
 import { Link } from "react-router-dom"
+import { useDarkMode } from "../utils/useDarkMode"
 
 function SignUp(){
+    const { isDarkMode } = useDarkMode() as { isDarkMode: boolean }
     useEffect(()=>{document.title = 'Signup | Dispensar'})
     return(
-        <div className="w-full min-h-dvh bg-linear-to-br from-slate-900 via-emerald-900 to-slate-900 flex justify-center items-center">
-            <div className="flex w-[400px] h-[500px] bg-white rounded-3xl shadow-lg flex-col max-sm:w-full max-sm:h-[80dvh] max-sm:rounded-none max-sm:absolute max-sm:bottom-0 max-sm:rounded-t-3xl max-sm:shadow-2xl">
-                <div className="flex flex-col justify-center items-center w-full pt-5 max-sm:pt-20">
+        <div className={`w-full min-h-dvh flex justify-center items-center ${isDarkMode ? 'bg-linear-to-br from-gray-900 via-gray-800 to-gray-900' : 'bg-linear-to-br from-slate-900 via-emerald-900 to-slate-900'}`}>
+            <div className={`flex w-[400px] min-h-[550px] rounded-3xl shadow-2xl flex-col max-sm:w-full max-sm:min-h-[80dvh] max-sm:rounded-none max-sm:absolute max-sm:bottom-0 max-sm:rounded-t-3xl ${isDarkMode ? 'bg-gray-800 border border-gray-700' : 'bg-white'}`}>
+                <div className="flex flex-col justify-center items-center w-full pt-8 max-sm:pt-20">
                     <img src="/images/logo.png" alt="Logo" className="w-20"/>
-                    <h1 className="text-2xl font-bold mt-3 text-gray-800">Welcome to <span className="text-green-400">Dispensar</span></h1>
-                    <p className="text-gray-600 mt-2">Please fill the form to continue</p>
+                    <h1 className={`text-2xl font-bold mt-3 ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>Welcome to <span className="text-green-400">Dispensar</span></h1>
+                    <p className={`mt-2 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Please fill the form to continue</p>
                 </div>
-                {/* Login Form */}
-                <form className="flex flex-col w-full px-10 mt-5">
-                    <input type="email" placeholder="Your Email..." className="p-2 border border-gray-300 bg-gray-100 text-gray-600 rounded-md mb-4" />
-                    <input type="password" placeholder="Password" className="p-2 border border-gray-300 bg-gray-100 text-gray-600 rounded-md mb-4" />
-                    <input type="password" placeholder="Confirm Password" className="p-2 border border-gray-300 bg-gray-100 text-gray-600 rounded-md mb-4" />
-                    <button type="submit" className="font-bold transition-all duration-300 bg-[#5fdf85] text-white p-2 rounded-md hover:bg-white border-2 border-green-500 hover:text-gray-900">Sign Up <i className="bx bx-right-arrow-alt"></i></button>
+                {/* Signup Form */}
+                <form className="flex flex-col w-full px-10 mt-8">
+                    <input type="email" placeholder="Your Email" className={`p-3 rounded-lg mb-4 transition-all focus:outline-none focus:ring-2 focus:ring-green-500 ${isDarkMode ? 'bg-gray-700 border border-gray-600 text-white placeholder-gray-400' : 'bg-gray-100 border border-gray-300 text-gray-900 placeholder-gray-500'}`} />
+                    <input type="password" placeholder="Password" className={`p-3 rounded-lg mb-4 transition-all focus:outline-none focus:ring-2 focus:ring-green-500 ${isDarkMode ? 'bg-gray-700 border border-gray-600 text-white placeholder-gray-400' : 'bg-gray-100 border border-gray-300 text-gray-900 placeholder-gray-500'}`} />
+                    <input type="password" placeholder="Confirm Password" className={`p-3 rounded-lg mb-6 transition-all focus:outline-none focus:ring-2 focus:ring-green-500 ${isDarkMode ? 'bg-gray-700 border border-gray-600 text-white placeholder-gray-400' : 'bg-gray-100 border border-gray-300 text-gray-900 placeholder-gray-500'}`} />
+                    <button type="submit" className="font-semibold transition-all duration-300 bg-green-500 text-white p-3 rounded-lg hover:bg-green-600 shadow-md hover:shadow-lg">Sign Up <i className="bx bx-right-arrow-alt"></i></button>
                 </form>
                 {/*Login */}
-                <div className="flex justify-center items-center w-full py-3">
-                    <p className="text-gray-600">Already have an account? <Link to='/login' className="text-green-400 hover:underline text-center"> <p>Login here</p></Link></p>
+                <div className="flex justify-center items-center w-full py-3 mt-2">
+                    <p className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>Already have an account? <Link to='/login' className="text-green-400 hover:text-green-500 hover:underline font-medium">Login here</Link></p>
                 </div>
             </div>
         </div>
