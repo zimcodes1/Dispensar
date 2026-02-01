@@ -9,7 +9,7 @@ export default function ExportReportModal({ isOpen, onClose }: ExportReportModal
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
             <div className="bg-white w-full max-w-md max-h-[90vh] rounded-lg shadow-lg flex flex-col">
-                <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 flex-shrink-0">
+                <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 shrink-0">
                     <h3 className="text-lg font-semibold text-gray-900">Export Report</h3>
                     <button onClick={onClose} className="text-gray-600 hover:text-gray-900">
                         <i className="bx bx-x text-2xl"></i>
@@ -50,7 +50,7 @@ export default function ExportReportModal({ isOpen, onClose }: ExportReportModal
                         </div>
                     </div>
                 </div>
-                <div className="px-6 pb-6 flex justify-end gap-3 flex-shrink-0">
+                <div className="px-6 pb-6 flex justify-end gap-3 shrink-0">
                     <button onClick={onClose} className="px-4 py-2 text-sm text-gray-700 hover:text-gray-900">
                         Cancel
                     </button>
