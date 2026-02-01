@@ -1,3 +1,5 @@
+import { useDarkMode } from '../../utils/useDarkMode'
+
 interface Drug {
     id: string
     name: string
@@ -17,12 +19,13 @@ interface DrugListProps {
 }
 
 export default function DrugList({ drugs, onEdit, onDelist }: DrugListProps) {
+    const { isDarkMode } = useDarkMode() as { isDarkMode: boolean }
     function getStatusBadge(status: Drug['status']) {
         const styles = {
-            'active': 'bg-green-100 text-green-800',
-            'delisted': 'bg-gray-100 text-gray-800',
-            'expired': 'bg-red-100 text-red-800',
-            'expiring-soon': 'bg-yellow-100 text-yellow-800'
+            'active': isDarkMode ? 'bg-green-900/30 text-green-300' : 'bg-green-100 text-green-800',
+            'delisted': isDarkMode ? 'bg-gray-700 text-gray-300' : 'bg-gray-100 text-gray-800',
+            'expired': isDarkMode ? 'bg-red-900/30 text-red-300' : 'bg-red-100 text-red-800',
+            'expiring-soon': isDarkMode ? 'bg-yellow-900/30 text-yellow-300' : 'bg-yellow-100 text-yellow-800'
         }
         const labels = {
             'active': 'Active',
@@ -36,56 +39,56 @@ export default function DrugList({ drugs, onEdit, onDelist }: DrugListProps) {
     return (
         <div className="overflow-x-auto table-scroll">
             <table className="w-full min-w-[900px]">
-                <thead className="bg-gray-50 border-b border-gray-200">
+                <thead className={`border-b ${isDarkMode ? 'bg-gray-700 border-gray-600' : 'bg-gray-50 border-gray-200'}`}>
                     <tr>
-                        <th className="py-3 px-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                        <th className={`py-3 px-4 text-left text-xs font-semibold uppercase tracking-wider ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                             Drug Info
                         </th>
-                        <th className="py-3 px-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                        <th className={`py-3 px-4 text-left text-xs font-semibold uppercase tracking-wider ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                             Category
                         </th>
-                        <th className="py-3 px-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                        <th className={`py-3 px-4 text-left text-xs font-semibold uppercase tracking-wider ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                             Stock
                         </th>
-                        <th className="py-3 px-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                        <th className={`py-3 px-4 text-left text-xs font-semibold uppercase tracking-wider ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                             Price
                         </th>
-                        <th className="py-3 px-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                        <th className={`py-3 px-4 text-left text-xs font-semibold uppercase tracking-wider ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                             Expiry Date
                         </th>
-                        <th className="py-3 px-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                        <th className={`py-3 px-4 text-left text-xs font-semibold uppercase tracking-wider ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                             Status
                         </th>
-                        <th className="py-3 px-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                        <th className={`py-3 px-4 text-left text-xs font-semibold uppercase tracking-wider ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                             Actions
                         </th>
                     </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
+                <tbody className={`divide-y ${isDarkMode ? 'bg-gray-800 divide-gray-700' : 'bg-white divide-gray-200'}`}>
                     {drugs.map((drug) => (
-                        <tr key={drug.id} className="hover:bg-gray-50 transition">
+                        <tr key={drug.id} className={`transition ${isDarkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-50'}`}>
                             <td className="py-3 px-4">
-                                <div className="text-sm font-medium text-gray-900">{drug.name}</div>
-                                <div className="text-xs text-gray-500">NAFDAC: {drug.nafdacNumber}</div>
+                                <div className={`text-sm font-medium ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{drug.name}</div>
+                                <div className={`text-xs ${isDarkMode ? 'text-gray-500' : 'text-gray-500'}`}>NAFDAC: {drug.nafdacNumber}</div>
                             </td>
                             <td className="py-3 px-4">
-                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${isDarkMode ? 'bg-blue-900/30 text-blue-300' : 'bg-blue-100 text-blue-800'}`}>
                                     {drug.category}
                                 </span>
                             </td>
                             <td className="py-3 px-4">
                                 <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                                    drug.stock === 0 ? 'bg-red-100 text-red-800' :
-                                    drug.stock < 50 ? 'bg-yellow-100 text-yellow-800' :
-                                    'bg-green-100 text-green-800'
+                                    drug.stock === 0 ? isDarkMode ? 'bg-red-900/30 text-red-300' : 'bg-red-100 text-red-800' :
+                                    drug.stock < 50 ? isDarkMode ? 'bg-yellow-900/30 text-yellow-300' : 'bg-yellow-100 text-yellow-800' :
+                                    isDarkMode ? 'bg-green-900/30 text-green-300' : 'bg-green-100 text-green-800'
                                 }`}>
                                     {drug.stock} units
                                 </span>
                             </td>
-                            <td className="py-3 px-4 text-sm font-medium text-gray-900">
+                            <td className={`py-3 px-4 text-sm font-medium ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
                                 ₦{drug.price.toLocaleString()}
                             </td>
-                            <td className="py-3 px-4 text-sm text-gray-700">
+                            <td className={`py-3 px-4 text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                                 {new Date(drug.expiryDate).toLocaleDateString('en-GB')}
                             </td>
                             <td className="py-3 px-4">
@@ -95,14 +98,14 @@ export default function DrugList({ drugs, onEdit, onDelist }: DrugListProps) {
                                 <div className="flex items-center gap-2">
                                     <button
                                         onClick={() => onEdit(drug)}
-                                        className="text-blue-600 hover:text-blue-800 p-1 hover:bg-blue-50 rounded transition"
+                                        className={`p-1 rounded transition ${isDarkMode ? 'text-blue-400 hover:text-blue-300 hover:bg-blue-900/30' : 'text-blue-600 hover:text-blue-800 hover:bg-blue-50'}`}
                                         title="Edit"
                                     >
                                         <i className="bx bx-edit text-lg"></i>
                                     </button>
                                     <button
                                         onClick={() => onDelist(drug.id)}
-                                        className="text-red-600 hover:text-red-800 p-1 hover:bg-red-50 rounded transition"
+                                        className={`p-1 rounded transition ${isDarkMode ? 'text-red-400 hover:text-red-300 hover:bg-red-900/30' : 'text-red-600 hover:text-red-800 hover:bg-red-50'}`}
                                         title="Delist"
                                     >
                                         <i className="bx bx-trash text-lg"></i>
@@ -116,11 +119,11 @@ export default function DrugList({ drugs, onEdit, onDelist }: DrugListProps) {
 
             {drugs.length === 0 && (
                 <div className="text-center py-12">
-                    <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i className="bx bx-package text-3xl text-gray-400"></i>
+                    <div className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 ${isDarkMode ? 'bg-gray-700' : 'bg-gray-100'}`}>
+                        <i className={`bx bx-package text-3xl ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`}></i>
                     </div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">No drugs found</h3>
-                    <p className="text-sm text-gray-500">Try adjusting your search or filters</p>
+                    <h3 className={`text-lg font-semibold mb-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>No drugs found</h3>
+                    <p className={`text-sm ${isDarkMode ? 'text-gray-500' : 'text-gray-500'}`}>Try adjusting your search or filters</p>
                 </div>
             )}
         </div>

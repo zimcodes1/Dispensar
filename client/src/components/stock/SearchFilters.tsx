@@ -1,3 +1,5 @@
+import { useDarkMode } from '../../utils/useDarkMode'
+
 interface SearchFiltersProps {
     search: string
     onSearchChange: (value: string) => void
@@ -46,8 +48,9 @@ export default function SearchFilters({
     stockFilter,
     onStockFilterChange
 }: SearchFiltersProps) {
+    const { isDarkMode } = useDarkMode() as { isDarkMode: boolean }
     return (
-        <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+        <div className={`p-4 rounded-lg shadow-sm border ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {/* Search Input */}
                 <div className="relative">
@@ -56,9 +59,9 @@ export default function SearchFilters({
                         value={search}
                         onChange={(e) => onSearchChange(e.target.value)}
                         placeholder="Search drugs..."
-                        className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm"
+                        className={`w-full pl-10 pr-4 py-2 border rounded-lg text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' : 'border-gray-300'}`}
                     />
-                    <i className="bx bx-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    <i className={`bx bx-search absolute left-3 top-1/2 -translate-y-1/2 ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`}></i>
                 </div>
 
                 {/* Category Filter */}
@@ -66,7 +69,7 @@ export default function SearchFilters({
                     <select
                         value={category}
                         onChange={(e) => onCategoryChange(e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm"
+                        className={`w-full px-3 py-2 border rounded-lg text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white' : 'border-gray-300'}`}
                     >
                         {categories.map(cat => (
                             <option key={cat} value={cat}>{cat}</option>
@@ -79,7 +82,7 @@ export default function SearchFilters({
                     <select
                         value={status}
                         onChange={(e) => onStatusChange(e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm"
+                        className={`w-full px-3 py-2 border rounded-lg text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white' : 'border-gray-300'}`}
                     >
                         {statuses.map(stat => (
                             <option key={stat} value={stat}>{stat}</option>
@@ -92,7 +95,7 @@ export default function SearchFilters({
                     <select
                         value={stockFilter}
                         onChange={(e) => onStockFilterChange(e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm"
+                        className={`w-full px-3 py-2 border rounded-lg text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white' : 'border-gray-300'}`}
                     >
                         {stockFilters.map(filter => (
                             <option key={filter} value={filter}>{filter}</option>

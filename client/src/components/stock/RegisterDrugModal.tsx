@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useDarkMode } from '../../utils/useDarkMode'
 
 interface DrugFormData {
     name: string
@@ -30,6 +31,7 @@ const drugCategories = [
 ]
 
 export default function RegisterDrugModal({ onClose, onSubmit, initialData, isEdit = false }: RegisterDrugModalProps) {
+    const { isDarkMode } = useDarkMode() as { isDarkMode: boolean }
     const [formData, setFormData] = useState<DrugFormData>({
         name: initialData?.name || '',
         nafdacNumber: initialData?.nafdacNumber || '',
@@ -53,13 +55,13 @@ export default function RegisterDrugModal({ onClose, onSubmit, initialData, isEd
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
-            <div className="bg-white w-full max-w-2xl max-h-[90vh] rounded-lg shadow-lg flex flex-col">
+            <div className={`w-full max-w-2xl max-h-[90vh] rounded-lg shadow-lg flex flex-col ${isDarkMode ? 'bg-gray-800' : 'bg-white'}`}>
                 {/* Modal Header */}
-                <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 shrink-0">
-                    <h3 className="text-lg font-semibold text-gray-900">
+                <div className={`flex items-center justify-between px-6 py-4 border-b shrink-0 ${isDarkMode ? 'border-gray-700' : 'border-gray-200'}`}>
+                    <h3 className={`text-lg font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
                         {isEdit ? 'Edit Drug Details' : 'Register New Drug'}
                     </h3>
-                    <button onClick={onClose} className="text-gray-600 hover:text-gray-900">
+                    <button onClick={onClose} className={`${isDarkMode ? 'text-gray-400 hover:text-gray-200' : 'text-gray-600 hover:text-gray-900'}`}>
                         <i className="bx bx-x text-2xl"></i>
                     </button>
                 </div>
@@ -70,7 +72,7 @@ export default function RegisterDrugModal({ onClose, onSubmit, initialData, isEd
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {/* Drug Name */}
                         <div className="col-span-2">
-                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                            <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                                 Drug Name*
                             </label>
                             <input
@@ -79,14 +81,14 @@ export default function RegisterDrugModal({ onClose, onSubmit, initialData, isEd
                                 name="name"
                                 value={formData.name}
                                 onChange={handleChange}
-                                className="w-full p-2 border border-gray-300 rounded-md text-sm"
+                                className={`w-full p-2 border rounded-md text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' : 'border-gray-300'}`}
                                 placeholder="Enter drug name"
                             />
                         </div>
 
                         {/* NAFDAC Number */}
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                            <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                                 NAFDAC Number*
                             </label>
                             <input
@@ -95,14 +97,14 @@ export default function RegisterDrugModal({ onClose, onSubmit, initialData, isEd
                                 name="nafdacNumber"
                                 value={formData.nafdacNumber}
                                 onChange={handleChange}
-                                className="w-full p-2 border border-gray-300 rounded-md text-sm"
+                                className={`w-full p-2 border rounded-md text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' : 'border-gray-300'}`}
                                 placeholder="Enter NAFDAC number"
                             />
                         </div>
 
                         {/* Category */}
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                            <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                                 Category*
                             </label>
                             <select
@@ -110,7 +112,7 @@ export default function RegisterDrugModal({ onClose, onSubmit, initialData, isEd
                                 name="category"
                                 value={formData.category}
                                 onChange={handleChange}
-                                className="w-full p-2 border border-gray-300 rounded-md text-sm"
+                                className={`w-full p-2 border rounded-md text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white' : 'border-gray-300'}`}
                             >
                                 <option value="">Select category</option>
                                 {drugCategories.map(category => (
@@ -121,7 +123,7 @@ export default function RegisterDrugModal({ onClose, onSubmit, initialData, isEd
 
                         {/* Manufacture Date */}
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                            <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                                 Manufacture Date*
                             </label>
                             <input
@@ -130,13 +132,13 @@ export default function RegisterDrugModal({ onClose, onSubmit, initialData, isEd
                                 name="manufactureDate"
                                 value={formData.manufactureDate}
                                 onChange={handleChange}
-                                className="w-full p-2 border border-gray-300 rounded-md text-sm"
+                                className={`w-full p-2 border rounded-md text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white' : 'border-gray-300'}`}
                             />
                         </div>
 
                         {/* Expiry Date */}
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                            <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                                 Expiry Date*
                             </label>
                             <input
@@ -145,13 +147,13 @@ export default function RegisterDrugModal({ onClose, onSubmit, initialData, isEd
                                 name="expiryDate"
                                 value={formData.expiryDate}
                                 onChange={handleChange}
-                                className="w-full p-2 border border-gray-300 rounded-md text-sm"
+                                className={`w-full p-2 border rounded-md text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white' : 'border-gray-300'}`}
                             />
                         </div>
 
                         {/* Price */}
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                            <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                                 Price (₦)*
                             </label>
                             <input
@@ -160,7 +162,7 @@ export default function RegisterDrugModal({ onClose, onSubmit, initialData, isEd
                                 name="price"
                                 value={formData.price}
                                 onChange={handleChange}
-                                className="w-full p-2 border border-gray-300 rounded-md text-sm"
+                                className={`w-full p-2 border rounded-md text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' : 'border-gray-300'}`}
                                 placeholder="Enter price"
                                 min="0"
                                 step="0.01"
@@ -169,7 +171,7 @@ export default function RegisterDrugModal({ onClose, onSubmit, initialData, isEd
 
                         {/* Stock */}
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                            <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                                 Initial Stock*
                             </label>
                             <input
@@ -178,7 +180,7 @@ export default function RegisterDrugModal({ onClose, onSubmit, initialData, isEd
                                 name="stock"
                                 value={formData.stock}
                                 onChange={handleChange}
-                                className="w-full p-2 border border-gray-300 rounded-md text-sm"
+                                className={`w-full p-2 border rounded-md text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' : 'border-gray-300'}`}
                                 placeholder="Enter quantity"
                                 min="0"
                             />
@@ -186,14 +188,14 @@ export default function RegisterDrugModal({ onClose, onSubmit, initialData, isEd
 
                         {/* Description */}
                         <div className="col-span-2">
-                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                            <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                                 Description
                             </label>
                             <textarea
                                 name="description"
                                 value={formData.description}
                                 onChange={handleChange}
-                                className="w-full p-2 border border-gray-300 rounded-md text-sm"
+                                className={`w-full p-2 border rounded-md text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' : 'border-gray-300'}`}
                                 placeholder="Enter drug description"
                                 rows={3}
                             />
@@ -206,7 +208,7 @@ export default function RegisterDrugModal({ onClose, onSubmit, initialData, isEd
                         <button
                             type="button"
                             onClick={onClose}
-                            className="px-4 py-2 text-sm text-gray-700 hover:text-gray-900">
+                            className={`px-4 py-2 text-sm ${isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'}`}>
                             Cancel
                         </button>
                         <button

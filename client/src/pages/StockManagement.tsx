@@ -118,8 +118,8 @@ export default function StockManagement() {
                     <div className="p-6 max-sm:p-0">
                         <div className="flex justify-between items-center mb-6">
                             <div>
-                                <h1 className="text-2xl max-sm:text-lg font-semibold text-gray-900">Stock Management</h1>
-                                <p className="text-sm text-gray-600">Manage your pharmacy inventory</p>
+                                <h1 className={`text-2xl max-sm:text-lg font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Stock Management</h1>
+                                <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Manage your pharmacy inventory</p>
                             </div>
                             <button
                                 onClick={() => setShowRegisterModal(true)}
@@ -138,11 +138,11 @@ export default function StockManagement() {
                                 { label: 'Expired Items', value: demoDrugs.filter(d => d.status === 'expired').length, icon: 'bx-time' },
                                 { label: 'Active Items', value: demoDrugs.filter(d => d.status === 'active').length, icon: 'bx-check-circle' }
                             ].map((stat, index) => (
-                                <div key={index} className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                                <div key={index} className={`p-4 rounded-lg shadow-sm border ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
                                     <div className="flex items-center justify-between">
                                         <div>
-                                            <p className="text-sm text-gray-600">{stat.label}</p>
-                                            <p className="text-2xl font-semibold text-gray-900">{stat.value}</p>
+                                            <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>{stat.label}</p>
+                                            <p className={`text-2xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{stat.value}</p>
                                         </div>
                                         <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
                                             <i className={`bx ${stat.icon} text-xl text-green-600`}></i>
@@ -165,7 +165,7 @@ export default function StockManagement() {
                         />
 
                         {/* Drug List */}
-                        <div className="mt-6 bg-white rounded-lg shadow-sm border border-gray-200">
+                        <div className={`mt-6 rounded-lg shadow-sm border ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
                             <DrugList
                                 drugs={filteredDrugs}
                                 onEdit={handleEdit}

@@ -82,10 +82,10 @@ const Inventory = ()=>{
                <DrugSearch></DrugSearch>
 
                 {/**--------------Drugs List Table------------------ */}
-                <div className="bg-white rounded-lg border border-gray-200 shadow-sm mt-2 overflow-hidden">
+                <div className={`rounded-lg border shadow-sm mt-2 overflow-hidden ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
                     <div className="overflow-x-auto table-scroll">
                         <table className="w-full min-w-[800px]">
-                            <thead className="bg-gray-50 border-b border-gray-200">
+                            <thead className={`border-b ${isDarkMode ? 'bg-gray-700 border-gray-600' : 'bg-gray-50 border-gray-200'}`}>
                                 <tr>
                                     <th className="py-3 px-4 text-left">
                                         <input 
@@ -95,16 +95,16 @@ const Inventory = ()=>{
                                             className="form-checkbox h-4 w-4 text-green-600 accent-green-400 cursor-pointer" 
                                         />
                                     </th>
-                                    <th className="py-3 px-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Name</th>
-                                    <th className="py-3 px-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Category</th>
-                                    <th className="py-3 px-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Manufacturer</th>
-                                    <th className="py-3 px-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Formulation</th>
-                                    <th className="py-3 px-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Price</th>
-                                    <th className="py-3 px-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Stock</th>
-                                    <th className="py-3 px-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Actions</th>
+                                    <th className={`py-3 px-4 text-left text-xs font-semibold uppercase tracking-wider ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Name</th>
+                                    <th className={`py-3 px-4 text-left text-xs font-semibold uppercase tracking-wider ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Category</th>
+                                    <th className={`py-3 px-4 text-left text-xs font-semibold uppercase tracking-wider ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Manufacturer</th>
+                                    <th className={`py-3 px-4 text-left text-xs font-semibold uppercase tracking-wider ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Formulation</th>
+                                    <th className={`py-3 px-4 text-left text-xs font-semibold uppercase tracking-wider ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Price</th>
+                                    <th className={`py-3 px-4 text-left text-xs font-semibold uppercase tracking-wider ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Stock</th>
+                                    <th className={`py-3 px-4 text-left text-xs font-semibold uppercase tracking-wider ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Actions</th>
                                 </tr>
                             </thead>
-                            <tbody className="bg-white divide-y divide-gray-200">
+                            <tbody className={`divide-y ${isDarkMode ? 'bg-gray-800 divide-gray-700' : 'bg-white divide-gray-200'}`}>
                                 {inventoryData.map(item => (
                                     <InventoryItem
                                         key={item.id}
@@ -120,15 +120,15 @@ const Inventory = ()=>{
                     </div>
                     
                     {/* Pagination */}
-                    <div className="bg-gray-50 px-4 py-3 border-t border-gray-200 flex items-center justify-between">
-                        <div className="text-sm text-gray-700">
+                    <div className={`px-4 py-3 border-t flex items-center justify-between ${isDarkMode ? 'bg-gray-700 border-gray-600' : 'bg-gray-50 border-gray-200'}`}>
+                        <div className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                             Showing <span className="font-medium">1</span> to <span className="font-medium">{inventoryData.length}</span> of <span className="font-medium">{inventoryData.length}</span> results
                         </div>
                         <div className="flex gap-2">
-                            <button className="px-3 py-1 border border-gray-300 rounded-md text-sm text-gray-700 hover:bg-gray-100 disabled:opacity-50" disabled>
+                            <button className={`px-3 py-1 border rounded-md text-sm disabled:opacity-50 ${isDarkMode ? 'border-gray-600 text-gray-300 hover:bg-gray-600' : 'border-gray-300 text-gray-700 hover:bg-gray-100'}`} disabled>
                                 Previous
                             </button>
-                            <button className="px-3 py-1 border border-gray-300 rounded-md text-sm text-gray-700 hover:bg-gray-100 disabled:opacity-50" disabled>
+                            <button className={`px-3 py-1 border rounded-md text-sm disabled:opacity-50 ${isDarkMode ? 'border-gray-600 text-gray-300 hover:bg-gray-600' : 'border-gray-300 text-gray-700 hover:bg-gray-100'}`} disabled>
                                 Next
                             </button>
                         </div>
