@@ -302,7 +302,7 @@ export default function MedicalSupplies() {
                     </div>
 
                     {/* Supplies List */}
-                    <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+                    <div className={`rounded-lg shadow-sm border overflow-hidden ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
                         <SuppliesList
                             supplies={filteredSupplies.length > 0 ? filteredSupplies : supplies}
                             onEdit={setEditSupply}
@@ -341,6 +341,7 @@ interface StatCardProps {
 }
 
 function StatCard({ title, value, icon, color }: StatCardProps) {
+    const { isDarkMode } = useDarkMode() as { isDarkMode: boolean }
     const colors = {
         blue: 'bg-blue-50 text-blue-600',
         yellow: 'bg-yellow-50 text-yellow-600',
@@ -349,14 +350,14 @@ function StatCard({ title, value, icon, color }: StatCardProps) {
     }
 
     return (
-        <div className="bg-white rounded-lg shadow p-4">
+        <div className={`rounded-lg shadow p-4 ${isDarkMode ? 'bg-gray-800' : 'bg-white'}`}>
             <div className="flex items-center">
                 <div className={`p-3 rounded-lg ${colors[color]}`}>
                     <i className={`bx ${icon} text-xl`}></i>
                 </div>
                 <div className="ml-4">
-                    <p className="text-sm font-medium text-gray-600">{title}</p>
-                    <p className="text-lg font-semibold text-gray-900">{value}</p>
+                    <p className={`text-sm font-medium ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>{title}</p>
+                    <p className={`text-lg font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{value}</p>
                 </div>
             </div>
         </div>

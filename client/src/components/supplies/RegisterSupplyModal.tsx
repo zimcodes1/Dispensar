@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useDarkMode } from '../../utils/useDarkMode'
 
 interface SupplyFormData {
     name: string
@@ -46,6 +47,7 @@ export default function RegisterSupplyModal({
     initialData, 
     isEdit = false 
 }: RegisterSupplyModalProps) {
+    const { isDarkMode } = useDarkMode() as { isDarkMode: boolean }
     const [formData, setFormData] = useState<SupplyFormData>({
         name: initialData?.name || '',
         category: initialData?.category || '',
@@ -70,13 +72,13 @@ export default function RegisterSupplyModal({
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
-            <div className="bg-white w-full max-w-2xl max-h-[90vh] rounded-lg shadow-lg flex flex-col">
+            <div className={`w-full max-w-2xl max-h-[90vh] rounded-lg shadow-lg flex flex-col ${isDarkMode ? 'bg-gray-800' : 'bg-white'}`}>
                 {/* Modal Header */}
-                <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 shrink-0">
-                    <h3 className="text-lg font-semibold text-gray-900">
+                <div className={`flex items-center justify-between px-6 py-4 border-b shrink-0 ${isDarkMode ? 'border-gray-700' : 'border-gray-200'}`}>
+                    <h3 className={`text-lg font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
                         {isEdit ? 'Edit Medical Supply' : 'Register New Medical Supply'}
                     </h3>
-                    <button onClick={onClose} className="text-gray-600 hover:text-gray-900">
+                    <button onClick={onClose} className={`${isDarkMode ? 'text-gray-400 hover:text-gray-200' : 'text-gray-600 hover:text-gray-900'}`}>
                         <i className="bx bx-x text-2xl"></i>
                     </button>
                 </div>
@@ -87,7 +89,7 @@ export default function RegisterSupplyModal({
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {/* Supply Name */}
                         <div className="col-span-2">
-                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                            <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                                 Supply Name*
                             </label>
                             <input
@@ -96,14 +98,14 @@ export default function RegisterSupplyModal({
                                 name="name"
                                 value={formData.name}
                                 onChange={handleChange}
-                                className="w-full p-2 border border-gray-300 rounded-md text-sm"
+                                className={`w-full p-2 border rounded-md text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' : 'border-gray-300'}`}
                                 placeholder="Enter supply name"
                             />
                         </div>
 
                         {/* Category */}
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                            <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                                 Category*
                             </label>
                             <select
@@ -111,7 +113,7 @@ export default function RegisterSupplyModal({
                                 name="category"
                                 value={formData.category}
                                 onChange={handleChange}
-                                className="w-full p-2 border border-gray-300 rounded-md text-sm"
+                                className={`w-full p-2 border rounded-md text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white' : 'border-gray-300'}`}
                             >
                                 <option value="">Select category</option>
                                 {supplyCategories.map(category => (
@@ -122,7 +124,7 @@ export default function RegisterSupplyModal({
 
                         {/* Unit Type */}
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                            <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                                 Unit Type*
                             </label>
                             <select
@@ -130,7 +132,7 @@ export default function RegisterSupplyModal({
                                 name="unit"
                                 value={formData.unit}
                                 onChange={handleChange}
-                                className="w-full p-2 border border-gray-300 rounded-md text-sm"
+                                className={`w-full p-2 border rounded-md text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white' : 'border-gray-300'}`}
                             >
                                 <option value="">Select unit</option>
                                 {unitTypes.map(unit => (
@@ -141,7 +143,7 @@ export default function RegisterSupplyModal({
 
                         {/* Quantity */}
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                            <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                                 Quantity*
                             </label>
                             <input
@@ -150,7 +152,7 @@ export default function RegisterSupplyModal({
                                 name="quantity"
                                 value={formData.quantity}
                                 onChange={handleChange}
-                                className="w-full p-2 border border-gray-300 rounded-md text-sm"
+                                className={`w-full p-2 border rounded-md text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' : 'border-gray-300'}`}
                                 placeholder="Enter quantity"
                                 min="0"
                             />
@@ -158,7 +160,7 @@ export default function RegisterSupplyModal({
 
                         {/* Price */}
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                            <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                                 Price per {formData.unit || 'unit'} (₦)*
                             </label>
                             <input
@@ -167,7 +169,7 @@ export default function RegisterSupplyModal({
                                 name="price"
                                 value={formData.price}
                                 onChange={handleChange}
-                                className="w-full p-2 border border-gray-300 rounded-md text-sm"
+                                className={`w-full p-2 border rounded-md text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' : 'border-gray-300'}`}
                                 placeholder="Enter price"
                                 min="0"
                                 step="0.01"
@@ -176,7 +178,7 @@ export default function RegisterSupplyModal({
 
                         {/* Supplier */}
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                            <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                                 Supplier*
                             </label>
                             <input
@@ -185,14 +187,14 @@ export default function RegisterSupplyModal({
                                 name="supplier"
                                 value={formData.supplier}
                                 onChange={handleChange}
-                                className="w-full p-2 border border-gray-300 rounded-md text-sm"
+                                className={`w-full p-2 border rounded-md text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' : 'border-gray-300'}`}
                                 placeholder="Enter supplier name"
                             />
                         </div>
 
                         {/* Reorder Level */}
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                            <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                                 Reorder Level*
                             </label>
                             <input
@@ -201,7 +203,7 @@ export default function RegisterSupplyModal({
                                 name="reorderLevel"
                                 value={formData.reorderLevel}
                                 onChange={handleChange}
-                                className="w-full p-2 border border-gray-300 rounded-md text-sm"
+                                className={`w-full p-2 border rounded-md text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' : 'border-gray-300'}`}
                                 placeholder="Minimum stock level"
                                 min="0"
                             />
@@ -209,7 +211,7 @@ export default function RegisterSupplyModal({
 
                         {/* Storage Location */}
                         <div className="col-span-2">
-                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                            <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                                 Storage Location
                             </label>
                             <input
@@ -217,21 +219,21 @@ export default function RegisterSupplyModal({
                                 name="location"
                                 value={formData.location}
                                 onChange={handleChange}
-                                className="w-full p-2 border border-gray-300 rounded-md text-sm"
+                                className={`w-full p-2 border rounded-md text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' : 'border-gray-300'}`}
                                 placeholder="Enter storage location (optional)"
                             />
                         </div>
 
                         {/* Description */}
                         <div className="col-span-2">
-                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                            <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                                 Description
                             </label>
                             <textarea
                                 name="description"
                                 value={formData.description}
                                 onChange={handleChange}
-                                className="w-full p-2 border border-gray-300 rounded-md text-sm"
+                                className={`w-full p-2 border rounded-md text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' : 'border-gray-300'}`}
                                 placeholder="Enter supply description (optional)"
                                 rows={3}
                             />
@@ -244,7 +246,7 @@ export default function RegisterSupplyModal({
                         <button
                             type="button"
                             onClick={onClose}
-                            className="px-4 py-2 text-sm text-gray-700 hover:text-gray-900">
+                            className={`px-4 py-2 text-sm ${isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'}`}>
                             Cancel
                         </button>
                         <button

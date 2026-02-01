@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useDarkMode } from '../utils/useDarkMode'
 
 type ReportType = 'Clinical Intervention' | 'Dispensing Error / Near-Miss' | 'Shift Handover Note' | ''
 
@@ -20,6 +21,7 @@ const problemOptions = [
 const errorTypes = ['Wrong drug', 'Wrong dose', 'Wrong route', 'Wrong patient', 'Near miss']
 
 export default function CreateReportModal({ onClose, onSubmit, onSaveDraft, initialData = {} }: CreateReportModalProps){
+  const { isDarkMode } = useDarkMode() as { isDarkMode: boolean }
   const [reportType, setReportType] = useState<ReportType>(initialData.reportType ?? '')
   const [patient, setPatient] = useState<string>(initialData.patient ?? '')
   const [prescriber, setPrescriber] = useState<string>(initialData.prescriber ?? '')
@@ -74,11 +76,11 @@ export default function CreateReportModal({ onClose, onSubmit, onSaveDraft, init
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
-      <div className="bg-white w-full max-w-2xl rounded-lg shadow-lg overflow-hidden">
+      <div className={`w-full max-w-2xl rounded-lg shadow-lg overflow-hidden ${isDarkMode ? 'bg-gray-800' : 'bg-white'}`}>
         {/* header */}
-        <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200">
-          <h3 className="text-lg font-semibold text-gray-800">Create New Report</h3>
-          <button onClick={onClose} aria-label="Close" className="text-gray-600 hover:text-gray-900">
+        <div className={`flex items-center justify-between px-4 py-3 border-b ${isDarkMode ? 'border-gray-700' : 'border-gray-200'}`}>
+          <h3 className={`text-lg font-semibold ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>Create New Report</h3>
+          <button onClick={onClose} aria-label="Close" className={`${isDarkMode ? 'text-gray-400 hover:text-gray-200' : 'text-gray-600 hover:text-gray-900'}`}>
             <i className="bx bx-x text-2xl"></i>
           </button>
         </div>
@@ -88,19 +90,19 @@ export default function CreateReportModal({ onClose, onSubmit, onSaveDraft, init
           <div className="grid grid-cols-1 gap-4">
             {/* Standard fields */}
             <div className="flex flex-col">
-              <label className="text-xs text-gray-600 mb-1">Patient</label>
-              <input value={patient} onChange={e=>setPatient(e.target.value)} placeholder="Search or enter patient name / ID" className="h-10 p-2 border border-gray-300 rounded-md bg-white text-sm" />
+              <label className={`text-xs mb-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Patient</label>
+              <input value={patient} onChange={e=>setPatient(e.target.value)} placeholder="Search or enter patient name / ID" className={`h-10 p-2 border rounded-md text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' : 'border-gray-300 bg-white'}`} />
             </div>
 
             <div className="flex flex-col">
-              <label className="text-xs text-gray-600 mb-1">Prescriber</label>
-              <input value={prescriber} onChange={e=>setPrescriber(e.target.value)} placeholder="Prescriber name or ID" className="h-10 p-2 border border-gray-300 rounded-md bg-white text-sm" />
+              <label className={`text-xs mb-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Prescriber</label>
+              <input value={prescriber} onChange={e=>setPrescriber(e.target.value)} placeholder="Prescriber name or ID" className={`h-10 p-2 border rounded-md text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' : 'border-gray-300 bg-white'}`} />
             </div>
 
             {/* Main selector */}
             <div className="flex flex-col">
-              <label className="text-xs text-gray-600 mb-1">Report Type</label>
-              <select value={reportType} onChange={e=>setReportType(e.target.value as ReportType)} className="h-10 p-2 border border-gray-300 rounded-md bg-white text-sm">
+              <label className={`text-xs mb-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Report Type</label>
+              <select value={reportType} onChange={e=>setReportType(e.target.value as ReportType)} className={`h-10 p-2 border rounded-md text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white' : 'border-gray-300 bg-white'}`}>
                 <option value="">Select report type</option>
                 <option value="Clinical Intervention">Clinical Intervention</option>
                 <option value="Dispensing Error / Near-Miss">Dispensing Error / Near-Miss</option>
@@ -112,8 +114,8 @@ export default function CreateReportModal({ onClose, onSubmit, onSaveDraft, init
             {reportType === 'Clinical Intervention' && (
               <div className="grid grid-cols-1 gap-3">
                 <div className="flex flex-col">
-                  <label className="text-xs text-gray-600 mb-1">Problem Identified</label>
-                  <select value={problemIdentified} onChange={e=>setProblemIdentified(e.target.value)} className="h-10 p-2 border border-gray-300 rounded-md bg-white text-sm">
+                  <label className={`text-xs mb-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Problem Identified</label>
+                  <select value={problemIdentified} onChange={e=>setProblemIdentified(e.target.value)} className={`h-10 p-2 border rounded-md text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white' : 'border-gray-300 bg-white'}`}>
                     <option value="">Select problem</option>
                     {problemOptions.map(opt => (
                       <option key={opt} value={opt}>{opt}</option>
@@ -122,8 +124,8 @@ export default function CreateReportModal({ onClose, onSubmit, onSaveDraft, init
                 </div>
 
                 <div className="flex flex-col">
-                  <label className="text-xs text-gray-600 mb-1">Action Taken</label>
-                  <textarea value={actionTaken} onChange={e=>setActionTaken(e.target.value)} rows={4} placeholder="Describe the action taken" className="p-2 border border-gray-300 rounded-md bg-white text-sm" />
+                  <label className={`text-xs mb-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Action Taken</label>
+                  <textarea value={actionTaken} onChange={e=>setActionTaken(e.target.value)} rows={4} placeholder="Describe the action taken" className={`p-2 border rounded-md text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' : 'border-gray-300 bg-white'}`} />
                 </div>
               </div>
             )}
@@ -131,8 +133,8 @@ export default function CreateReportModal({ onClose, onSubmit, onSaveDraft, init
             {reportType === 'Dispensing Error / Near-Miss' && (
               <div className="grid grid-cols-1 gap-3">
                 <div className="flex flex-col">
-                  <label className="text-xs text-gray-600 mb-1">Error Type</label>
-                  <select value={errorType} onChange={e=>setErrorType(e.target.value)} className="h-10 p-2 border border-gray-300 rounded-md bg-white text-sm">
+                  <label className={`text-xs mb-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Error Type</label>
+                  <select value={errorType} onChange={e=>setErrorType(e.target.value)} className={`h-10 p-2 border rounded-md text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white' : 'border-gray-300 bg-white'}`}>
                     <option value="">Select error type</option>
                     {errorTypes.map(opt => (
                       <option key={opt} value={opt}>{opt}</option>
@@ -141,7 +143,7 @@ export default function CreateReportModal({ onClose, onSubmit, onSaveDraft, init
                 </div>
 
                 <div className="flex flex-col">
-                  <label className="text-xs text-gray-600 mb-1">Severity</label>
+                  <label className={`text-xs mb-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Severity</label>
                   <div className="flex items-center gap-4 text-sm">
                     <label className="inline-flex items-center"><input type="radio" name="severity" value="low" checked={severity==='low'} onChange={()=>setSeverity('low')} className="mr-2" />Low</label>
                     <label className="inline-flex items-center"><input type="radio" name="severity" value="moderate" checked={severity==='moderate'} onChange={()=>setSeverity('moderate')} className="mr-2" />Moderate</label>
@@ -153,16 +155,16 @@ export default function CreateReportModal({ onClose, onSubmit, onSaveDraft, init
 
             {reportType === 'Shift Handover Note' && (
               <div className="flex flex-col">
-                <label className="text-xs text-gray-600 mb-1">Pending Tasks and Observations</label>
-                <textarea value={handoverNotes} onChange={e=>setHandoverNotes(e.target.value)} rows={6} placeholder="List pending tasks, observations, and any important notes for the incoming shift" className="p-2 border border-gray-300 rounded-md bg-white text-sm" />
+                <label className={`text-xs mb-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Pending Tasks and Observations</label>
+                <textarea value={handoverNotes} onChange={e=>setHandoverNotes(e.target.value)} rows={6} placeholder="List pending tasks, observations, and any important notes for the incoming shift" className={`p-2 border rounded-md text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' : 'border-gray-300 bg-white'}`} />
               </div>
             )}
           </div>
 
           {/* footer */}
-          <div className="mt-6 border-t border-gray-100 pt-4 flex justify-end gap-3">
-            <button type="button" onClick={handleSaveDraft} className="bg-gray-100 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-200 transition">Save as Draft</button>
-            <button type="submit" className="bg-[#5fdf85] text-gray-900 px-4 py-2 rounded-md hover:bg-green-700 hover:text-white transition ">Submit Report</button>
+          <div className={`mt-6 border-t pt-4 flex justify-end gap-3 ${isDarkMode ? 'border-gray-700' : 'border-gray-100'}`}>
+            <button type="button" onClick={handleSaveDraft} className={`px-4 py-2 rounded-md transition ${isDarkMode ? 'bg-gray-700 text-gray-300 hover:bg-gray-600' : 'bg-gray-100 text-gray-800 hover:bg-gray-200'}`}>Save as Draft</button>
+            <button type="submit" className="bg-green-600 text-gray-50 px-4 py-2 rounded-md hover:bg-green-700 hover:text-white transition ">Submit Report</button>
           </div>
         </form>
       </div>
