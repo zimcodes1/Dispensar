@@ -2,13 +2,13 @@
 
 function DrugDetails(){
     return(
-                <div className="flex max-sm:flex-col w-full h-fit max-sm:h-fit mt-4 bg-white rounded-2xl border border-gray-200 p-4 justify-start items-center">
-                    <div className="w-[30%] max-sm:w-full h-full max-sm:h-[400px] rounded-2xl overflow-hidden flex justify-center items-center bg-white">
+                <div className="flex max-sm:flex-col w-full h-fit max-sm:h-fit mt-4 bg-white rounded-2xl border border-gray-200 p-4 justify-start items-start gap-4">
+                    <div className="w-[30%] max-sm:w-full aspect-square rounded-2xl overflow-hidden flex justify-center items-center bg-gray-50">
                         {/* Drug Image */}
-                        <img src="/images/drug_test.png" alt="Drug Image" className="max-sm:h-auto w-full h-full" />
+                        <img src="/images/drug_test.png" alt="Drug Image" className="w-full h-full object-contain" />
                     </div>
                     {/* Drug Details */}
-                    <div className="flex flex-col w-[70%] max-sm:w-full h-fit rounded-2xl">
+                    <div className="flex flex-col flex-1 h-fit rounded-2xl">
                         <div className="flex flex-col h-full justify-start px-5 max-sm:px-0 py-2 relative">
                             <i className="bx bx-star absolute right-0 text-xl cursor-pointer"></i>
                             <div>
