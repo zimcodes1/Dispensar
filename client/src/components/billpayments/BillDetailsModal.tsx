@@ -59,8 +59,8 @@ export default function BillDetailsModal({
 
                 {/* Items List */}
                 <div className="flex-1 overflow-y-auto table-scroll">
-                    <div className="px-6 py-4">
-                    <table className="w-full">
+                    <div className="px-6 py-4 overflow-x-auto table-scroll">
+                    <table className="w-full min-w-[500px]">
                         <thead>
                             <tr className="text-sm text-gray-600">
                                 <th className="pb-3 text-left">Drug Name</th>
