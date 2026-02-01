@@ -68,8 +68,8 @@ export default function RegisterDrugModal({ onClose, onSubmit, initialData, isEd
 
                 {/* Form */}
                 <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto table-scroll">
-                    <div className="p-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="p-6 overflow-x-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 min-w-[500px]">
                         {/* Drug Name */}
                         <div className="col-span-2">
                             <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>

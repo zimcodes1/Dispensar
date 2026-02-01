@@ -76,9 +76,9 @@ export default function DispenseQueueModal({ onClose }: DispenseQueueModalProps)
                     {queue.length === 0 ? (
                         <p className={`text-center py-4 ${isDarkMode ? 'text-gray-500' : 'text-gray-500'}`}>No items in queue</p>
                     ) : (
-                        <div className="space-y-3">
+                        <div className="space-y-3 overflow-x-auto">
                             {queue.map((item) => (
-                                <div key={item.id} className={`flex items-center justify-between p-4 rounded-lg transition duration-150 ${isDarkMode ? 'bg-gray-700 hover:bg-gray-600' : 'bg-gray-50 hover:bg-gray-100'}`}>
+                                <div key={item.id} className={`flex items-center justify-between p-4 rounded-lg transition duration-150 min-w-[500px] ${isDarkMode ? 'bg-gray-700 hover:bg-gray-600' : 'bg-gray-50 hover:bg-gray-100'}`}>
                                     <div className="flex-1">
                                         <h4 className={`font-medium ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{item.drugName}</h4>
                                         <div className={`flex items-center gap-4 mt-1 text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
