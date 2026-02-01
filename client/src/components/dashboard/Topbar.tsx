@@ -4,7 +4,7 @@ function Topbar(){
     const { isDarkMode, toggleDarkMode } = useDarkMode() as { isDarkMode: boolean, toggleDarkMode: () => void }
 
     return(
-        <div className={`flex w-full h-[60px] max-sm:h-[50px] max-sm:pl-15 px-5 items-center justify-between fixed top-0 z-50 border-b transition-colors duration-300 ${
+        <div className={`flex w-full h-[60px] max-sm:h-[50px] max-sm:pl-12 px-5 items-center justify-between fixed top-0 z-50 border-b transition-colors duration-300 ${
             isDarkMode 
                 ? 'bg-gray-900 border-gray-700' 
                 : 'bg-white border-gray-300'
@@ -18,7 +18,7 @@ function Topbar(){
              <h2 className={`text-xl font-semibold transition-colors duration-300 ${
                 isDarkMode ? 'text-white' : 'text-gray-800'
             }`}></h2>
-             <div className="flex w-auto h-full justify-between items-center gap-4">
+             <div className="flex w-auto h-full justify-between items-center gap-4 max-sm:gap-0">
                 <button 
                     onClick={toggleDarkMode}
                     className={`p-2 rounded-lg transition duration-300 ${

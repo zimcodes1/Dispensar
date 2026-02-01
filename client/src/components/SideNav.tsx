@@ -51,10 +51,10 @@ function SideNav() {
             {/* Hamburger (mobile only) */}
             <button
                 aria-label="Open menu"
-                className={`fixed top-1.5 left-2 z-50 p-1 px-2 rounded-md border transition-colors duration-300 md:hidden ${
+                className={`fixed top-1.5 left-2 z-50 p-1 px-2 rounded-md transition-colors duration-300 md:hidden ${
                     isDarkMode 
-                        ? 'border-gray-700 hover:bg-gray-800' 
-                        : 'border-gray-100 hover:bg-gray-100'
+                        ? 'hover:bg-gray-800' 
+                        : 'hover:bg-gray-100'
                 }`}
                 onClick={() => setIsOpen(true)}
             >
@@ -88,15 +88,6 @@ function SideNav() {
                                 ? 'bg-emerald-700' 
                                 : 'bg-[#5fdf85]'
                         }`}>
-
-                {/* Close button (mobile only) */}
-                <button className="fixed top-15 right-2 md:hidden" onClick={() => setIsOpen(false)}>
-                    <i className={`bx bx-x text-3xl p-2 rounded-4xl transition duration-300 hover:rotate-90 ${
-                        isDarkMode
-                            ? 'text-gray-200 bg-gray-800 hover:bg-gray-200 hover:text-gray-800'
-                            : 'text-gray-50 bg-gray-700 hover:bg-gray-50 hover:text-gray-700'
-                    }`}></i>
-                </button>
 
                 <div>
                     {navItems.map(item => (
