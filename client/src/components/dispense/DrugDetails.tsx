@@ -5,7 +5,7 @@ function DrugDetails(){
                 <div className="flex max-sm:flex-col w-full h-fit max-sm:h-fit mt-4 bg-white rounded-2xl border border-gray-200 p-4 justify-start items-center">
                     <div className="w-[30%] max-sm:w-full h-full max-sm:h-[400px] rounded-2xl overflow-hidden flex justify-center items-center bg-white">
                         {/* Drug Image */}
-                        <img src="/images/drug_test.png" alt="Drug Image" className="w-full h-full" />
+                        <img src="/images/drug_test.png" alt="Drug Image" className="max-sm:h-auto w-full h-full" />
                     </div>
                     {/* Drug Details */}
                     <div className="flex flex-col w-[70%] max-sm:w-full h-fit rounded-2xl">
