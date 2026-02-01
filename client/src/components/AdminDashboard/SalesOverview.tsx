@@ -1,10 +1,12 @@
 import { Doughnut } from 'react-chartjs-2'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
 import { memo } from 'react'
+import { useDarkMode } from '../../utils/useDarkMode'
 
 ChartJS.register(ArcElement, Tooltip, Legend)
 
 function SalesOverview() {
+    const { isDarkMode } = useDarkMode() as { isDarkMode: boolean }
     const data = {
         labels: ['Prescription', 'OTC', 'Medical Supplies'],
         datasets: [
@@ -28,7 +30,8 @@ function SalesOverview() {
                 position: 'bottom' as const,
                 labels: {
                     usePointStyle: true,
-                    padding: 20
+                    padding: 20,
+                    color: isDarkMode ? '#d1d5db' : '#374151'
                 }
             }
         },
@@ -36,13 +39,13 @@ function SalesOverview() {
     }
 
     return (
-        <div className="bg-white p-6 rounded-xl shadow-sm">
+        <div className={`p-6 rounded-xl shadow-sm ${isDarkMode ? 'bg-gray-800' : 'bg-white'}`}>
             <div className="flex justify-between items-center mb-6">
                 <div>
-                    <h3 className="text-lg font-semibold text-gray-900">Sales Distribution</h3>
-                    <p className="text-sm text-gray-600">Sales by category</p>
+                    <h3 className={`text-lg font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Sales Distribution</h3>
+                    <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Sales by category</p>
                 </div>
-                <select className="text-sm border border-gray-200 rounded-lg px-3 py-2">
+                <select className={`text-sm border rounded-lg px-3 py-2 ${isDarkMode ? 'bg-gray-700 border-gray-600 text-gray-300' : 'border-gray-200 bg-white'}`}>
                     <option>This Month</option>
                     <option>Last Month</option>
                     <option>This Quarter</option>
@@ -60,9 +63,9 @@ function SalesOverview() {
                     { label: 'Supplies', value: '₦600K', percentage: '25%' }
                 ].map((item, index) => (
                     <div key={index} className="text-center">
-                        <p className="text-sm text-gray-600">{item.label}</p>
-                        <p className="text-lg font-semibold text-gray-900 mt-1">{item.value}</p>
-                        <p className="text-xs text-gray-500">{item.percentage}</p>
+                        <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>{item.label}</p>
+                        <p className={`text-lg font-semibold mt-1 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{item.value}</p>
+                        <p className={`text-xs ${isDarkMode ? 'text-gray-500' : 'text-gray-500'}`}>{item.percentage}</p>
                     </div>
                 ))}
             </div>

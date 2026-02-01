@@ -72,7 +72,7 @@ function DrugSearch({
             
             <button 
                 onClick={onFilter}
-                className="h-12 px-4 rounded-lg bg-white border border-gray-300 hover:border-gray-400 hover:bg-gray-50 transition flex items-center gap-2 text-gray-700"
+                className={`h-12 px-4 rounded-lg border transition flex items-center gap-2 ${isDarkMode ? 'bg-gray-800 border-gray-700 text-gray-300 hover:bg-gray-700' : 'bg-white border-gray-300 hover:border-gray-400 hover:bg-gray-50 text-gray-700'}`}
             >
                 <i className="bx bx-filter-alt text-xl"></i>
                 <span className="max-sm:hidden font-medium">Filter</span>

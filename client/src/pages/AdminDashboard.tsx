@@ -33,13 +33,13 @@ export default function AdminDashboard() {
             <div className="flex w-[78%] md:w-[calc(100%-4rem)] lg:w-[78%] max-[767px]:w-full h-full flex-col max-[767px]:px-2 md:px-4">
                 <div className="flex w-full h-[40%] max-[767px]:h-fit md:h-fit justify-between pt-4 max-[767px]:pt-2 md:pt-3 max-[767px]:flex-col">
                     <div className="my-0 max-sm:my-1">
-                            <h1 className="text-2xl max-sm:text-lg font-semibold text-gray-900">Admin Dashboard</h1>
-                            <p className="text-sm text-gray-600 max-sm:text-sm my-2">Welcome back, here's what's happening today</p>
+                            <h1 className={`text-2xl max-sm:text-lg font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Admin Dashboard</h1>
+                            <p className={`text-sm max-sm:text-sm my-2 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Welcome back, here's what's happening today</p>
                         </div>
                         <div className="flex gap-3  max-sm:my-2">
                             <button 
                                 onClick={() => setShowExportModal(true)}
-                                className="bg-white text-gray-600 h-12 px-4 py-2 rounded-lg hover:bg-gray-50 transition border border-gray-200"
+                                className={`h-12 px-4 py-2 rounded-lg transition border ${isDarkMode ? 'bg-gray-800 text-gray-300 hover:bg-gray-700 border-gray-700' : 'bg-white text-gray-600 hover:bg-gray-50 border-gray-200'}`}
                             >
                                 <i className="bx bx-download mr-2"></i>
                                 Export Report

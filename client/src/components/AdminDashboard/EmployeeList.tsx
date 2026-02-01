@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useDarkMode } from '../../utils/useDarkMode'
 
 interface Employee {
     id: string
@@ -10,27 +11,28 @@ interface Employee {
 }
 
 function EmployeeActions({ employeeId }: { employeeId: string }) {
+    const { isDarkMode } = useDarkMode() as { isDarkMode: boolean }
     const [isOpen, setIsOpen] = useState(false)
     employeeId = employeeId; // to avoid unused variable warning
     return (
         <div className="relative">
             <button 
                 onClick={() => setIsOpen(!isOpen)}
-                className="text-gray-600 hover:text-gray-900 p-1 hover:bg-gray-100 rounded"
+                className={`p-1 rounded ${isDarkMode ? 'text-gray-400 hover:text-gray-200 hover:bg-gray-700' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'}`}
             >
                 <i className="bx bx-dots-vertical-rounded"></i>
             </button>
             {isOpen && (
                 <>
                     <div className="fixed inset-0 z-10" onClick={() => setIsOpen(false)} />
-                    <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-50">
-                        <button className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                    <div className={`absolute right-0 mt-2 w-48 rounded-lg shadow-lg border py-1 z-50 ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
+                        <button className={`w-full text-left px-4 py-2 text-sm ${isDarkMode ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-700 hover:bg-gray-100'}`}>
                             <i className="bx bx-edit mr-2"></i>Edit
                         </button>
-                        <button className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                        <button className={`w-full text-left px-4 py-2 text-sm ${isDarkMode ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-700 hover:bg-gray-100'}`}>
                             <i className="bx bx-show mr-2"></i>View Details
                         </button>
-                        <button className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100">
+                        <button className={`w-full text-left px-4 py-2 text-sm text-red-600 ${isDarkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-100'}`}>
                             <i className="bx bx-trash mr-2"></i>Delete
                         </button>
                     </div>
@@ -80,12 +82,13 @@ const demoEmployees: Employee[] = [
 ]
 
 export default function EmployeeList({ onAddEmployee }: EmployeeListProps) {
+    const { isDarkMode } = useDarkMode() as { isDarkMode: boolean }
     return (
-        <div className="bg-white p-6 rounded-xl shadow-sm">
+        <div className={`p-6 rounded-xl shadow-sm ${isDarkMode ? 'bg-gray-800' : 'bg-white'}`}>
             <div className="flex justify-between items-center mb-6">
                 <div>
-                    <h3 className="text-lg font-semibold text-gray-900">Employee Overview</h3>
-                    <p className="text-sm text-gray-600">Manage your pharmacy staff</p>
+                    <h3 className={`text-lg font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Employee Overview</h3>
+                    <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Manage your pharmacy staff</p>
                 </div>
                 <button 
                     onClick={onAddEmployee}
@@ -98,7 +101,7 @@ export default function EmployeeList({ onAddEmployee }: EmployeeListProps) {
             <div className="overflow-x-auto lg:overflow-x-visible">
                 <table className="w-full min-w-[700px] lg:min-w-0">
                     <thead>
-                        <tr className="text-sm text-gray-600 border-b border-gray-200">
+                        <tr className={`text-sm border-b ${isDarkMode ? 'text-gray-400 border-gray-700' : 'text-gray-600 border-gray-200'}`}>
                             <th className="pb-3 text-left font-medium">Employee</th>
                             <th className="pb-3 text-left font-medium">Role</th>
                             <th className="pb-3 text-left font-medium">Status</th>
@@ -108,18 +111,18 @@ export default function EmployeeList({ onAddEmployee }: EmployeeListProps) {
                     </thead>
                     <tbody>
                         {demoEmployees.map(employee => (
-                            <tr key={employee.id} className="border-b border-gray-50">
+                            <tr key={employee.id} className={`border-b ${isDarkMode ? 'border-gray-700' : 'border-gray-50'}`}>
                                 <td className="py-3">
                                     <div className="flex items-center gap-3">
                                         <img src={employee.avatar} alt={employee.name} className="w-8 h-8 rounded-full" />
                                         <div>
-                                            <p className="text-sm font-medium text-gray-900">{employee.name}</p>
-                                            <p className="text-xs text-gray-500">ID: {employee.id}</p>
+                                            <p className={`text-sm font-medium ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{employee.name}</p>
+                                            <p className={`text-xs ${isDarkMode ? 'text-gray-500' : 'text-gray-500'}`}>ID: {employee.id}</p>
                                         </div>
                                     </div>
                                 </td>
                                 <td className="py-3">
-                                    <span className="text-sm text-gray-600">{employee.role}</span>
+                                    <span className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>{employee.role}</span>
                                 </td>
                                 <td className="py-3">
                                     <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
@@ -129,7 +132,7 @@ export default function EmployeeList({ onAddEmployee }: EmployeeListProps) {
                                     </span>
                                 </td>
                                 <td className="py-3 text-right">
-                                    <span className="text-sm text-gray-900">{employee.sales}</span>
+                                    <span className={`text-sm ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{employee.sales}</span>
                                 </td>
                                 <td className="py-3 text-right">
                                     <EmployeeActions employeeId={employee.id} />

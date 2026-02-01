@@ -24,7 +24,7 @@ function Billing() {
                 </div>
                 {/*--------Main Contents-----------*/}
                 <div className="flex w-[78%] md:w-[calc(100%-4rem)] lg:w-[78%] max-[767px]:w-full h-fit flex-col max-[767px]:px-2 md:px-4">
-                    <h1 className="text-2xl max-sm:text-lg font-semibold text-gray-900 text-center mt-5 max-sm:mt-3">Billing</h1>
+                    <h1 className={`text-2xl max-sm:text-lg font-semibold text-center mt-5 max-sm:mt-3 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Billing</h1>
                     <DrugSearch></DrugSearch>
                     {/*---------Selected Drugs' details will appear here--------- */}
                     <DrugDetails></DrugDetails>

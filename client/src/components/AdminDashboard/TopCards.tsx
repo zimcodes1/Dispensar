@@ -1,3 +1,5 @@
+import { useDarkMode } from "../../utils/useDarkMode"
+
 interface StatCardProps {
     title: string
     value: string
@@ -6,12 +8,13 @@ interface StatCardProps {
 }
 
 function StatCard({ title, value, trend, icon }: StatCardProps) {
+    const { isDarkMode } = useDarkMode() as { isDarkMode: boolean }
     return (
-        <div className="bg-white p-6 rounded-xl shadow-sm">
+        <div className={`p-6 rounded-xl shadow-sm ${isDarkMode ? 'bg-gray-800' : 'bg-white'}`}>
             <div className="flex justify-between items-start">
                 <div>
-                    <p className="text-sm text-gray-600">{title}</p>
-                    <h3 className="text-2xl font-semibold text-gray-900 mt-1">{value}</h3>
+                    <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>{title}</p>
+                    <h3 className={`text-2xl font-semibold mt-1 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{value}</h3>
                 </div>
                 <div className={`w-10 h-10 rounded-full flex items-center justify-center ${trend >= 0 ? 'bg-green-100' : 'bg-red-100'}`}>
                     <i className={`bx ${icon} text-xl ${trend >= 0 ? 'text-green-600' : 'text-red-600'}`}></i>
@@ -21,7 +24,7 @@ function StatCard({ title, value, trend, icon }: StatCardProps) {
                 <span className={`text-sm ${trend >= 0 ? 'text-green-600' : 'text-red-600'}`}>
                     {trend >= 0 ? '+' : ''}{trend}%
                 </span>
-                <span className="text-sm text-gray-500 ml-2">vs last month</span>
+                <span className={`text-sm ml-2 ${isDarkMode ? 'text-gray-500' : 'text-gray-500'}`}>vs last month</span>
             </div>
         </div>
     )
