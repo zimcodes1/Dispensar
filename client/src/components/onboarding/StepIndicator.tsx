@@ -14,7 +14,7 @@ function StepIndicator({ currentStep, totalSteps }: StepIndicatorProps) {
                 <div key={step} className="flex items-center shrink-0">
                     <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center font-semibold text-sm sm:text-base transition-all ${
                         step === currentStep 
-                            ? 'bg-green-500 text-white scale-110' 
+                            ? 'bg-green-500 text-white' 
                             : step < currentStep 
                             ? 'bg-green-500 text-white' 
                             : isDarkMode 
