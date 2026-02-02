@@ -24,7 +24,7 @@ function StepIndicator({ currentStep, totalSteps }: StepIndicatorProps) {
                         {step < currentStep ? <i className='bx bx-check text-lg sm:text-xl'></i> : step}
                     </div>
                     {step < totalSteps && (
-                        <div className={`w-6 sm:w-12 h-1 mx-0.5 sm:mx-1 ${
+                        <div className={`w-6 max-sm:w-3 h-1 mx-0.5 sm:mx-1 ${
                             step < currentStep 
                                 ? 'bg-green-500' 
                                 : isDarkMode 
