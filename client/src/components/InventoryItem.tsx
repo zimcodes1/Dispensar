@@ -65,7 +65,7 @@ function InventoryItem({
             <td className={`py-3 px-4 text-sm font-medium transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>₦{price.toLocaleString()}</td>
             {/* Stock */}
             <td className="py-3 px-4 text-sm">
-                <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-300 ${
+                <span className={`inline-flex items-center text-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-300 ${
                     isLowStock 
                         ? isDarkMode 
                             ? 'bg-red-900/30 text-red-300'

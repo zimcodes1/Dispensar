@@ -64,12 +64,12 @@ export default function SuppliesList({ supplies, onEdit, onDelete }: SuppliesLis
                                 )}
                             </td>
                             <td className="py-3 px-4">
-                                <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${isDarkMode ? 'bg-blue-900/30 text-blue-300' : 'bg-blue-100 text-blue-800'}`}>
+                                <span className={`inline-flex text-center items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${isDarkMode ? 'bg-blue-900/30 text-blue-300' : 'bg-blue-100 text-blue-800'}`}>
                                     {supply.category}
                                 </span>
                             </td>
                             <td className="py-3 px-4">
-                                <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                                <span className={`inline-flex text-center items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
                                     supply.quantity === 0 ? isDarkMode ? 'bg-red-900/30 text-red-300' : 'bg-red-100 text-red-800' :
                                     supply.quantity <= supply.reorderLevel ? isDarkMode ? 'bg-yellow-900/30 text-yellow-300' : 'bg-yellow-100 text-yellow-800' :
                                     isDarkMode ? 'bg-green-900/30 text-green-300' : 'bg-green-100 text-green-800'
@@ -80,7 +80,7 @@ export default function SuppliesList({ supplies, onEdit, onDelete }: SuppliesLis
                             <td className={`py-3 px-4 text-sm font-medium ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
                                 ₦{supply.price.toLocaleString()}
                             </td>
-                            <td className="py-3 px-4">
+                            <td className="py-3 px-4 text-center">
                                 <StockStatus quantity={supply.quantity} reorderLevel={supply.reorderLevel} />
                             </td>
                             <td className={`py-3 px-4 text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>

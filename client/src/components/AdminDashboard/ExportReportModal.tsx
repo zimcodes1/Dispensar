@@ -39,22 +39,22 @@ export default function ExportReportModal({ isOpen, onClose }: ExportReportModal
                         <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Format</label>
                         <div className="flex gap-3">
                             <label className="flex items-center">
-                                <input type="radio" name="format" value="pdf" defaultChecked className="mr-2" />
-                                <span className={`text-sm ${isDarkMode ? 'text-gray-300' : ''}`}>PDF</span>
+                                <input type="radio" name="format" value="pdf" defaultChecked className="mr-2 accent-green-500" />
+                                <span className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>PDF</span>
                             </label>
                             <label className="flex items-center">
-                                <input type="radio" name="format" value="excel" className="mr-2" />
-                                <span className={`text-sm ${isDarkMode ? 'text-gray-300' : ''}`}>Excel</span>
+                                <input type="radio" name="format" value="excel" className="mr-2 accent-green-500" />
+                                <span className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Excel</span>
                             </label>
                             <label className="flex items-center">
-                                <input type="radio" name="format" value="csv" className="mr-2" />
-                                <span className={`text-sm ${isDarkMode ? 'text-gray-300' : ''}`}>CSV</span>
+                                <input type="radio" name="format" value="csv" className="mr-2 accent-green-500" />
+                                <span className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>CSV</span>
                             </label>
                         </div>
                     </div>
                 </div>
                 <div className="px-6 pb-6 flex justify-end gap-3 shrink-0">
-                    <button onClick={onClose} className={`px-4 py-2 text-sm ${isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'}`}>
+                    <button onClick={onClose} className={`px-4 py-2 text-sm rounded-lg ${isDarkMode ? ' bg-gray-700 text-gray-300 hover:text-white' : 'bg-gray-200 text-gray-700 hover:text-gray-900'}`}>
                         Cancel
                     </button>
                     <button className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition text-sm">

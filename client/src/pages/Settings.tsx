@@ -215,7 +215,7 @@ const Settings = ()=>{
                                             onChange={(e) => setFormData({...formData, notifications: e.target.checked})}
                                             className="sr-only peer"
                                         />
-                                        <div className={`w-11 h-6 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600 transition-colors duration-300 ${
+                                        <div className={`w-11 h-6 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5  after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600 transition-colors duration-300 ${
                                             isDarkMode
                                                 ? 'bg-gray-700 after:bg-gray-800 after:border-gray-600'
                                                 : 'bg-gray-200 after:bg-white after:border-gray-300'
@@ -235,7 +235,7 @@ const Settings = ()=>{
                                             onChange={(e) => setFormData({...formData, emailAlerts: e.target.checked})}
                                             className="sr-only peer"
                                         />
-                                        <div className={`w-11 h-6 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600 transition-colors duration-300 ${
+                                        <div className={`w-11 h-6 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600 transition-colors duration-300 ${
                                             isDarkMode
                                                 ? 'bg-gray-700 after:bg-gray-800 after:border-gray-600'
                                                 : 'bg-gray-200 after:bg-white after:border-gray-300'
@@ -255,7 +255,7 @@ const Settings = ()=>{
                                             onChange={(e) => setFormData({...formData, lowStockAlerts: e.target.checked})}
                                             className="sr-only peer"
                                         />
-                                        <div className={`w-11 h-6 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600 transition-colors duration-300 ${
+                                        <div className={`w-11 h-6 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600 transition-colors duration-300 ${
                                             isDarkMode
                                                 ? 'bg-gray-700 after:bg-gray-800 after:border-gray-600'
                                                 : 'bg-gray-200 after:bg-white after:border-gray-300'
@@ -275,7 +275,7 @@ const Settings = ()=>{
                                             onChange={(e) => setFormData({...formData, expiryAlerts: e.target.checked})}
                                             className="sr-only peer"
                                         />
-                                        <div className={`w-11 h-6 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600 transition-colors duration-300 ${
+                                        <div className={`w-11 h-6 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600 transition-colors duration-300 ${
                                             isDarkMode
                                                 ? 'bg-gray-700 after:bg-gray-800 after:border-gray-600'
                                                 : 'bg-gray-200 after:bg-white after:border-gray-300'

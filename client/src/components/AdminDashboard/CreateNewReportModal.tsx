@@ -52,7 +52,7 @@ export default function CreateNewReportModal({ isOpen, onClose }: CreateNewRepor
                     </div>
                 </div>
                 <div className="px-6 pb-6 flex justify-end gap-3 shrink-0">
-                    <button onClick={onClose} className={`px-4 py-2 text-sm ${isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'}`}>
+                    <button onClick={onClose} className={`px-4 py-2 text-sm rounded-lg ${isDarkMode ? ' bg-gray-700 text-gray-300 hover:text-white' : 'bg-gray-200 text-gray-700 hover:text-gray-900'}`}>
                         Cancel
                     </button>
                     <button className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition text-sm">

@@ -23,7 +23,7 @@ function SalesInfo(){
             <h1 className={`text-xs transition-colors duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-900'}`}><i className="bx bx-bar-chart-alt-2"></i> Activity Overview</h1> 
             <select name="" id="" className={`text-xs transition-colors duration-300 ${
                 isDarkMode
-                    ? 'bg-gray-700 text-gray-100 border-gray-600'
+                    ? 'bg-gray-700 rounded-sm text-gray-100 border-gray-600'
                     : 'bg-white text-gray-900 border-gray-300'
             }`}>
                 <option value="Daily">Today</option>
