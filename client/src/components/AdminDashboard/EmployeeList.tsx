@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useDarkMode } from '../../utils/useDarkMode'
 import truncateText from '../../utils/truncateText'
+import { Link } from 'react-router-dom'
 
 interface Employee {
     id: string
@@ -145,9 +146,9 @@ export default function EmployeeList({ onAddEmployee }: EmployeeListProps) {
             </div>
             
             <div className="mt-4 text-center">
-                <a href="/admin/employees" className="text-sm text-green-600 hover:text-green-700 font-medium">
+                <Link to="/admin/employees" className="text-sm text-green-600 hover:text-green-700 font-medium">
                     View All Employees ({demoEmployees.length})
-                </a>
+                </Link>
             </div>
         </div>
     )
