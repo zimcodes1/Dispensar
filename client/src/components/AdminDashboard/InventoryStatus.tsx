@@ -1,4 +1,5 @@
 import { useDarkMode } from '../../utils/useDarkMode'
+import { Link } from 'react-router-dom'
 
 interface InventoryItem {
     name: string
@@ -50,9 +51,9 @@ export default function InventoryStatus() {
                     <h3 className={`text-lg font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Low Stock Alert</h3>
                     <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Items below reorder threshold</p>
                 </div>
-                <button className="text-green-600 hover:text-green-700 text-sm font-medium">
+                <Link to="/stock" className="text-green-600 hover:text-green-700 text-sm font-medium">
                     View All ({lowStockCount})
-                </button>
+                </Link>
             </div>
 
             <div className="space-y-4 overflow-x-auto lg:overflow-x-visible">
