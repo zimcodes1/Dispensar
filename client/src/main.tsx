@@ -19,6 +19,7 @@ import SignUp from './pages/SignUp'
 import Billing from './pages/Billing'
 import LandingPage from './pages/LandingPage'
 import Onboarding from './pages/Onboarding'
+import Employees from './pages/Employees'
 
 const router = createBrowserRouter([
   {
@@ -80,6 +81,10 @@ const router = createBrowserRouter([
   {
     path: '/billing',
     element: <Billing/>
+  },
+  {
+    path: '/admin/employees',
+    element: <Employees/>
   },
   {
     path: '*',

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useDarkMode } from '../../utils/useDarkMode'
+import truncateText from '../../utils/truncateText'
 
 interface Employee {
     id: string
@@ -98,8 +99,8 @@ export default function EmployeeList({ onAddEmployee }: EmployeeListProps) {
                 </button>
             </div>
 
-            <div className="overflow-x-auto lg:overflow-x-visible">
-                <table className="w-full min-w-[700px] lg:min-w-0">
+            <div className="lg:overflow-visible">
+                <table className="w-full lg:min-w-0">
                     <thead>
                         <tr className={`text-sm border-b ${isDarkMode ? 'text-gray-400 border-gray-700' : 'text-gray-600 border-gray-200'}`}>
                             <th className="pb-3 text-left font-medium">Employee</th>
@@ -110,7 +111,7 @@ export default function EmployeeList({ onAddEmployee }: EmployeeListProps) {
                         </tr>
                     </thead>
                     <tbody>
-                        {demoEmployees.map(employee => (
+                        {demoEmployees.slice(0, 3).map(employee => (
                             <tr key={employee.id} className={`border-b ${isDarkMode ? 'border-gray-700' : 'border-gray-50'}`}>
                                 <td className="py-3">
                                     <div className="flex items-center gap-3">
@@ -122,7 +123,7 @@ export default function EmployeeList({ onAddEmployee }: EmployeeListProps) {
                                     </div>
                                 </td>
                                 <td className="py-3">
-                                    <span className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>{employee.role}</span>
+                                    <span className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>{truncateText(employee.role, 12)}</span>
                                 </td>
                                 <td className="py-3">
                                     <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
@@ -141,6 +142,12 @@ export default function EmployeeList({ onAddEmployee }: EmployeeListProps) {
                         ))}
                     </tbody>
                 </table>
+            </div>
+            
+            <div className="mt-4 text-center">
+                <a href="/admin/employees" className="text-sm text-green-600 hover:text-green-700 font-medium">
+                    View All Employees ({demoEmployees.length})
+                </a>
             </div>
         </div>
     )
