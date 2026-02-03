@@ -79,8 +79,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'dispensar_db',
+        'USER': 'dispensar_user',
+        'PASSWORD': 'Hex(2007)',
+        'HOST': 'localhost',      # Or your database server IP
+        'PORT': '5432',           # Default PostgreSQL port
     }
 }
 
