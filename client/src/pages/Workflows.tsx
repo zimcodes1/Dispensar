@@ -116,7 +116,7 @@ function Workflows() {
                                     index={0}
                                 />
                                 <FeatureCard
-                                    icon="bx bx-shield-check"
+                                    icon="bx bx-shield"
                                     title="Complete Control"
                                     description="One person oversees the entire transaction from start to finish"
                                     index={1}
@@ -149,7 +149,7 @@ function Workflows() {
                         isDarkMode ? 'bg-gray-800 border-green-500' : 'gradient-to-br from-green-50 to-white border-green-400'
                     }`}
                 >
-                    <div className="flex items-center gap-4 mb-8">
+                    <div className="flex flex-wrap items-center gap-4 mb-8">
                         <div className="w-16 h-16 bg-green-500 rounded-xl flex items-center justify-center">
                             <i className='bx bx-group text-3xl text-white'></i>
                         </div>
