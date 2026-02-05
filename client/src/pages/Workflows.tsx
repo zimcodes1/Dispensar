@@ -161,7 +161,7 @@ function Workflows() {
                                 Three specialized roles for optimal workflow
                             </p>
                         </div>
-                        <span className="ml-auto px-4 py-2 bg-green-500 text-white text-sm font-bold rounded-full">
+                        <span className="ml-auto max-sm:mx-auto px-4 py-2 bg-green-500 text-white text-sm font-bold rounded-full">
                             RECOMMENDED
                         </span>
                     </div>
