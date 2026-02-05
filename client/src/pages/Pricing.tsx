@@ -121,9 +121,6 @@ function Pricing() {
                         </span>
                     </Link>
                     <div className="flex items-center gap-4">
-                        <Link to="/workflows" className={`text-sm font-medium ${isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>
-                            Workflows
-                        </Link>
                         <Link to="/signup">
                             <button className="px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition font-semibold">
                                 Get Started
