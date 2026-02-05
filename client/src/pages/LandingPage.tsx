@@ -325,7 +325,9 @@ function Home() {
                                     <span className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Complete control</span>
                                 </div>
                             </div>
-                            <button className={`mt-auto w-full py-2 px-4 rounded-lg font-semibold transition ${isDarkMode ? 'bg-blue-900 text-blue-200 hover:bg-blue-800' : 'bg-blue-50 text-blue-600 hover:bg-blue-100'}`}>Learn More</button>
+                            <Link to="/workflows">
+                                <button className={`mt-auto w-full py-2 px-4 rounded-lg font-semibold transition ${isDarkMode ? 'bg-blue-900 text-blue-200 hover:bg-blue-800' : 'bg-blue-50 text-blue-600 hover:bg-blue-100'}`}>Learn More</button>
+                            </Link>
                         </div>
 
                         {/* Billing → Payment → Dispense Workflow */}
@@ -353,7 +355,9 @@ function Home() {
                                     <span className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Higher throughput</span>
                                 </div>
                             </div>
-                            <button className={`mt-auto w-full py-2 px-4 rounded-lg font-semibold transition ${isDarkMode ? 'bg-emerald-900 text-emerald-200 hover:bg-emerald-800' : 'bg-emerald-50 text-emerald-600 hover:bg-emerald-100'}`}>Learn More</button>
+                            <Link to="/workflows">
+                                <button className={`mt-auto w-full py-2 px-4 rounded-lg font-semibold transition ${isDarkMode ? 'bg-emerald-900 text-emerald-200 hover:bg-emerald-800' : 'bg-emerald-50 text-emerald-600 hover:bg-emerald-100'}`}>Learn More</button>
+                            </Link>
                         </div>
 
                         {/* Billing → Payment (Biller as Dispenser) Workflow */}
@@ -380,7 +384,9 @@ function Home() {
                                     <span className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Cost-effective staffing</span>
                                 </div>
                             </div>
-                            <button className={`mt-auto w-full py-2 px-4 rounded-lg font-semibold transition ${isDarkMode ? 'bg-purple-900 text-purple-200 hover:bg-purple-800' : 'bg-purple-50 text-purple-600 hover:bg-purple-100'}`}>Learn More</button>
+                            <Link to="/workflows">
+                                <button className={`mt-auto w-full py-2 px-4 rounded-lg font-semibold transition ${isDarkMode ? 'bg-purple-900 text-purple-200 hover:bg-purple-800' : 'bg-purple-50 text-purple-600 hover:bg-purple-100'}`}>Learn More</button>
+                            </Link>
                         </div>
                     </div>
                 </div>
