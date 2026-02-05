@@ -20,6 +20,7 @@ import Billing from './pages/Billing'
 import LandingPage from './pages/LandingPage'
 import Onboarding from './pages/Onboarding'
 import Workflows from './pages/Workflows'
+import Pricing from './pages/Pricing'
 import Employees from './pages/Employees'
 import SalesDistribution from './pages/SalesDistribution'
 
@@ -83,6 +84,10 @@ const router = createBrowserRouter([
   {
     path: '/workflows',
     element: <Workflows/>
+  },
+  {
+    path: '/pricing',
+    element: <Pricing/>
   },
   {
     path: '/billing',

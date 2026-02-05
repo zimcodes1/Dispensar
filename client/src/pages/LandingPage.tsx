@@ -211,6 +211,11 @@ function Home() {
                 <div className="max-w-6xl mx-auto text-center mb-12">
                     <h2 className={`text-4xl max-sm:text-2xl font-bold ${isDarkMode ? 'text-gray-50' : 'text-gray-900'}`}>Simple, transparent pricing</h2>
                     <p className={`mt-4 max-w-2xl mx-auto ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Choose a plan that fits your pharmacy — scale as you grow. No hidden fees, cancel anytime.</p>
+                    <Link to="/pricing">
+                        <button className="mt-4 px-6 py-2 text-green-500 font-semibold hover:underline">
+                            View detailed pricing <i className='bx bx-right-arrow-alt'></i>
+                        </button>
+                    </Link>
                 </div>
 
                 <div className="max-w-6xl mx-auto grid grid-cols-3 max-sm:grid-cols-1 gap-8">

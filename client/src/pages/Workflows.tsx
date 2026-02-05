@@ -57,7 +57,7 @@ function Workflows() {
                         isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'
                     }`}
                 >
-                    <div className="flex items-center gap-4 mb-8">
+                    <div className="flex flex-wrap items-center gap-4 mb-8">
                         <div className="w-16 h-16 bg-blue-500 rounded-xl flex items-center justify-center">
                             <i className='bx bx-user text-3xl text-white'></i>
                         </div>
@@ -244,7 +244,7 @@ function Workflows() {
                         isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'
                     }`}
                 >
-                    <div className="flex items-center gap-4 mb-8">
+                    <div className="flex flex-wrap items-center gap-4 mb-8">
                         <div className="w-16 h-16 bg-purple-500 rounded-xl flex items-center justify-center">
                             <i className='bx bx-user-plus text-3xl text-white'></i>
                         </div>
