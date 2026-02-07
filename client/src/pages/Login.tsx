@@ -22,7 +22,7 @@ function Login() {
                 </form>
                 {/*Forgotten Password */}
                 <div className="flex justify-center items-center w-full py-3 mt-2">
-                    <p className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>Forgot your password? <a href="/dashboard" className="text-green-400 hover:text-green-500 hover:underline font-medium">Reset it here</a></p>
+                    <p className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>Forgot your password? <Link to="/forgot-password" className="text-green-400 hover:text-green-500 hover:underline font-medium">Reset it here</Link></p>
                 </div>
                 {/*Admin Login*/}
                 <div className="flex justify-center items-center w-full py-3">

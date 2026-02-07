@@ -23,6 +23,11 @@ import Workflows from './pages/Workflows'
 import Pricing from './pages/Pricing'
 import Employees from './pages/Employees'
 import SalesDistribution from './pages/SalesDistribution'
+import Contact from './pages/Contact'
+import ForgotPassword from './pages/ForgotPassword'
+import ResetPassword from './pages/ResetPassword'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import TermsOfService from './pages/TermsOfService'
 
 const router = createBrowserRouter([
   {
@@ -100,6 +105,26 @@ const router = createBrowserRouter([
   {
     path: '/sales',
     element: <SalesDistribution/>
+  },
+  {
+    path: '/contact',
+    element: <Contact/>
+  },
+  {
+    path: '/forgot-password',
+    element: <ForgotPassword/>
+  },
+  {
+    path: '/reset-password',
+    element: <ResetPassword/>
+  },
+  {
+    path: '/privacy',
+    element: <PrivacyPolicy/>
+  },
+  {
+    path: '/terms',
+    element: <TermsOfService/>
   },
   {
     path: '*',
