@@ -13,7 +13,7 @@ const Dashboard = ()=>{
         {/*--------Topbar Component--------*/}
         <Topbar></Topbar>
         {/*-----------Side Nav & Main Contents Container-----------*/}
-        <div className={`flex w-full min-h-screen pt-[60px] justify-between items-start pr-[2%] max-[767px]:pr-0 md:pr-0 transition-colors duration-300 ${
+        <div className={`flex w-full min-h-screen pt-[60px] justify-between items-start pr-[2%] max-[767px]:pr-0 md:pr-0 transition-colors duration-300 pb-5 ${
             isDarkMode ? 'bg-gray-950' : 'bg-gray-100'
         }`}>
             {/*----------Side navigation-----*/}

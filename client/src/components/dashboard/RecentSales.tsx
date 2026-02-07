@@ -72,7 +72,7 @@ function RecentSales(){
                     <h1 className={`text-sm font-semibold transition-colors duration-300 ${isDarkMode ? 'text-gray-200' : 'text-gray-900'}`}><i className="bx bx-timer"></i> Recent Sales Activity</h1>
                     <span className={`text-xs transition-colors duration-300 ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>{getTimeAgo()}</span>
                 </div>
-                <button onClick={handleRefresh} className={`rounded p-1 transition-colors duration-300 ${
+                <button title="Refresh" onClick={handleRefresh} className={`rounded-full p-1 transition-colors duration-300 ${
                     isDarkMode
                         ? 'hover:bg-gray-600 text-gray-300'
                         : 'hover:bg-gray-200 text-gray-900'
