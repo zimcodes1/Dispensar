@@ -4,6 +4,7 @@ import SideNav from "../components/SideNav"
 import RegisterDrugModal from "../components/stock/RegisterDrugModal"
 import DrugList from "../components/stock/DrugList"
 import SearchFilters from "../components/stock/SearchFilters"
+import DeleteConfirmationModal from "../components/modals/DeleteConfirmationModal"
 import { useDarkMode } from "../utils/useDarkMode"
 
 // Demo data - replace with API calls
@@ -59,6 +60,7 @@ export default function StockManagement() {
     const { isDarkMode } = useDarkMode() as { isDarkMode: boolean }
     const [showRegisterModal, setShowRegisterModal] = useState(false)
     const [editingDrug, setEditingDrug] = useState<typeof demoDrugs[0] | null>(null)
+    const [deleteModal, setDeleteModal] = useState<{ isOpen: boolean; drugId: string | null; drugName: string }>({ isOpen: false, drugId: null, drugName: '' })
     const [search, setSearch] = useState('')
     const [category, setCategory] = useState('All Categories')
     const [status, setStatus] = useState('All Status')
@@ -94,8 +96,15 @@ export default function StockManagement() {
     }
 
     function handleDelist(drugId: string) {
-        console.log('Delist drug:', drugId)
-        // Implement delist logic
+        const drug = demoDrugs.find(d => d.id === drugId)
+        setDeleteModal({ isOpen: true, drugId, drugName: drug?.name || '' })
+    }
+    
+    const confirmDelete = () => {
+        if (deleteModal.drugId) {
+            console.log('Delist drug:', deleteModal.drugId)
+            // Implement actual delist logic
+        }
     }
 
     useEffect(()=>{document.title = 'Stock Management | Dispensar'})
@@ -192,6 +201,16 @@ export default function StockManagement() {
                     isEdit={!!editingDrug}
                 />
             )}
+            
+            {/* Delete Confirmation Modal */}
+            <DeleteConfirmationModal
+                isOpen={deleteModal.isOpen}
+                onClose={() => setDeleteModal({ isOpen: false, drugId: null, drugName: '' })}
+                onConfirm={confirmDelete}
+                title="Delist Drug"
+                message="Are you sure you want to delist this drug from your inventory?"
+                itemName={deleteModal.drugName}
+            />
         </>
     )
 }

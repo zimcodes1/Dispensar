@@ -3,6 +3,7 @@ import SideNav from "../components/SideNav"
 import InventoryItem from "../components/InventoryItem"
 import DrugSearch from "../components/DrugSearch"
 import AddItemModal from "../components/inventory/AddItemModal"
+import DeleteConfirmationModal from "../components/modals/DeleteConfirmationModal"
 import { useEffect, useState } from "react"
 import { useDarkMode } from "../utils/useDarkMode"
 
@@ -11,6 +12,7 @@ const Inventory = ()=>{
     const [selectedItems, setSelectedItems] = useState<string[]>([])
     const [selectAll, setSelectAll] = useState(false)
     const [showAddModal, setShowAddModal] = useState(false)
+    const [deleteModal, setDeleteModal] = useState<{ isOpen: boolean; itemId: string | null; itemName: string }>({ isOpen: false, itemId: null, itemName: '' })
     
     useEffect(()=>{document.title = 'Your Inventory | Dispensar'})
     
@@ -43,7 +45,27 @@ const Inventory = ()=>{
     }
     
     const handleDelete = (id: string) => {
-        console.log('Delete item:', id)
+        const item = inventoryData.find(i => i.id === id)
+        setDeleteModal({ isOpen: true, itemId: id, itemName: item?.name || '' })
+    }
+    
+    const confirmDelete = () => {
+        if (deleteModal.itemId) {
+            console.log('Delete item:', deleteModal.itemId)
+            // Implement actual delete logic here
+        }
+    }
+    
+    const handleBulkDelete = () => {
+        if (selectedItems.length > 0) {
+            setDeleteModal({ isOpen: true, itemId: 'bulk', itemName: `${selectedItems.length} items` })
+        }
+    }
+    
+    const confirmBulkDelete = () => {
+        console.log('Delete items:', selectedItems)
+        setSelectedItems([])
+        setSelectAll(false)
     }
     return(
         <>
@@ -63,7 +85,7 @@ const Inventory = ()=>{
                     <h1 className={`text-2xl max-sm:text-lg font-semibold transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Inventory</h1>
                     <div className="flex gap-2">
                         {selectedItems.length > 0 && (
-                            <button className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition text-sm">
+                            <button onClick={handleBulkDelete} className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition text-sm">
                                 <i className="bx bx-trash mr-1"></i>
                                 Delete ({selectedItems.length})
                             </button>
@@ -140,6 +162,16 @@ const Inventory = ()=>{
         
         {/* Add Item Modal */}
         <AddItemModal isOpen={showAddModal} onClose={() => setShowAddModal(false)} />
+        
+        {/* Delete Confirmation Modal */}
+        <DeleteConfirmationModal
+            isOpen={deleteModal.isOpen}
+            onClose={() => setDeleteModal({ isOpen: false, itemId: null, itemName: '' })}
+            onConfirm={deleteModal.itemId === 'bulk' ? confirmBulkDelete : confirmDelete}
+            title="Delete Item"
+            message="Are you sure you want to delete this item? This action cannot be undone."
+            itemName={deleteModal.itemName}
+        />
         </>
     )
 }

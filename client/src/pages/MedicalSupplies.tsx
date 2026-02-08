@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import RegisterSupplyModal from '../components/supplies/RegisterSupplyModal'
 import SuppliesList from '../components/supplies/SuppliesList'
 import SuppliesFilters from '../components/supplies/SuppliesFilters'
+import DeleteConfirmationModal from '../components/modals/DeleteConfirmationModal'
 import SideNav from '../components/SideNav'
 import Topbar from '../components/dashboard/Topbar'
 import { useDarkMode } from '../utils/useDarkMode'
@@ -146,6 +147,7 @@ export default function MedicalSupplies() {
     ]) // This would be managed by your state management solution
     const [editSupply, setEditSupply] = useState<Supply | null>(null)
     const [filteredSupplies, setFilteredSupplies] = useState<Supply[]>([])
+    const [deleteModal, setDeleteModal] = useState<{ isOpen: boolean; supplyId: string | null; supplyName: string }>({ isOpen: false, supplyId: null, supplyName: '' })
 
     // Get unique suppliers from supplies
     const suppliers = [...new Set(supplies.map(s => s.supplier))]
@@ -190,8 +192,14 @@ export default function MedicalSupplies() {
     }
 
     function handleDeleteSupply(supplyId: string) {
-        // In a real app, this would make an API call
-        setSupplies(prev => prev.filter(supply => supply.id !== supplyId))
+        const supply = supplies.find(s => s.id === supplyId)
+        setDeleteModal({ isOpen: true, supplyId, supplyName: supply?.name || '' })
+    }
+    
+    const confirmDelete = () => {
+        if (deleteModal.supplyId) {
+            setSupplies(prev => prev.filter(supply => supply.id !== deleteModal.supplyId))
+        }
     }
 
     function applyFilters(filters: {
@@ -327,6 +335,16 @@ export default function MedicalSupplies() {
                             isEdit={!!editSupply}
                         />
                     )}
+                    
+                    {/* Delete Confirmation Modal */}
+                    <DeleteConfirmationModal
+                        isOpen={deleteModal.isOpen}
+                        onClose={() => setDeleteModal({ isOpen: false, supplyId: null, supplyName: '' })}
+                        onConfirm={confirmDelete}
+                        title="Delete Supply"
+                        message="Are you sure you want to delete this supply item?"
+                        itemName={deleteModal.supplyName}
+                    />
                 </div>
             </div>
         </div>
