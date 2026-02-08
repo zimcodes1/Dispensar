@@ -19,7 +19,7 @@ function ForgotPassword() {
 
 	return (
 		<div
-			className={`w-full min-h-dvh flex justify-center items-center ${isDarkMode ? "gradient-to-br from-gray-900 via-gray-800 to-gray-900" : "gradient-to-br from-slate-900 via-emerald-900 to-slate-900"}`}
+			className={`w-full min-h-dvh flex justify-center items-center ${isDarkMode ? "bg-linear-to-br from-gray-900 via-gray-800 to-gray-900" : "bg-linear-to-br from-slate-900 via-emerald-900 to-slate-900"}`}
 		>
 			<div
 				className={`flex w-[400px] min-h-[450px] rounded-3xl shadow-2xl flex-col max-sm:w-full max-sm:min-h-[80dvh] max-sm:rounded-none max-sm:absolute max-sm:bottom-0 max-sm:rounded-t-3xl ${isDarkMode ? "bg-gray-800 border border-gray-700" : "bg-white"}`}

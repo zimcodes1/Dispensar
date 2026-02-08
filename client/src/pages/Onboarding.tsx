@@ -90,11 +90,9 @@ function Onboarding() {
     }
 
     return (
-        <div className={`min-h-screen flex items-center justify-center p-4 ${
-            isDarkMode 
-                ? 'bg-linear-to-br from-gray-900 via-gray-800 to-gray-900' 
-                : 'bg-linear-to-br from-slate-50 via-green-50 to-slate-50'
-        }`}>
+		<div
+			className={`w-full p-4 min-h-dvh flex justify-center items-center ${isDarkMode ? "bg-linear-to-br from-gray-900 via-gray-800 to-gray-900" : "bg-linear-to-br from-slate-900 via-emerald-900 to-slate-900"}`}
+		>
             <div className={`w-full max-w-2xl rounded-2xl shadow-2xl p-8 ${
                 isDarkMode ? 'bg-gray-800 border border-gray-700' : 'bg-white'
             }`}>
