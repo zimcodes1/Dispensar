@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useDarkMode } from "../utils/useDarkMode";
 import WorkflowStep from "../components/workflows/WorkflowStep";
 import FeatureCard from "../components/workflows/FeatureCard";
+import Footer from "../components/Footer";
 
 function Workflows() {
   const { isDarkMode } = useDarkMode() as { isDarkMode: boolean };
@@ -616,6 +617,9 @@ function Workflows() {
           </div>
         </motion.div>
       </div>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }

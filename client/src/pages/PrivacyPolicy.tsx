@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDarkMode } from "../utils/useDarkMode";
+import Footer from "../components/Footer";
 
 function PrivacyPolicy() {
 	const { isDarkMode } = useDarkMode() as { isDarkMode: boolean };
@@ -207,13 +208,7 @@ function PrivacyPolicy() {
 			</div>
 
 			{/* Footer */}
-			<div
-				className={`py-8 px-6 text-center border-t ${isDarkMode ? "bg-gray-950 text-gray-400 border-gray-800" : "bg-gray-900 text-gray-400 border-gray-800"}`}
-			>
-				<p className="text-sm">
-					© 2026 Dispensar by Rizon Labs. Built for the modern pharmacy.
-				</p>
-			</div>
+			<Footer />
 		</div>
 	);
 }
