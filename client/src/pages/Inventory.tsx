@@ -16,7 +16,7 @@ const Inventory = ()=>{
     const [selectedDrugForStock, setSelectedDrugForStock] = useState<string | null>(null)
     
     // TODO: Get actual user role from auth context
-    const userRole = 'biller' // 'biller' or 'admin'
+    const userRole = 'admin' // 'biller' or 'admin'
     const isBiller = userRole === 'biller'
     const isAdmin = userRole === 'admin'
     
@@ -120,6 +120,7 @@ const Inventory = ()=>{
                                         onAddStock={isAdmin ? handleAddStock : undefined}
                                         showCheckbox={isBiller}
                                         showAddStock={isAdmin}
+                                        showActions={false}
                                     />
                                 ))}
                             </tbody>

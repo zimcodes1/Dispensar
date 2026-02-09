@@ -68,8 +68,8 @@ export default function RegisterDrugModal({ onClose, onSubmit, initialData, isEd
 
                 {/* Form */}
                 <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto table-scroll">
-                    <div className="p-6 overflow-x-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 min-w-[500px]">
+                    <div className="p-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {/* Drug Name */}
                         <div className="col-span-2">
                             <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
@@ -87,7 +87,7 @@ export default function RegisterDrugModal({ onClose, onSubmit, initialData, isEd
                         </div>
 
                         {/* NAFDAC Number */}
-                        <div>
+                        <div className="col-span-2 md:col-span-1">
                             <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                                 NAFDAC Number*
                             </label>
@@ -103,7 +103,7 @@ export default function RegisterDrugModal({ onClose, onSubmit, initialData, isEd
                         </div>
 
                         {/* Category */}
-                        <div>
+                        <div className="col-span-2 md:col-span-1">
                             <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                                 Category*
                             </label>
@@ -122,7 +122,7 @@ export default function RegisterDrugModal({ onClose, onSubmit, initialData, isEd
                         </div>
 
                         {/* Manufacture Date */}
-                        <div>
+                        <div className="col-span-2 md:col-span-1">
                             <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                                 Manufacture Date*
                             </label>
@@ -137,7 +137,7 @@ export default function RegisterDrugModal({ onClose, onSubmit, initialData, isEd
                         </div>
 
                         {/* Expiry Date */}
-                        <div>
+                        <div className="col-span-2 md:col-span-1">
                             <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                                 Expiry Date*
                             </label>
@@ -152,7 +152,7 @@ export default function RegisterDrugModal({ onClose, onSubmit, initialData, isEd
                         </div>
 
                         {/* Price */}
-                        <div>
+                        <div className="col-span-2 md:col-span-1">
                             <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                                 Price (₦)*
                             </label>
@@ -170,7 +170,7 @@ export default function RegisterDrugModal({ onClose, onSubmit, initialData, isEd
                         </div>
 
                         {/* Stock */}
-                        <div>
+                        <div className="col-span-2 md:col-span-1">
                             <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                                 Initial Stock*
                             </label>
