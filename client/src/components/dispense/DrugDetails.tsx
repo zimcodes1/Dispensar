@@ -9,9 +9,11 @@ function DrugDetails(){
                         <img src="/images/drug_test.png" alt="Drug Image" className="w-full h-full object-contain" />
                     </div>
                     {/* Drug Details */}
-                    <div className="flex flex-col flex-1 h-fit rounded-2xl">
+                    <div className="flex max-sm:w-full flex-col flex-1 h-fit rounded-2xl">
                         <div className="flex flex-col h-full justify-start px-5 max-sm:px-0 py-2 relative">
-                            <i className={`bx bx-star absolute right-0 text-xl cursor-pointer ${isDarkMode ? 'text-gray-400' : ''}`}></i>
+                            <button className={`absolute right-0 top-2 p-1 rounded-lg transition ${isDarkMode ? 'text-red-400 hover:bg-red-900/20' : 'text-red-600 hover:bg-red-50'}`} title="Remove">
+                                <i className='bx bx-trash text-xl'></i>
+                            </button>
                             <div>
                                 <h1 className={`text-2xl max-sm:text-lg font-bold ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>Paracetamol 500mg</h1>
                                 <p className={`text-sm mt-2 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Category: Pain Reliever</p>
@@ -19,21 +21,43 @@ function DrugDetails(){
                                 <p className={`text-sm mt-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Stock Available: 150 units</p>
                                 <p className={`text-sm mt-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Formulation: Tablet</p>
                                 <p className={`text-sm mt-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Expiry Date: 07/03/2026</p>
-                            </div>
-                            <div className="mt-2">
-                                <p className={`text-sm font-semibold ${isDarkMode ? 'text-gray-300' : 'text-gray-800'}`}>Description:</p>
-                                <p className={`text-sm mt-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Paracetamol is used to relieve pain and reduce fever. It is commonly used for headaches, muscle aches, arthritis, backaches, toothaches, colds, and fevers.</p>
+                                
+                                {/* Price Display */}
+                                <div className="mt-3">
+                                    <p className={`text-2xl font-bold ${isDarkMode ? 'text-green-400' : 'text-green-600'}`}>
+                                        ₦2,500 <span className={`text-sm font-normal ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>per unit</span>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                        {/*--------------Price & Quantity----------- */}
-                <div className={`w-[80%] overflow-hidden max-sm:w-full mx-auto flex justify-between border h-15 rounded-2xl ${isDarkMode ? 'bg-gray-700 border-gray-600' : 'bg-gray-100 border-gray-200'}`}>
-                    <input type="text" placeholder="Price (₦)" className={`focus:outline-none focus:ring-0 border-r rounded-r-none rounded-lg p-2 w-[50%] text-xl max-sm:text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-500' : 'border-gray-300 text-gray-900'}`} />
-                    <span className={`w-[50%] rounded-lg h-full flex justify-between items-center px-2 ${isDarkMode ? 'border-gray-600' : 'border-gray-300'}`}>
-                        <input min={0} type="number" placeholder="Quantity" className={`focus:outline-none focus:ring-0 p-2 text-xl max-sm:text-sm w-[70%] ${isDarkMode ? 'bg-gray-700 text-white placeholder-gray-500' : 'text-gray-900'}`} />
-                        <p className={`font-semibold max-sm:text-xs ${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>100</p>
-                        <h1 className={`font-semibold cursor-pointer max-sm:text-xs ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>MAX</h1>
-                    </span>
-                </div>
+                        {/*--------------Quantity Input----------- */}
+                        <div className={`w-[80%] max-sm:w-full mx-auto mt-4 flex items-center gap-3 p-3 rounded-xl border ${isDarkMode ? 'bg-gray-700 border-gray-600' : 'bg-gray-50 border-gray-200'}`}>
+                            <label className={`text-sm font-medium whitespace-nowrap ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                                Quantity:
+                            </label>
+                            <div className="flex items-center gap-2 flex-1">
+                                <input 
+                                    min={1} 
+                                    max={150}
+                                    type="number" 
+                                    defaultValue={1}
+                                    className={`focus:outline-none focus:ring-2 focus:ring-green-500 p-2 rounded-lg text-lg font-semibold w-full ${isDarkMode ? 'bg-gray-800 border border-gray-600 text-white' : 'bg-white border border-gray-300 text-gray-900'}`} 
+                                />
+                                <button 
+                                    className={`px-3 py-2 rounded-lg text-xs font-semibold whitespace-nowrap transition ${isDarkMode ? 'bg-green-900/30 text-green-300 hover:bg-green-900/50' : 'bg-green-100 text-green-700 hover:bg-green-200'}`}
+                                >
+                                    MAX (150)
+                                </button>
+                            </div>
+                        </div>
+                        
+                        {/* Total Price */}
+                        <div className={`w-[80%] max-sm:w-full mx-auto mt-3 p-3 rounded-xl ${isDarkMode ? 'bg-gray-900/50' : 'bg-gray-100'}`}>
+                            <div className="flex justify-between items-center">
+                                <span className={`text-sm font-medium ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Subtotal:</span>
+                                <span className={`text-xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>₦2,500</span>
+                            </div>
+                        </div>
                     </div>
                     
                 </div>
