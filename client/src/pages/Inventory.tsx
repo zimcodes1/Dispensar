@@ -13,12 +13,11 @@ const Inventory = ()=>{
     const [selectedItems, setSelectedItems] = useState<string[]>([])
     const [selectAll, setSelectAll] = useState(false)
     const [showAddStockModal, setShowAddStockModal] = useState(false)
-    const [selectedDrugForStock, setSelectedDrugForStock] = useState<string | null>(null)
     
     // TODO: Get actual user role from auth context
-    const userRole = 'admin' // 'biller' or 'admin'
-    const isBiller = userRole === 'biller'
-    const isAdmin = userRole === 'admin'
+    const userRole: 'admin' | 'biller' = 'admin' // 'biller' or 'admin'
+    const isBiller = (userRole as string) === 'biller'
+    const isAdmin = (userRole as string) === 'admin'
     
     useEffect(()=>{document.title = 'Your Inventory | Dispensar'})
     
@@ -53,8 +52,7 @@ const Inventory = ()=>{
         navigate('/billing', { state: { selectedDrugs } })
     }
     
-    const handleAddStock = (id: string) => {
-        setSelectedDrugForStock(id)
+    const handleAddStock = (_id: string) => {
         setShowAddStockModal(true)
     }
     return(
@@ -161,14 +159,11 @@ const Inventory = ()=>{
         
         {/* Add Stock Modal - Admin Only */}
         {isAdmin && showAddStockModal && (
-            <AddItemModal 
-                isOpen={showAddStockModal} 
+            <AddItemModal
+                isOpen={showAddStockModal}
                 onClose={() => {
                     setShowAddStockModal(false)
-                    setSelectedDrugForStock(null)
-                }} 
-                drugId={selectedDrugForStock}
-                isAddingStock={true}
+                }}
             />
         )}
         </>
