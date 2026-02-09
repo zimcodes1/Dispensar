@@ -3,12 +3,39 @@ import Topbar from "../components/dashboard/Topbar";
 import SideNav from "../components/SideNav";
 import DrugDetails from "../components/dispense/DrugDetails";
 import DrugSearch from "../components/DrugSearch";
-import DispenseQueueModal from "../components/dispense/DispenseQueueModal";
+import BillingHistoryModal from "../components/billing/BillingHistoryModal";
 import { useDarkMode } from "../utils/useDarkMode";
 
 function Billing() {
 	const { isDarkMode } = useDarkMode() as { isDarkMode: boolean };
-	const [showQueue, setShowQueue] = useState(false);
+	const [showHistory, setShowHistory] = useState(false);
+
+	const billingHistory = [
+		{
+			id: "BL-2024-001",
+			items: 3,
+			total: 8500,
+			date: "15/01/2025",
+			time: "10:30 AM",
+			paymentMethod: "Cash"
+		},
+		{
+			id: "BL-2024-002",
+			items: 2,
+			total: 5200,
+			date: "15/01/2025",
+			time: "11:15 AM",
+			paymentMethod: "Card"
+		},
+		{
+			id: "BL-2024-003",
+			items: 5,
+			total: 12300,
+			date: "15/01/2025",
+			time: "02:45 PM",
+			paymentMethod: "Transfer"
+		}
+	];
 	useEffect(() => {
 		document.title = "Billing | Dispensar";
 	});
@@ -62,17 +89,17 @@ function Billing() {
 				</div>
 			</div>
 
-			{/* Fixed Queue Button */}
+			{/* Fixed History Button */}
 			<button
-				onClick={() => setShowQueue(true)}
+				onClick={() => setShowHistory(true)}
 				className="fixed bottom-6 max-sm:bottom-2 right-6 max-sm:right-2 bg-gray-900 text-[#5fdf85] px-4 py-3 rounded-full max-sm:rounded-xl shadow-lg hover:bg-green-600 hover:text-gray-900 transition duration-500 flex items-center gap-2"
 			>
-				<i className="bx bx-list-ul text-xl"></i>
-				<span className="max-sm:hidden">View Queue</span>
+				<i className="bx bx-history text-xl"></i>
+				<span className="max-sm:hidden">History</span>
 			</button>
 
-			{/* Queue Modal */}
-			{showQueue && <DispenseQueueModal onClose={() => setShowQueue(false)} />}
+			{/* History Modal */}
+			{showHistory && <BillingHistoryModal bills={billingHistory} onClose={() => setShowHistory(false)} />}
 		</>
 	);
 }
