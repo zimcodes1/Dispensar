@@ -12,6 +12,7 @@ interface InventoryItemProps {
     onSelect?: (id: string) => void
     onEdit?: (id: string) => void
     onDelete?: (id: string) => void
+    showActions?: boolean
 }
 
 function InventoryItem({
@@ -25,7 +26,8 @@ function InventoryItem({
     isSelected = false,
     onSelect,
     onEdit,
-    onDelete
+    onDelete,
+    showActions = true
 }: InventoryItemProps) {
     const { isDarkMode } = useDarkMode() as { isDarkMode: boolean }
     const isLowStock = stock < 50
@@ -78,32 +80,34 @@ function InventoryItem({
                 </span>
             </td>
             {/* Actions */}
-            <td className="py-3 px-4">
-                <div className="flex items-center gap-2">
-                    <button 
-                        onClick={() => onEdit?.(id)}
-                        className={`p-1 rounded transition-colors duration-300 ${
-                            isDarkMode
-                                ? 'text-blue-400 hover:text-blue-300 hover:bg-blue-900/30'
-                                : 'text-blue-600 hover:text-blue-800 hover:bg-blue-50'
-                        }`}
-                        title="Edit"
-                    >
-                        <i className="bx bx-edit text-lg"></i>
-                    </button>
-                    <button 
-                        onClick={() => onDelete?.(id)}
-                        className={`p-1 rounded transition-colors duration-300 ${
-                            isDarkMode
-                                ? 'text-red-400 hover:text-red-300 hover:bg-red-900/30'
-                                : 'text-red-600 hover:text-red-800 hover:bg-red-50'
-                        }`}
-                        title="Delete"
-                    >
-                        <i className="bx bx-trash text-lg"></i>
-                    </button>
-                </div>
-            </td>
+            {showActions && (
+                <td className="py-3 px-4">
+                    <div className="flex items-center gap-2">
+                        <button 
+                            onClick={() => onEdit?.(id)}
+                            className={`p-1 rounded transition-colors duration-300 ${
+                                isDarkMode
+                                    ? 'text-blue-400 hover:text-blue-300 hover:bg-blue-900/30'
+                                    : 'text-blue-600 hover:text-blue-800 hover:bg-blue-50'
+                            }`}
+                            title="Edit"
+                        >
+                            <i className="bx bx-edit text-lg"></i>
+                        </button>
+                        <button 
+                            onClick={() => onDelete?.(id)}
+                            className={`p-1 rounded transition-colors duration-300 ${
+                                isDarkMode
+                                    ? 'text-red-400 hover:text-red-300 hover:bg-red-900/30'
+                                    : 'text-red-600 hover:text-red-800 hover:bg-red-50'
+                            }`}
+                            title="Delete"
+                        >
+                            <i className="bx bx-trash text-lg"></i>
+                        </button>
+                    </div>
+                </td>
+            )}
         </tr>
     )
 }
