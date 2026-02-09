@@ -2,6 +2,7 @@ import Topbar from "../components/dashboard/Topbar"
 import SideNav from "../components/SideNav"
 import InventoryItem from "../components/InventoryItem"
 import DrugSearch from "../components/DrugSearch"
+import AddItemModal from "../components/inventory/AddItemModal"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useDarkMode } from "../utils/useDarkMode"
@@ -11,6 +12,13 @@ const Inventory = ()=>{
     const navigate = useNavigate()
     const [selectedItems, setSelectedItems] = useState<string[]>([])
     const [selectAll, setSelectAll] = useState(false)
+    const [showAddStockModal, setShowAddStockModal] = useState(false)
+    const [selectedDrugForStock, setSelectedDrugForStock] = useState<string | null>(null)
+    
+    // TODO: Get actual user role from auth context
+    const userRole = 'biller' // 'biller' or 'admin'
+    const isBiller = userRole === 'biller'
+    const isAdmin = userRole === 'admin'
     
     useEffect(()=>{document.title = 'Your Inventory | Dispensar'})
     
@@ -44,6 +52,11 @@ const Inventory = ()=>{
         console.log('Adding to bill:', selectedDrugs)
         navigate('/billing', { state: { selectedDrugs } })
     }
+    
+    const handleAddStock = (id: string) => {
+        setSelectedDrugForStock(id)
+        setShowAddStockModal(true)
+    }
     return(
         <>
         {/*--------Topbar Component--------*/}
@@ -60,9 +73,11 @@ const Inventory = ()=>{
             <div className="flex w-[78%] md:w-[calc(100%-4rem)] lg:w-[78%] max-[767px]:w-full h-full flex-col max-[767px]:px-2 md:px-4">
                 <div className="flex justify-between items-center mt-5 mb-4">
                     <h1 className={`text-2xl max-sm:text-lg font-semibold transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Inventory</h1>
-                    <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                        {selectedItems.length > 0 ? `${selectedItems.length} item${selectedItems.length > 1 ? 's' : ''} selected` : 'Select items to add to bill'}
-                    </p>
+                    {isBiller && (
+                        <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                            {selectedItems.length > 0 ? `${selectedItems.length} item${selectedItems.length > 1 ? 's' : ''} selected` : 'Select items to add to bill'}
+                        </p>
+                    )}
                 </div>
                 
                 {/*--------------Drugs Search Bar------------------ */}
@@ -74,20 +89,25 @@ const Inventory = ()=>{
                         <table className="w-full min-w-[800px]">
                             <thead className={`border-b ${isDarkMode ? 'bg-gray-700 border-gray-600' : 'bg-gray-50 border-gray-200'}`}>
                                 <tr>
-                                    <th className="py-3 px-4 text-left">
-                                        <input 
-                                            type="checkbox" 
-                                            checked={selectAll}
-                                            onChange={handleSelectAll}
-                                            className="form-checkbox h-4 w-4 text-green-600 accent-green-400 cursor-pointer" 
-                                        />
-                                    </th>
+                                    {isBiller && (
+                                        <th className="py-3 px-4 text-left">
+                                            <input 
+                                                type="checkbox" 
+                                                checked={selectAll}
+                                                onChange={handleSelectAll}
+                                                className="form-checkbox h-4 w-4 text-green-600 accent-green-400 cursor-pointer" 
+                                            />
+                                        </th>
+                                    )}
                                     <th className={`py-3 px-4 text-left text-xs font-semibold uppercase tracking-wider ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Name</th>
                                     <th className={`py-3 px-4 text-left text-xs font-semibold uppercase tracking-wider ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Category</th>
                                     <th className={`py-3 px-4 text-left text-xs font-semibold uppercase tracking-wider ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Manufacturer</th>
                                     <th className={`py-3 px-4 text-left text-xs font-semibold uppercase tracking-wider ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Formulation</th>
                                     <th className={`py-3 px-4 text-left text-xs font-semibold uppercase tracking-wider ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Price</th>
                                     <th className={`py-3 px-4 text-left text-xs font-semibold uppercase tracking-wider ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Stock</th>
+                                    {isAdmin && (
+                                        <th className={`py-3 px-4 text-left text-xs font-semibold uppercase tracking-wider ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Action</th>
+                                    )}
                                 </tr>
                             </thead>
                             <tbody className={`divide-y ${isDarkMode ? 'bg-gray-800 divide-gray-700' : 'bg-white divide-gray-200'}`}>
@@ -96,8 +116,10 @@ const Inventory = ()=>{
                                         key={item.id}
                                         {...item}
                                         isSelected={selectedItems.includes(item.id)}
-                                        onSelect={handleSelectItem}
-                                        showActions={false}
+                                        onSelect={isBiller ? handleSelectItem : undefined}
+                                        onAddStock={isAdmin ? handleAddStock : undefined}
+                                        showCheckbox={isBiller}
+                                        showAddStock={isAdmin}
                                     />
                                 ))}
                             </tbody>
@@ -123,8 +145,8 @@ const Inventory = ()=>{
             </div>
         </div>
         
-        {/* Floating Add to Bill Button */}
-        {selectedItems.length > 0 && (
+        {/* Floating Add to Bill Button - Biller Only */}
+        {isBiller && selectedItems.length > 0 && (
             <div className="fixed bottom-6 right-6 z-40 max-sm:bottom-4 max-sm:right-4">
                 <button
                     onClick={handleAddToBill}
@@ -134,6 +156,19 @@ const Inventory = ()=>{
                     <span>Add {selectedItems.length} to Bill</span>
                 </button>
             </div>
+        )}
+        
+        {/* Add Stock Modal - Admin Only */}
+        {isAdmin && showAddStockModal && (
+            <AddItemModal 
+                isOpen={showAddStockModal} 
+                onClose={() => {
+                    setShowAddStockModal(false)
+                    setSelectedDrugForStock(null)
+                }} 
+                drugId={selectedDrugForStock}
+                isAddingStock={true}
+            />
         )}
         </>
     )

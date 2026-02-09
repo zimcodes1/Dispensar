@@ -12,7 +12,10 @@ interface InventoryItemProps {
     onSelect?: (id: string) => void
     onEdit?: (id: string) => void
     onDelete?: (id: string) => void
+    onAddStock?: (id: string) => void
     showActions?: boolean
+    showCheckbox?: boolean
+    showAddStock?: boolean
 }
 
 function InventoryItem({
@@ -27,7 +30,10 @@ function InventoryItem({
     onSelect,
     onEdit,
     onDelete,
-    showActions = true
+    onAddStock,
+    showActions = true,
+    showCheckbox = true,
+    showAddStock = false
 }: InventoryItemProps) {
     const { isDarkMode } = useDarkMode() as { isDarkMode: boolean }
     const isLowStock = stock < 50
@@ -38,15 +44,17 @@ function InventoryItem({
                 ? 'border-gray-700 hover:bg-gray-700/50'
                 : 'border-gray-200 hover:bg-gray-50'
         }`}>
-            {/* Checkbox */}
-            <td className="py-3 px-4">
-                <input 
-                    type="checkbox" 
-                    checked={isSelected}
-                    onChange={() => onSelect?.(id)}
-                    className="form-checkbox h-4 w-4 text-green-600 accent-green-400 cursor-pointer" 
-                />
-            </td>
+            {/* Checkbox - Biller Only */}
+            {showCheckbox && (
+                <td className="py-3 px-4">
+                    <input 
+                        type="checkbox" 
+                        checked={isSelected}
+                        onChange={() => onSelect?.(id)}
+                        className="form-checkbox h-4 w-4 text-green-600 accent-green-400 cursor-pointer" 
+                    />
+                </td>
+            )}
             {/* Name */}
             <td className={`py-3 px-4 text-sm font-medium transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{name}</td>
             {/* Category */}
@@ -79,6 +87,22 @@ function InventoryItem({
                     {stock} units
                 </span>
             </td>
+            {/* Add Stock Button - Admin Only */}
+            {showAddStock && (
+                <td className="py-3 px-4">
+                    <button 
+                        onClick={() => onAddStock?.(id)}
+                        className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors duration-300 ${
+                            isDarkMode
+                                ? 'bg-green-900/30 text-green-300 hover:bg-green-900/50'
+                                : 'bg-green-100 text-green-700 hover:bg-green-200'
+                        }`}
+                    >
+                        <i className="bx bx-plus mr-1"></i>
+                        Add Stock
+                    </button>
+                </td>
+            )}
             {/* Actions */}
             {showActions && (
                 <td className="py-3 px-4">
