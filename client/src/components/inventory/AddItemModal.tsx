@@ -21,11 +21,11 @@ export default function AddItemModal({ isOpen, onClose }: AddItemModalProps) {
                 <div className="flex-1 overflow-y-auto table-scroll">
                     <div className="p-6">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div className="md:col-span-2">
+                            <div className="col-span-2">
                                 <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Drug Name</label>
                                 <input type="text" placeholder="Enter drug name" className={`w-full p-2 border rounded-lg text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' : 'border-gray-300'}`} />
                             </div>
-                            <div>
+                            <div className="col-span-2 md:col-span-1">
                                 <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Category</label>
                                 <select className={`w-full p-2 border rounded-lg text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white' : 'border-gray-300'}`}>
                                     <option>Pain Relief</option>
@@ -34,11 +34,11 @@ export default function AddItemModal({ isOpen, onClose }: AddItemModalProps) {
                                     <option>Diabetes</option>
                                 </select>
                             </div>
-                            <div>
+                            <div className="col-span-2 md:col-span-1">
                                 <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Manufacturer</label>
                                 <input type="text" placeholder="Enter manufacturer" className={`w-full p-2 border rounded-lg text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' : 'border-gray-300'}`} />
                             </div>
-                            <div>
+                            <div className="col-span-2 md:col-span-1">
                                 <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Formulation</label>
                                 <select className={`w-full p-2 border rounded-lg text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white' : 'border-gray-300'}`}>
                                     <option>Tablets</option>
@@ -47,15 +47,15 @@ export default function AddItemModal({ isOpen, onClose }: AddItemModalProps) {
                                     <option>Injection</option>
                                 </select>
                             </div>
-                            <div>
+                            <div className="col-span-2 md:col-span-1">
                                 <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Price (₦)</label>
                                 <input type="number" placeholder="Enter price" className={`w-full p-2 border rounded-lg text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' : 'border-gray-300'}`} />
                             </div>
-                            <div>
+                            <div className="col-span-2 md:col-span-1">
                                 <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Stock Quantity</label>
                                 <input type="number" placeholder="Enter quantity" className={`w-full p-2 border rounded-lg text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' : 'border-gray-300'}`} />
                             </div>
-                            <div>
+                            <div className="col-span-2 md:col-span-1">
                                 <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Reorder Level</label>
                                 <input type="number" placeholder="Minimum stock level" className={`w-full p-2 border rounded-lg text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' : 'border-gray-300'}`} />
                             </div>

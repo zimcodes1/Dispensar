@@ -85,8 +85,8 @@ export default function RegisterSupplyModal({
 
                 {/* Form */}
                 <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto table-scroll">
-                    <div className="p-6 overflow-x-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 min-w-[500px]">
+                    <div className="p-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {/* Supply Name */}
                         <div className="col-span-2">
                             <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
@@ -104,7 +104,7 @@ export default function RegisterSupplyModal({
                         </div>
 
                         {/* Category */}
-                        <div>
+                        <div className="col-span-2 md:col-span-1">
                             <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                                 Category*
                             </label>
@@ -123,7 +123,7 @@ export default function RegisterSupplyModal({
                         </div>
 
                         {/* Unit Type */}
-                        <div>
+                        <div className="col-span-2 md:col-span-1">
                             <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                                 Unit Type*
                             </label>
@@ -142,7 +142,7 @@ export default function RegisterSupplyModal({
                         </div>
 
                         {/* Quantity */}
-                        <div>
+                        <div className="col-span-2 md:col-span-1">
                             <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                                 Quantity*
                             </label>
@@ -159,7 +159,7 @@ export default function RegisterSupplyModal({
                         </div>
 
                         {/* Price */}
-                        <div>
+                        <div className="col-span-2 md:col-span-1">
                             <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                                 Price per {formData.unit || 'unit'} (₦)*
                             </label>
@@ -177,7 +177,7 @@ export default function RegisterSupplyModal({
                         </div>
 
                         {/* Supplier */}
-                        <div>
+                        <div className="col-span-2 md:col-span-1">
                             <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                                 Supplier*
                             </label>
@@ -193,7 +193,7 @@ export default function RegisterSupplyModal({
                         </div>
 
                         {/* Reorder Level */}
-                        <div>
+                        <div className="col-span-2 md:col-span-1">
                             <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                                 Reorder Level*
                             </label>
