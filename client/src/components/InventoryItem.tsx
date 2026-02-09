@@ -39,12 +39,20 @@ function InventoryItem({
     const isLowStock = stock < 50
     
     return(
-        <tr className={`border-b transition-colors duration-300 ${
-            isDarkMode
-                ? 'border-gray-700 hover:bg-gray-700/50'
-                : 'border-gray-200 hover:bg-gray-50'
-        }`}>
-            {/* Checkbox - Biller Only */}
+        <tr 
+            onClick={() => {
+                if (showCheckbox && onSelect) {
+                    onSelect(id)
+                } else if (showAddStock && onAddStock) {
+                    onAddStock(id)
+                }
+            }}
+            className={`border-b transition-colors duration-300 cursor-pointer ${
+                isDarkMode
+                    ? 'border-gray-700 hover:bg-gray-700/50'
+                    : 'border-gray-200 hover:bg-gray-50'
+            }`}
+        >            {/* Checkbox - Biller Only */}
             {showCheckbox && (
                 <td className="py-3 px-4">
                     <input 
