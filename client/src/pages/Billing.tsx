@@ -35,10 +35,29 @@ function Billing() {
 					</h1>
 					<DrugSearch></DrugSearch>
 					{/*---------Selected Drugs' details will appear here--------- */}
-					<DrugDetails></DrugDetails>
-					<DrugDetails></DrugDetails>
+					<DrugDetails 
+						name="Paracetamol 500mg"
+						category="Pain Reliever"
+						manufacturer="HealthPharma"
+						stock={150}
+						formulation="Tablet"
+						expiryDate="07/03/2026"
+						price={2500}
+						onRemove={() => console.log('Remove Paracetamol')}
+					/>
+					<DrugDetails 
+						name="Amoxicillin 250mg"
+						category="Antibiotic"
+						manufacturer="MediCare Labs"
+						stock={75}
+						formulation="Capsule"
+						expiryDate="12/08/2025"
+						price={1800}
+						image="/images/drug_test.png"
+						onRemove={() => console.log('Remove Amoxicillin')}
+					/>
 					<button className="w-50 mx-auto my-10 bg-green-600 max-sm:w-[40%] text-gray-900 font-semibold py-2 px-5 rounded-lg mt-5 hover:bg-gray-900 hover:text-[#5fdf85] transition duration-500">
-						Dispense <i className="bx bx-right-arrow-alt"></i>
+						Bill <i className="bx bx-right-arrow-alt"></i>
 					</button>
 				</div>
 			</div>
