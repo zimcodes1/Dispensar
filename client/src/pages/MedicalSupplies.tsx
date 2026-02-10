@@ -267,7 +267,7 @@ export default function MedicalSupplies() {
                         </div>
                         <button
                             onClick={() => setShowAddModal(true)}
-                            className="px-4 py-2 bg-green-600 max-sm:mb-2 h-12 w-fit text-white max-sm:text-sm rounded-lg hover:bg-green-700 transition flex items-center gap-2"
+                            className="px-4 mb-4 py-2 bg-green-600 max-sm:mb-2 h-12 w-fit text-white max-sm:text-sm rounded-lg hover:bg-green-700 transition flex items-center gap-2"
                         >
                             <i className="bx bx-plus"></i>
                             Add New Supply

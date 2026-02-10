@@ -62,26 +62,69 @@ function Billing() {
 					</h1>
 					<DrugSearch></DrugSearch>
 					{/*---------Selected Drugs' details will appear here--------- */}
+					{/* Tablets - Supports fractional units */}
 					<DrugDetails 
 						name="Paracetamol 500mg"
 						category="Pain Reliever"
-						manufacturer="HealthPharma"
+						manufacturer="GSK"
 						stock={150}
-						formulation="Tablet"
+						formulation="Tablets"
 						expiryDate="07/03/2026"
-						price={2500}
+						price={500}
+						image="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400"
 						onRemove={() => console.log('Remove Paracetamol')}
 					/>
+					
+					{/* Capsules - Supports fractional units */}
 					<DrugDetails 
 						name="Amoxicillin 250mg"
 						category="Antibiotic"
-						manufacturer="MediCare Labs"
+						manufacturer="Pfizer"
 						stock={75}
-						formulation="Capsule"
+						formulation="Capsules"
 						expiryDate="12/08/2025"
-						price={1800}
-						image="/images/drug_test.png"
+						price={1200}
+						image="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=400"
 						onRemove={() => console.log('Remove Amoxicillin')}
+					/>
+					
+					{/* Syrup - No fractional units */}
+					<DrugDetails 
+						name="Benylin Cough Syrup 100ml"
+						category="Cough & Cold"
+						manufacturer="Johnson & Johnson"
+						stock={45}
+						formulation="Syrup"
+						expiryDate="10/11/2025"
+						price={2500}
+						image="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=400"
+						onRemove={() => console.log('Remove Syrup')}
+					/>
+					
+					{/* Loose Capsules - Price input mode available */}
+					<DrugDetails 
+						name="Vitamin C 1000mg"
+						category="Supplements"
+						manufacturer="Nature's Bounty"
+						stock={200}
+						formulation="Loose Capsules"
+						expiryDate="05/09/2026"
+						price={50}
+						image="https://images.unsplash.com/photo-1550572017-4a6e8e8e1f3f?w=400"
+						onRemove={() => console.log('Remove Vitamin C')}
+					/>
+					
+					{/* Loose Tablets - Price input mode available */}
+					<DrugDetails 
+						name="Ibuprofen 400mg"
+						category="Pain Reliever"
+						manufacturer="Emzor"
+						stock={180}
+						formulation="Loose Tablets"
+						expiryDate="08/06/2026"
+						price={30}
+						image="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=400"
+						onRemove={() => console.log('Remove Ibuprofen')}
 					/>
 					<button className="w-50 mx-auto my-10 bg-green-600 max-sm:w-[40%] text-gray-900 font-semibold py-2 px-5 rounded-lg mt-5 hover:bg-gray-900 hover:text-[#5fdf85] transition duration-500">
 						Bill <i className="bx bx-right-arrow-alt"></i>
