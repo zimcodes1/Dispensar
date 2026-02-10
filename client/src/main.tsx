@@ -28,6 +28,7 @@ import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
+import ActivityLogs from "./pages/ActivityLogs";
 
 const router = createBrowserRouter([
 	{
@@ -125,6 +126,10 @@ const router = createBrowserRouter([
 	{
 		path: "/terms",
 		element: <TermsOfService />,
+	},
+	{
+		path: "/activity-logs",
+		element: <ActivityLogs />,
 	},
 	{
 		path: "*",

@@ -3,6 +3,7 @@ import RevenueChart from "../components/AdminDashboard/RevenueChart"
 import EmployeeList from "../components/AdminDashboard/EmployeeList"
 import SalesOverview from "../components/AdminDashboard/SalesOverview"
 import InventoryStatus from "../components/AdminDashboard/InventoryStatus"
+import RecentActivityCard from "../components/activitylogs/RecentActivityCard"
 import Topbar from "../components/dashboard/Topbar"
 import SideNav from "../components/SideNav"
 import { useEffect, useState } from "react"
@@ -10,6 +11,15 @@ import AddEmployeeModal from "../components/AdminDashboard/AddEmployeeModal"
 import ExportReportModal from "../components/AdminDashboard/ExportReportModal"
 import CreateNewReportModal from "../components/AdminDashboard/CreateNewReportModal"
 import { useDarkMode } from "../utils/useDarkMode"
+import { type ActivityLog } from "../components/activitylogs/ActivityLogItem"
+
+const recentLogs: ActivityLog[] = [
+    { id: '1', user: 'John Doe', action: 'created', entity: 'Paracetamol 500mg', details: 'Added 200 units to inventory', timestamp: '2 mins ago', type: 'create' },
+    { id: '2', user: 'Jane Smith', action: 'processed payment for', entity: 'Bill #DSP-2025-001', details: 'Amount: ₦15,000 via Cash', timestamp: '15 mins ago', type: 'payment' },
+    { id: '3', user: 'Admin', action: 'updated price for', entity: 'Amoxicillin 250mg', details: 'Changed from ₦1,000 to ₦1,200', timestamp: '1 hour ago', type: 'update' },
+    { id: '4', user: 'John Doe', action: 'logged in', entity: 'System', details: 'IP: 192.168.1.100', timestamp: '2 hours ago', type: 'login' },
+    { id: '5', user: 'Jane Smith', action: 'deleted', entity: 'Expired Drug Batch', details: 'Metformin 500mg - Batch #MT-2024-05', timestamp: '3 hours ago', type: 'delete' }
+]
 
 export default function AdminDashboard() {
     const { isDarkMode } = useDarkMode() as { isDarkMode: boolean }
@@ -72,15 +82,20 @@ export default function AdminDashboard() {
                     </div>
 
                     {/* Bottom Section */}
-                    <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 mb-6 max-sm:mb-4">
-                        {/* Employee List - Spans 3 columns */}
-                        <div className="lg:col-span-3">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6 max-sm:mb-4">
+                        {/* Employee List */}
+                        <div>
                             <EmployeeList onAddEmployee={() => setShowAddEmployee(true)} />
                         </div>
-                        {/* Inventory Status - Spans 2 columns */}
-                        <div className="lg:col-span-2">
+                        {/* Inventory Status */}
+                        <div>
                             <InventoryStatus />
                         </div>
+                    </div>
+                    
+                    {/* Recent Activity - Full Width */}
+                    <div className="mb-6 max-sm:mb-4">
+                        <RecentActivityCard logs={recentLogs} />
                     </div>
                 </div>
             </div>
