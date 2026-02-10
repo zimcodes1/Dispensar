@@ -11,6 +11,7 @@ interface SupplyFormData {
     description?: string
     unit: string
     location?: string
+    image: string
 }
 
 interface RegisterSupplyModalProps {
@@ -48,6 +49,7 @@ export default function RegisterSupplyModal({
     isEdit = false 
 }: RegisterSupplyModalProps) {
     const { isDarkMode } = useDarkMode() as { isDarkMode: boolean }
+    const [imagePreview, setImagePreview] = useState<string>(initialData?.image || '')
     const [formData, setFormData] = useState<SupplyFormData>({
         name: initialData?.name || '',
         category: initialData?.category || '',
@@ -57,12 +59,26 @@ export default function RegisterSupplyModal({
         reorderLevel: initialData?.reorderLevel || '',
         description: initialData?.description || '',
         unit: initialData?.unit || '',
-        location: initialData?.location || ''
+        location: initialData?.location || '',
+        image: initialData?.image || ''
     })
 
     function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
         const { name, value } = e.target
         setFormData(prev => ({ ...prev, [name]: value }))
+    }
+    
+    function handleImageChange(e: React.ChangeEvent<HTMLInputElement>) {
+        const file = e.target.files?.[0]
+        if (file) {
+            const reader = new FileReader()
+            reader.onloadend = () => {
+                const result = reader.result as string
+                setImagePreview(result)
+                setFormData(prev => ({ ...prev, image: result }))
+            }
+            reader.readAsDataURL(file)
+        }
     }
 
     function handleSubmit(e: React.FormEvent) {
@@ -87,6 +103,25 @@ export default function RegisterSupplyModal({
                 <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto table-scroll">
                     <div className="p-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {/* Supply Image */}
+                        <div className="col-span-2">
+                            <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                                Supply Image
+                            </label>
+                            <div className="flex items-center gap-4">
+                                {imagePreview && (
+                                    <div className={`w-24 h-24 rounded-lg overflow-hidden border ${isDarkMode ? 'border-gray-600' : 'border-gray-300'}`}>
+                                        <img src={imagePreview} alt="Preview" className="w-full h-full object-cover" />
+                                    </div>
+                                )}
+                                <label className={`flex-1 cursor-pointer border-2 border-dashed rounded-lg p-4 text-center transition ${isDarkMode ? 'border-gray-600 hover:border-gray-500' : 'border-gray-300 hover:border-gray-400'}`}>
+                                    <input type="file" accept="image/*" onChange={handleImageChange} className="hidden" />
+                                    <i className={`bx bx-cloud-upload text-3xl ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}></i>
+                                    <p className={`text-sm mt-2 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Click to upload image</p>
+                                </label>
+                            </div>
+                        </div>
+                        
                         {/* Supply Name */}
                         <div className="col-span-2">
                             <label className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
