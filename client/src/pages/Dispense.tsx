@@ -183,6 +183,7 @@ function Dispense(){
                     timestamp={selectedBill.timestamp}
                     items={selectedBill.items}
                     status={selectedBill.status}
+                    mode="dispense"
                 />
             )}
         </>

@@ -16,6 +16,7 @@ interface BillDetailsModalProps {
 	timestamp: string;
 	items: DrugItem[];
 	status: "pending" | "completed" | "cancelled";
+	mode?: "billing" | "dispense";
 }
 
 export default function BillDetailsModal({
@@ -25,6 +26,7 @@ export default function BillDetailsModal({
 	timestamp,
 	items,
 	status,
+	mode = "billing",
 }: BillDetailsModalProps) {
 	const { isDarkMode } = useDarkMode() as { isDarkMode: boolean };
 	const [paymentMethod, setPaymentMethod] = useState<string>("");
@@ -164,41 +166,43 @@ export default function BillDetailsModal({
 				<div
 					className={`px-6 py-4 border-t shrink-0 ${isDarkMode ? "border-gray-700 bg-gray-700" : "border-gray-200 bg-gray-50"}`}
 				>
-					{/* Payment Method Selection */}
-					<div className="mb-4">
-						<label
-							className={`block text-sm font-medium mb-2 ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}
-						>
-							Payment Method*
-						</label>
-						<div className="flex gap-3">
-							{["Cash", "POS Transfer", "Bank Transfer"].map((method) => (
-								<button
-									key={method}
-									type="button"
-									onClick={() => {
-										setPaymentMethod(method);
-										setError("");
-									}}
-									className={`flex-1 py-2 px-4 rounded-lg text-sm font-medium transition ${
-										paymentMethod === method
-											? "bg-green-600 text-white"
-											: isDarkMode
-												? "bg-gray-800 text-gray-300 hover:bg-gray-600 border border-gray-600"
-												: "bg-white text-gray-700 hover:bg-gray-100 border border-gray-300"
-									}`}
-								>
-									{method}
-								</button>
-							))}
+					{/* Payment Method Selection - Only for pending in billing mode */}
+					{mode === "billing" && status === "pending" && (
+						<div className="mb-4">
+							<label
+								className={`block text-sm font-medium mb-2 ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}
+							>
+								Payment Method*
+							</label>
+							<div className="flex gap-3">
+								{["Cash", "POS Transfer", "Bank Transfer"].map((method) => (
+									<button
+										key={method}
+										type="button"
+										onClick={() => {
+											setPaymentMethod(method);
+											setError("");
+										}}
+										className={`flex-1 py-2 px-4 rounded-lg text-sm font-medium transition ${
+											paymentMethod === method
+												? "bg-green-600 text-white"
+												: isDarkMode
+													? "bg-gray-800 text-gray-300 hover:bg-gray-600 border border-gray-600"
+													: "bg-white text-gray-700 hover:bg-gray-100 border border-gray-300"
+										}`}
+									>
+										{method}
+									</button>
+								))}
+							</div>
+							{error && (
+								<p className="text-red-500 text-sm mt-2 flex items-center gap-1">
+									<i className="bx bx-error-circle"></i>
+									{error}
+								</p>
+							)}
 						</div>
-						{error && (
-							<p className="text-red-500 text-sm mt-2 flex items-center gap-1">
-								<i className="bx bx-error-circle"></i>
-								{error}
-							</p>
-						)}
-					</div>
+					)}
 
 					<div className="flex justify-between items-center mb-4">
 						<div className={isDarkMode ? "text-gray-400" : "text-gray-600"}>
@@ -222,12 +226,27 @@ export default function BillDetailsModal({
 						>
 							Close
 						</button>
-						<button
-							onClick={handleProcessPayment}
-							className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
-						>
-							Process Payment
-						</button>
+						{mode === "dispense" ? (
+							status === "pending" && (
+								<button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+									Dispense
+								</button>
+							)
+						) : (
+							status === "pending" && (
+								<>
+									<button className="px-4 py-2 border border-red-600 text-red-600 rounded-lg hover:bg-red-50 transition">
+										Cancel Bill
+									</button>
+									<button
+										onClick={handleProcessPayment}
+										className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
+									>
+										Process Payment
+									</button>
+								</>
+							)
+						)}
 					</div>
 				</div>
 			</div>
