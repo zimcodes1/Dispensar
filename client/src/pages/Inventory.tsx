@@ -15,7 +15,7 @@ const Inventory = ()=>{
     const [showAddStockModal, setShowAddStockModal] = useState(false)
     
     // TODO: Get actual user role from auth context
-    const userRole: 'admin' | 'biller' = 'admin' // 'biller' or 'admin'
+    const userRole: 'admin' | 'biller' = 'biller' // 'biller' or 'admin'
     const isBiller = (userRole as string) === 'biller'
     const isAdmin = (userRole as string) === 'admin'
     

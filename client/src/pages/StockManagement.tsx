@@ -1,29 +1,33 @@
 import { useState, useEffect } from 'react'
 import Topbar from "../components/dashboard/Topbar"
 import SideNav from "../components/SideNav"
-import RegisterDrugModal from "../components/stock/RegisterDrugModal"
+import RegisterItemModal from "../components/stock/RegisterItemModal"
 import DrugList from "../components/stock/DrugList"
 import SearchFilters from "../components/stock/SearchFilters"
 import DeleteConfirmationModal from "../components/modals/DeleteConfirmationModal"
 import { useDarkMode } from "../utils/useDarkMode"
 
 // Demo data - replace with API calls
-interface Drug {
+interface Item {
     id: string
     name: string
-    nafdacNumber: string
+    itemType: 'drug' | 'supply'
+    nafdacNumber?: string
     category: string
     price: number
     stock: number
-    expiryDate: string
-    manufactureDate: string
+    expiryDate?: string
+    manufactureDate?: string
+    supplier?: string
+    unit?: string
     status: 'active' | 'delisted' | 'expired' | 'expiring-soon'
 }
 
-const demoDrugs: Drug[] = [
+const demoItems: Item[] = [
     {
         id: "1",
         name: "Paracetamol 500mg",
+        itemType: "drug",
         nafdacNumber: "04-1234",
         category: "Pain Relief",
         price: 500,
@@ -35,75 +39,179 @@ const demoDrugs: Drug[] = [
     {
         id: "2",
         name: "Amoxicillin 250mg",
+        itemType: "drug",
         nafdacNumber: "04-5678",
         category: "Antibiotics",
         price: 1200,
         stock: 30,
         expiryDate: "2025-12-30",
         manufactureDate: "2025-01-30",
-        status: "expiring-soon" as const
+        status: "expiring-soon"
     },
     {
         id: "3",
         name: "Metformin 500mg",
+        itemType: "drug",
         nafdacNumber: "04-9012",
         category: "Antidiabetic",
         price: 800,
         stock: 0,
         expiryDate: "2025-11-30",
         manufactureDate: "2025-01-30",
-        status: "expired" as const
+        status: "expired"
+    },
+    {
+        id: "4",
+        name: "Disposable Syringes 5ml",
+        itemType: "supply",
+        category: "Injection & Infusion",
+        price: 50,
+        stock: 500,
+        supplier: "MedEquip Ltd",
+        unit: "pieces",
+        status: "active"
+    },
+    {
+        id: "5",
+        name: "Surgical Gloves (Medium)",
+        itemType: "supply",
+        category: "Personal Protective",
+        price: 1200,
+        stock: 150,
+        supplier: "SafetyFirst Supplies",
+        unit: "boxes",
+        status: "active"
+    },
+    {
+        id: "6",
+        name: "Ibuprofen 400mg",
+        itemType: "drug",
+        nafdacNumber: "04-3456",
+        category: "Pain Relief",
+        price: 350,
+        stock: 200,
+        expiryDate: "2026-08-15",
+        manufactureDate: "2025-08-15",
+        status: "active"
+    },
+    {
+        id: "7",
+        name: "Sterile Gauze Pads 4x4",
+        itemType: "supply",
+        category: "Wound Care",
+        price: 800,
+        stock: 80,
+        supplier: "MedEquip Ltd",
+        unit: "packs",
+        status: "active"
+    },
+    {
+        id: "8",
+        name: "Omeprazole 20mg",
+        itemType: "drug",
+        nafdacNumber: "04-7890",
+        category: "Gastrointestinal",
+        price: 600,
+        stock: 45,
+        expiryDate: "2026-03-20",
+        manufactureDate: "2025-03-20",
+        status: "active"
+    },
+    {
+        id: "9",
+        name: "Digital Thermometer",
+        itemType: "supply",
+        category: "Diagnostic",
+        price: 3500,
+        stock: 25,
+        supplier: "HealthTech Solutions",
+        unit: "pieces",
+        status: "active"
+    },
+    {
+        id: "10",
+        name: "Ciprofloxacin 500mg",
+        itemType: "drug",
+        nafdacNumber: "04-2468",
+        category: "Antibiotics",
+        price: 950,
+        stock: 15,
+        expiryDate: "2025-11-10",
+        manufactureDate: "2025-01-10",
+        status: "expiring-soon"
+    },
+    {
+        id: "11",
+        name: "IV Cannula 18G",
+        itemType: "supply",
+        category: "Injection & Infusion",
+        price: 150,
+        stock: 0,
+        supplier: "MedEquip Ltd",
+        unit: "pieces",
+        status: "active"
+    },
+    {
+        id: "12",
+        name: "Amlodipine 5mg",
+        itemType: "drug",
+        nafdacNumber: "04-1357",
+        category: "Cardiovascular",
+        price: 450,
+        stock: 180,
+        expiryDate: "2026-12-30",
+        manufactureDate: "2025-12-30",
+        status: "active"
     }
 ]
 
 export default function StockManagement() {
     const { isDarkMode } = useDarkMode() as { isDarkMode: boolean }
     const [showRegisterModal, setShowRegisterModal] = useState(false)
-    const [editingDrug, setEditingDrug] = useState<typeof demoDrugs[0] | null>(null)
-    const [deleteModal, setDeleteModal] = useState<{ isOpen: boolean; drugId: string | null; drugName: string }>({ isOpen: false, drugId: null, drugName: '' })
+    const [editingItem, setEditingItem] = useState<typeof demoItems[0] | null>(null)
+    const [deleteModal, setDeleteModal] = useState<{ isOpen: boolean; itemId: string | null; itemName: string }>({ isOpen: false, itemId: null, itemName: '' })
     const [search, setSearch] = useState('')
     const [category, setCategory] = useState('All Categories')
     const [status, setStatus] = useState('All Status')
     const [stockFilter, setStockFilter] = useState('All Stock Levels')
 
-    // Filter drugs based on search and filters
-    const filteredDrugs = demoDrugs.filter(drug => {
-        const matchesSearch = drug.name.toLowerCase().includes(search.toLowerCase()) ||
-                            drug.nafdacNumber.toLowerCase().includes(search.toLowerCase())
-        const matchesCategory = category === 'All Categories' || drug.category === category
-        const matchesStatus = status === 'All Status' || drug.status === status.toLowerCase().replace(' ', '-')
+    // Filter items based on search and filters
+    const filteredItems = demoItems.filter(item => {
+        const matchesSearch = item.name.toLowerCase().includes(search.toLowerCase()) ||
+                            (item.nafdacNumber && item.nafdacNumber.toLowerCase().includes(search.toLowerCase()))
+        const matchesCategory = category === 'All Categories' || item.category === category
+        const matchesStatus = status === 'All Status' || item.status === status.toLowerCase().replace(' ', '-')
         const matchesStock = stockFilter === 'All Stock Levels' ||
-                           (stockFilter === 'Low Stock' && drug.stock < 50) ||
-                           (stockFilter === 'Out of Stock' && drug.stock === 0) ||
-                           (stockFilter === 'In Stock' && drug.stock > 0)
+                           (stockFilter === 'Low Stock' && item.stock < 50) ||
+                           (stockFilter === 'Out of Stock' && item.stock === 0) ||
+                           (stockFilter === 'In Stock' && item.stock > 0)
 
         return matchesSearch && matchesCategory && matchesStatus && matchesStock
     })
 
     function handleRegisterSubmit(data: any) {
-        console.log('Register/Edit drug:', data)
+        console.log('Register/Edit item:', data)
         setShowRegisterModal(false)
-        setEditingDrug(null)
+        setEditingItem(null)
     }
 
-    function handleEdit(drug: Drug) {
-        setEditingDrug({
-            ...drug,
-            price: drug.price,
-            stock: drug.stock
+    function handleEdit(item: Item) {
+        setEditingItem({
+            ...item,
+            price: item.price,
+            stock: item.stock
         })
         setShowRegisterModal(true)
     }
 
-    function handleDelist(drugId: string) {
-        const drug = demoDrugs.find(d => d.id === drugId)
-        setDeleteModal({ isOpen: true, drugId, drugName: drug?.name || '' })
+    function handleDelist(itemId: string) {
+        const item = demoItems.find(d => d.id === itemId)
+        setDeleteModal({ isOpen: true, itemId, itemName: item?.name || '' })
     }
     
     const confirmDelete = () => {
-        if (deleteModal.drugId) {
-            console.log('Delist drug:', deleteModal.drugId)
-            // Implement actual delist logic
+        if (deleteModal.itemId) {
+            console.log('Delist item:', deleteModal.itemId)
         }
     }
 
@@ -135,17 +243,17 @@ export default function StockManagement() {
                                 className="bg-green-600 text-white px-4 py-2 max-sm:text-sm rounded-lg hover:bg-green-700 transition flex items-center gap-2"
                             >
                                 <i className="bx bx-plus"></i>
-                                <span>Register New Drug</span>
+                                <span>Register New Item</span>
                             </button>
                         </div>
 
                         {/* Quick Stats */}
                         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
                             {[
-                                { label: 'Total Drugs', value: demoDrugs.length, icon: 'bx-package' },
-                                { label: 'Low Stock Items', value: demoDrugs.filter(d => d.stock < 50).length, icon: 'bx-error' },
-                                { label: 'Expired Items', value: demoDrugs.filter(d => d.status === 'expired').length, icon: 'bx-time' },
-                                { label: 'Active Items', value: demoDrugs.filter(d => d.status === 'active').length, icon: 'bx-check-circle' }
+                                { label: 'Total Items', value: demoItems.length, icon: 'bx-package' },
+                                { label: 'Low Stock Items', value: demoItems.filter(d => d.stock < 50).length, icon: 'bx-error' },
+                                { label: 'Expired Items', value: demoItems.filter(d => d.status === 'expired').length, icon: 'bx-time' },
+                                { label: 'Active Items', value: demoItems.filter(d => d.status === 'active').length, icon: 'bx-check-circle' }
                             ].map((stat, index) => (
                                 <div key={index} className={`p-4 rounded-lg shadow-sm border ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
                                     <div className="flex items-center justify-between">
@@ -176,7 +284,7 @@ export default function StockManagement() {
                         {/* Drug List */}
                         <div className={`mt-6 rounded-lg shadow-sm border ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
                             <DrugList
-                                drugs={filteredDrugs}
+                                drugs={filteredItems}
                                 onEdit={handleEdit}
                                 onDelist={handleDelist}
                             />
@@ -185,31 +293,31 @@ export default function StockManagement() {
                 </div>
             </div>
 
-            {/* Register/Edit Drug Modal */}
+            {/* Register/Edit Item Modal */}
             {showRegisterModal && (
-                <RegisterDrugModal
+                <RegisterItemModal
                     onClose={() => {
                         setShowRegisterModal(false)
-                        setEditingDrug(null)
+                        setEditingItem(null)
                     }}
                     onSubmit={handleRegisterSubmit}
-                    initialData={editingDrug ? {
-                        ...editingDrug,
-                        price: editingDrug.price.toString(),
-                        stock: editingDrug.stock.toString()
+                    initialData={editingItem ? {
+                        ...editingItem,
+                        price: editingItem.price.toString(),
+                        stock: editingItem.stock.toString()
                     } : undefined}
-                    isEdit={!!editingDrug}
+                    isEdit={!!editingItem}
                 />
             )}
             
             {/* Delete Confirmation Modal */}
             <DeleteConfirmationModal
                 isOpen={deleteModal.isOpen}
-                onClose={() => setDeleteModal({ isOpen: false, drugId: null, drugName: '' })}
+                onClose={() => setDeleteModal({ isOpen: false, itemId: null, itemName: '' })}
                 onConfirm={confirmDelete}
-                title="Delist Drug"
-                message="Are you sure you want to delist this drug from your inventory?"
-                itemName={deleteModal.drugName}
+                title="Delist Item"
+                message="Are you sure you want to delist this item from your inventory?"
+                itemName={deleteModal.itemName}
             />
         </>
     )
