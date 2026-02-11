@@ -195,12 +195,12 @@ export default function StockManagement() {
         setEditingItem(null)
     }
 
-    function handleEdit(item: Item) {
+    function handleEdit(item: Item | Partial<Item>) {
         setEditingItem({
             ...item,
             price: item.price,
             stock: item.stock
-        })
+        } as Item)
         setShowRegisterModal(true)
     }
 

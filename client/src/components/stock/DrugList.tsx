@@ -3,12 +3,15 @@ import { useDarkMode } from '../../utils/useDarkMode'
 interface Drug {
     id: string
     name: string
-    nafdacNumber: string
+    itemType?: 'drug' | 'supply'
+    nafdacNumber?: string
     category: string
     price: number
     stock: number
-    expiryDate: string
-    manufactureDate: string
+    expiryDate?: string
+    manufactureDate?: string
+    supplier?: string
+    unit?: string
     status: 'active' | 'delisted' | 'expired' | 'expiring-soon'
 }
 
@@ -89,7 +92,7 @@ export default function DrugList({ drugs, onEdit, onDelist }: DrugListProps) {
                                 ₦{drug.price.toLocaleString()}
                             </td>
                             <td className={`py-3 px-4 text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                                {new Date(drug.expiryDate).toLocaleDateString('en-GB')}
+                                {drug.expiryDate ? new Date(drug.expiryDate).toLocaleDateString('en-GB') : 'N/A'}
                             </td>
                             <td className="py-3 px-4">
                                 {getStatusBadge(drug.status)}
